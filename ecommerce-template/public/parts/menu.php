@@ -17,8 +17,8 @@
         </div>
     </div>
     <header>
-        <h3>Brogebys <br> World of Beer</h3>
-        <img id="header-logo" src="img/bwob-logo.png" alt="Brogebys World of Beer">
+        <h3>Tankrummet</h3>
+        <img id="header-logo" src="img/bwob-logo.png" alt="Tankrummet">
         <img src="img/business.svg" alt="Shopping Cart">
         <label class="nav-toggle" for="nav-toggle" onclick="openNav()">
             <span></span>
