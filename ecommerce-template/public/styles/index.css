@@ -1,0 +1,51 @@
+#index-content-wrapper {
+    display: grid;
+    min-height: 100vh;
+    min-width: 100vw;
+    grid-template-rows: 30vh repeat(auto, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#hero {
+    display: grid;
+    min-height: 50vh;
+    place-content: center center;
+    background-image: url("../img/woodbg.jpg");
+    color: white;
+    font-size: 2rem;
+    padding: 10%;
+}
+
+#index-product-list {
+    display: grid;
+}
+
+.index-products-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto repeat(2, 150px);
+    padding: 10px;
+    grid-gap: 10px;
+}
+
+.index-products-categories-titles {
+    grid-column: span 2;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.index-products-categories-titles:visited {
+    color: black;
+}
+
+.index-products-categories-titles:hover {
+    color: f1f1f1;
+}
+
+.index-products {
+    display: grid;
+    place-content: center center;
+    border: 1px solid black;
+}
