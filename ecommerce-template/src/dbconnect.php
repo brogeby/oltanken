@@ -1,8 +1,8 @@
 <?php
 
-$host 	  = '';
-$database = '';
-$user     = '';
+$host 	  = 'localhost';
+$database = 'e_handel_uppgift';
+$user     = 'root';
 $password = '';
 $charset  = 'utf8mb4';
 
