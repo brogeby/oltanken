@@ -21,7 +21,7 @@ error_reporting(-1);
 	</section>
 	<section id="index-product-list">
 		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">New Releases</a>
+			<h3 class="index-products-categories-titles">New Releases</h3>
 			<a href="product.php" class="index-products">
 				<span class="index-products-title">Omnipollo - Bianca</span>
 				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
@@ -45,7 +45,7 @@ error_reporting(-1);
 		</div>
 
 		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">Top Rated</a>
+			<h3 class="index-products-categories-titles">Top Rated</h3>
 			<a href="product.php" class="index-products">
 				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
 				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
@@ -69,7 +69,7 @@ error_reporting(-1);
 		</div>
 
 		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">Staff Picks</a>
+			<h3 class="index-products-categories-titles">Staff Picks</h3>
 			<a href="product.php" class="index-products">
 				<span class="index-products-title">Omnipollo - Bianca</span>
 				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
