@@ -128,10 +128,12 @@ header img {
 .nav-toggle span:nth-child(3) {top: 24px;}
 input[type=checkbox]:checked ~ .nav-toggle {margin-right: 1vw;}
 
+/* Fixing margins for footer */
 body > div {
     margin-bottom: 100px;
 }
 
+/* Footer is always shown */
 footer {
     position: fixed;
     left: 0;
