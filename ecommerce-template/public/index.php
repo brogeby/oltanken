@@ -44,6 +44,8 @@ error_reporting(-1);
 			</a>
 		</div>
 
+		<hr>
+
 		<div class="index-products-categories">
 			<h3 class="index-products-categories-titles">Top Rated</h3>
 			<a href="product.php" class="index-products">
@@ -67,6 +69,8 @@ error_reporting(-1);
 				<span class="index-products-price">80kr</span>
 			</a>
 		</div>
+
+		<hr>
 
 		<div class="index-products-categories">
 			<h3 class="index-products-categories-titles">Staff Picks</h3>

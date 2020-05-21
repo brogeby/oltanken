@@ -1,5 +1,5 @@
 <?php echo
     '<footer>
-        <div>This is my foot</div>
+        <div>Made by Axel, Olof, Christoffer</div>
     </footer>'
 ?>
