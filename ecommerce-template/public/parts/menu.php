@@ -3,7 +3,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
         <a href="index.php">Home</a>
-        <a href="products.php">Products</a>
+        <a href="productlist.php">Products</a>
         <a href="#">Log in</a>
         </div>
     </div>
