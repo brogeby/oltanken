@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 #index-content-wrapper {
     display: grid;
     min-height: 100vh;
@@ -9,30 +13,33 @@
 #hero {
     display: grid;
     min-height: 50vh;
-    place-content: center center;
     background-image: url("../img/woodbg.jpg");
     color: white;
     font-size: 2rem;
     padding: 10%;
+    text-align: center;
+    align-items: center;
 }
 
 #index-product-list {
     display: grid;
+    grid-gap: 30px;
 }
 
 .index-products-categories {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto repeat(2, 150px);
+    grid-template-rows: auto repeat(2, 250px);
     padding: 10px;
-    grid-gap: 10px;
+    grid-gap: 40px;
+    justify-items: center;
 }
 
 .index-products-categories-titles {
     grid-column: span 2;
     text-align: center;
     padding: 10px;
-    text-decoration: none;
+    font-size: 1.5em;
     color: black;
 }
 
@@ -46,6 +53,37 @@
 
 .index-products {
     display: grid;
-    place-content: center center;
-    border: 1px solid black;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    text-align: center;
+    justify-items: center;
+    color: black;
+}
+
+.index-products:visited {
+    color: black;
+}
+
+.index-products-image {
+    max-height: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+    .index-products-categories {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto 1fr;
+    }
+
+    .index-products-categories-titles {
+        grid-column: span 4;
+    }
+
+    .index-products {
+        grid-template-rows: 250px auto auto;
+    }
+
+    .index-products-image {
+        height: 200px;
+    }
 }

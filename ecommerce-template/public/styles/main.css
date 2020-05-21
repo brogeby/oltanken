@@ -128,9 +128,19 @@ header img {
 .nav-toggle span:nth-child(3) {top: 24px;}
 input[type=checkbox]:checked ~ .nav-toggle {margin-right: 1vw;}
 
+/* Fixing margins for footer */
+body > div {
+    margin-bottom: 100px;
+}
+
+/* Footer is always shown */
 footer {
-    min-height: 150px;
-    background-color: #222222;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;    
+    height: 50px;
+    background-color: #e89836;
     color: #fff;
     display: grid;
     place-content: center center;

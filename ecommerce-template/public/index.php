@@ -21,27 +21,79 @@ error_reporting(-1);
 	</section>
 	<section id="index-product-list">
 		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">New Releases</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 1</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 2</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 3</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 4</a>
+			<h3 class="index-products-categories-titles">New Releases</h3>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
 		</div>
 
-		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">Top Rated</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 5</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 6</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 7</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 8</a>
-		</div>
+		<hr>
 
 		<div class="index-products-categories">
-			<a href="#" class="index-products-categories-titles">Staff Picks</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 9</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 10</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 11</a>
-			<a href="#" class="index-products"><img src="" alt="">Beer 12</a>
+			<h3 class="index-products-categories-titles">Top Rated</h3>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
+				<span class="index-products-price">80kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
+				<span class="index-products-price">80kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
+				<span class="index-products-price">80kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
+				<span class="index-products-price">80kr</span>
+			</a>
+		</div>
+
+		<hr>
+
+		<div class="index-products-categories">
+			<h3 class="index-products-categories-titles">Staff Picks</h3>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
+			<a href="product.php" class="index-products">
+				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+				<span class="index-products-title">Omnipollo - Bianca</span>
+				<span class="index-products-price">150kr</span>
+			</a>
 		</div>
 	</section>
 </div>
