@@ -24,88 +24,28 @@ try {
 <body>
 <?php include 'parts/menu.php';?>
 
-<div class="productlist-content-wrapper">
-	<section id="productlist-product-list"> 
-    <?php foreach ($products as $key => $content) { ?>
-        <a>
-            <h2 class="product-title"><?=htmlentities($content['title'])?></h2>
-            <h3 class="product-brewery"><span>Bryggeri: </span><?=htmlentities($content['brewery'])?></h3>
-            <h3 class="product-type"><?=htmlentities($content['type'])?></h3>
-            <p class="product-title"><?=htmlentities($content['price'])?> sek</p>
-            <br>
-            <p><?=htmlentities($content['description'])?>
-            <form action="product.php" method="GET">
-                <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                <input type="submit" name="showAll" value="Read More">
-            </form>
-            <br>
-            <hr>
-        </a>
-    <?php } ?>
-
-        <h1>Choose wisely</h1>
-		<div class="productlist-products-categories">
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="productlist-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="productlist-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="productlist-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="productlist-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="productlist-products">
-				<img class="productlist-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="productlist-products-title">Omnipollo - Bianca</span>
-				<span class="productlist-products-price">150kr</span>
-			</a>
-		</div>
+<div id="show-all-wrapper">
+	<section id="show-all-list"> 
+        <?php foreach ($products as $key => $content) { ?>
+            <div class="show-all-product">
+                <img class="show-all-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+                <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
+                <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
+                <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
+                <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
+                <!-- <p class="show-all-desc"><?=htmlentities($content['description'])?> -->
+                <div class="show-all-buttons-wrapper">
+                    <form class="show-all-more show-all-buttons" action="product.php" method="GET">
+                        <input type="hidden" name="productsId" value="<?=$content['id']?>">
+                        <input class="show-all-buttons" type="submit" name="showAll" value="Läs mer">
+                    </form>
+                    <form class="show-all-buy" action="#" method="GET">
+                        <input type="hidden" name="productsId" value="<?=$content['id']?>">
+                        <input class="show-all-buttons" type="submit" name="showAll" value="Lägg i kassan">
+                    </form>
+                </div>
+            </div>
+        <?php } ?>
 	</section>
 </div>
 
