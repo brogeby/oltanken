@@ -1,6 +1,15 @@
 <?php
-require('../src/dbconnect.php'); // Ger error om filen inte hittas
+include('../src/config.php');
+require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
+
+try {
+    $query = "SELECT * FROM products;";
+    $stmt = $dbconnect->query($query);
+    $products = $stmt->fetchall();
+}   catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,6 +26,23 @@ error_reporting(-1);
 
 <div class="productlist-content-wrapper">
 	<section id="productlist-product-list"> 
+    <?php foreach ($products as $key => $content) { ?>
+        <a>
+            <h2 class="product-title"><?=htmlentities($content['title'])?></h2>
+            <h3 class="product-brewery"><span>Bryggeri: </span><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="product-type"><?=htmlentities($content['type'])?></h3>
+            <p class="product-title"><?=htmlentities($content['price'])?> sek</p>
+            <br>
+            <p><?=htmlentities($content['description'])?>
+            <form action="product.php" method="GET">
+                <input type="hidden" name="productsId" value="<?=$content['id']?>">
+                <input type="submit" name="showAll" value="Read More">
+            </form>
+            <br>
+            <hr>
+        </a>
+    <?php } ?>
+
         <h1>Choose wisely</h1>
 		<div class="productlist-products-categories">
 			<a href="product.php" class="productlist-products">

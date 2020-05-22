@@ -1,5 +1,6 @@
 <?php
-require('../src/dbconnect.php'); // Ger error om filen inte hittas
+include('../src/config.php');
+require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 ?>
 <!DOCTYPE html>
