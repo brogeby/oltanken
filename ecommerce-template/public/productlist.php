@@ -27,9 +27,11 @@ try {
 <div class="productlist-content-wrapper">
 	<section id="productlist-product-list"> 
     <?php foreach ($products as $key => $content) { ?>
-        <li>
+        <a>
             <h2 class="product-title"><?=htmlentities($content['title'])?></h2>
-            <p class="product-title">Cost: <?=htmlentities($content['price'])?></p>
+            <h3 class="product-brewery"><span>Bryggeri: </span><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="product-type"><?=htmlentities($content['type'])?></h3>
+            <p class="product-title"><?=htmlentities($content['price'])?> sek</p>
             <br>
             <p><?=htmlentities($content['description'])?>
             <form action="product.php" method="GET">
@@ -38,7 +40,7 @@ try {
             </form>
             <br>
             <hr>
-        </li>
+        </a>
     <?php } ?>
 
         <h1>Choose wisely</h1>
