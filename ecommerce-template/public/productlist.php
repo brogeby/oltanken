@@ -28,7 +28,7 @@ try {
 	<section id="show-all-list"> 
         <?php foreach ($products as $key => $content) { ?>
             <div class="show-all-product">
-                <img class="show-all-image" src="img/omnipollobianca.png" alt="<?=htmlentities($content['title'])?>">
+                <img class="show-all-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
                 <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
                 <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
                 <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>

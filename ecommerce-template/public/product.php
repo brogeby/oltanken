@@ -28,7 +28,7 @@ try {
 
     <?php foreach ($products as $key => $content) { ?>
         <div class="individual-product">
-            <img class="individual-image" src="<?=htmlentities($content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+            <img class="individual-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
             <h2 class="individual-title"><?=htmlentities($content['title'])?></h2>
             <h3 class="individual-brewery"><?=htmlentities($content['brewery'])?></h3>
             <h3 class="individual-type">Typ: <?=htmlentities($content['type'])?></h3>

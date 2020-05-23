@@ -34,7 +34,7 @@ try {
 		<section id="latest-list"> 
 			<?php foreach ($products as $key => $content) { ?>
 				<div class="latest-product">
-					<img class="latest-image" src="img/omnipollobianca.png" alt="<?=htmlentities($content['title'])?>">
+					<img class="latest-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
 					<h2 class="latest-title"><?=htmlentities($content['title'])?></h2>
 					<h3 class="latest-brewery"><?=htmlentities($content['brewery'])?></h3>
 					<h3 class="latest-type"><?=htmlentities($content['type'])?></h3>
