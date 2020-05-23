@@ -1,89 +1,74 @@
-a {
-    text-decoration: none;
-}
-
-#index-content-wrapper {
-    display: grid;
-    min-height: 100vh;
-    min-width: 100vw;
-    grid-template-rows: 30vh repeat(auto, 1fr);
-    grid-template-columns: repeat(2, 1fr);
-}
+#index-content-wrapper {}
 
 #hero {
-    display: grid;
-    min-height: 50vh;
+    width: 100vw;
+    height: 200px;
     background-image: url("../img/woodbg.jpg");
-    color: white;
-    font-size: 2rem;
-    padding: 10%;
-    text-align: center;
-    align-items: center;
-}
-
-#index-product-list {
+    color: #fff;
     display: grid;
-    grid-gap: 30px;
+    text-align: center;
+    align-content: center;
 }
 
-.index-products-categories {
+#latest-wrapper h2 {
+    text-align: center;
+    margin-top: 25px;
+}
+
+#latest-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto repeat(2, 250px);
-    padding: 10px;
-    grid-gap: 40px;
-    justify-items: center;
+    margin-top: 25px;
+    gap: 30px;
 }
 
-.index-products-categories-titles {
-    grid-column: span 2;
-    text-align: center;
-    padding: 10px;
-    font-size: 1.5em;
-    color: black;
-}
-
-.index-products-categories-titles:visited {
-    color: black;
-}
-
-.index-products-categories-titles:hover {
-    color: f1f1f1;
-}
-
-.index-products {
+.latest-product {
+    grid-column: span 1;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr;
     grid-gap: 5px;
     text-align: center;
     justify-items: center;
-    color: black;
+    text-decoration: none;
+    color: inherit;
 }
 
-.index-products:visited {
-    color: black;
+.latest-product:visited {
+    color: inherit;
 }
 
-.index-products-image {
-    max-height: 80%;
+.latest-image {
+    height: 200px;
+}
+.latest-title {}
+.latest-brewery {}
+.latest-type {}
+.latest-price {}
+.latest-desc {}
+
+.latest-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 50%;
+}
+.latest-buttons {
+    background-color: #e89836;
+    border: none;
+    color: #fff;
+    min-height: 25px;
+    text-align: center;
+    width: 100%; 
+    border-radius: 15px;
 }
 
-@media only screen and (min-width: 768px) {
-    .index-products-categories {
+.latest-more {}
+.latest-buy {}
+
+
+
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1200px) {
+    #latest-list {
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: auto 1fr;
-    }
-
-    .index-products-categories-titles {
-        grid-column: span 4;
-    }
-
-    .index-products {
-        grid-template-rows: 250px auto auto;
-    }
-
-    .index-products-image {
-        height: 200px;
     }
 }

@@ -5,8 +5,9 @@ error_reporting(-1);
 // Start session
 session_start();
 
-define('ROOT_PATH', '..' . __DIR__ . '/'); // path to 'my-page-3/'
-define('SRC_PATH',  __DIR__ . '/'); // path to 'my-page-3/src/'
+define('ROOT_PATH', '..' . __DIR__ . '/'); // path to 'root'
+define('SRC_PATH',  __DIR__ . '/'); // path to 'src/'
+define('IMG_PATH','../public/img/'); // path to public images
 
 // Include functions and classes
 

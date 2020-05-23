@@ -1,6 +1,17 @@
 <?php
-require('../src/dbconnect.php'); // Ger error om filen inte hittas
+include('../src/config.php');
+require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
+
+$specific_id = $_GET["productsId"]; 
+                     
+try {
+    $query = "SELECT * FROM products WHERE id = $specific_id;";
+    $stmt = $dbconnect->query($query);
+    $products = $stmt->fetchall();
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+}  
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,23 +26,20 @@ error_reporting(-1);
 <body>
 <?php include 'parts/menu.php';?>
 
-    <div id="product-content-wrapper">
-        <section class="product-page-info">
-            <h3 class="product-page-title">Abbaye de Chimay - Chimay Grande Reserve 2016</h3>
-            <img class="product-page-image" src="img/chimaygrandereserve2016.png" alt="Chimay Grande Reserve 2016">
-            
-            <p class="product-page-description">Chimay Grande Reserve 2018 is a barrel-aged Chimay Blue, that has been slowly matured since March 2016 to give it a different profile from the classic blue thanks to a second fermentation in the keg.
-            <br><br>
-            Pouring deep brown with a fine, light tan head, the nose is a mix of black tea and jasmine, with a balanced woody quality. The palate is also woody, with fresh bread, roasted malt, coffee, and cognac traits. This well-rounded, characterful, powerful brew is best tasted between six months and one year after bottling.
-            <br><br>
-            75cl 
-            <br><br>
-            9% ABV
-            <br><br>
-            <span class="product-page-price">80kr</span></p>
-            <button class="product-page-purchase-button">Lägg i varukorgen</button>
-        </section>
-    </div>
+    <?php foreach ($products as $key => $content) { ?>
+        <div class="individual-product">
+            <img class="individual-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+            <h2 class="individual-title"><?=htmlentities($content['title'])?></h2>
+            <h3 class="individual-brewery"><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="individual-type">Typ: <?=htmlentities($content['type'])?></h3>
+            <p class="individual-price"><?=htmlentities($content['price'])?> sek</p>
+            <p class="individual-desc"><?=htmlentities($content['description'])?>
+            <form class="individual-buy" action="#" method="GET">
+                <input type="hidden" name="productsId" value="<?=$content['id']?>">
+                <input class="individual-button" type="submit" name="showAll" value="Lägg i varukorg">
+            </form>
+        </div>
+    <?php } ?>
 
 <?php include 'parts/footer.php';?>
 <script src='js/main.js'></script>
