@@ -2,6 +2,14 @@
 include('../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
+
+try {
+    $query = "SELECT * FROM products ORDER BY id DESC LIMIT 4;";
+    $stmt = $dbconnect->query($query);
+    $products = $stmt->fetchall();
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,83 +28,31 @@ error_reporting(-1);
 	<section id="hero">
 		<h2>Köp ölen hos Tankrummet</h2>
 	</section>
-	<section id="index-product-list">
-		<div class="index-products-categories">
-			<h3 class="index-products-categories-titles">New Releases</h3>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-		</div>
 
-		<hr>
-
-		<div class="index-products-categories">
-			<h3 class="index-products-categories-titles">Top Rated</h3>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="index-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="index-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="index-products-price">80kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/chimaygrandereserve2016.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Abbaye de Chimay - Chimay Grande Reserve 2016</span>
-				<span class="index-products-price">80kr</span>
-			</a>
-		</div>
-
-		<hr>
-
-		<div class="index-products-categories">
-			<h3 class="index-products-categories-titles">Staff Picks</h3>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-			<a href="product.php" class="index-products">
-				<img class="index-products-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
-				<span class="index-products-title">Omnipollo - Bianca</span>
-				<span class="index-products-price">150kr</span>
-			</a>
-		</div>
-	</section>
+	<div id="latest-wrapper">
+		<h2>Nyinkommet</h2>
+		<section id="latest-list"> 
+			<?php foreach ($products as $key => $content) { ?>
+				<div class="latest-product">
+					<img class="latest-image" src="img/omnipollobianca.png" alt="<?=htmlentities($content['title'])?>">
+					<h2 class="latest-title"><?=htmlentities($content['title'])?></h2>
+					<h3 class="latest-brewery"><?=htmlentities($content['brewery'])?></h3>
+					<h3 class="latest-type"><?=htmlentities($content['type'])?></h3>
+					<p class="latest-price"><?=htmlentities($content['price'])?> sek</p>
+					<div class="latest-buttons-wrapper">
+						<form class="latest-more latest-buttons" action="product.php" method="GET">
+							<input type="hidden" name="productsId" value="<?=$content['id']?>">
+							<input class="latest-buttons" type="submit" name="showAll" value="Läs mer">
+						</form>
+						<form class="latest-buy" action="#" method="GET">
+							<input type="hidden" name="productsId" value="<?=$content['id']?>">
+							<input class="latest-buttons" type="submit" name="showAll" value="Lägg i varukorg">
+						</form>
+					</div>
+				</div>
+			<?php } ?>
+		</section>
+	</div>
 </div>
 
 <?php include 'parts/footer.php';?>

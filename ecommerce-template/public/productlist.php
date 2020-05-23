@@ -7,7 +7,7 @@ try {
     $query = "SELECT * FROM products;";
     $stmt = $dbconnect->query($query);
     $products = $stmt->fetchall();
-}   catch (\PDOException $e) {
+} catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
 }
 ?>
@@ -28,12 +28,11 @@ try {
 	<section id="show-all-list"> 
         <?php foreach ($products as $key => $content) { ?>
             <div class="show-all-product">
-                <img class="show-all-image" src="img/omnipollobianca.png" alt="Omnipollo - Bianca">
+                <img class="show-all-image" src="img/omnipollobianca.png" alt="<?=htmlentities($content['title'])?>">
                 <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
                 <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
                 <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
                 <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
-                <!-- <p class="show-all-desc"><?=htmlentities($content['description'])?> -->
                 <div class="show-all-buttons-wrapper">
                     <form class="show-all-more show-all-buttons" action="product.php" method="GET">
                         <input type="hidden" name="productsId" value="<?=$content['id']?>">
@@ -41,7 +40,7 @@ try {
                     </form>
                     <form class="show-all-buy" action="#" method="GET">
                         <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="show-all-buttons" type="submit" name="showAll" value="Lägg i kassan">
+                        <input class="show-all-buttons" type="submit" name="showAll" value="Lägg i varukorg">
                     </form>
                 </div>
             </div>

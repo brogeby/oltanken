@@ -2,8 +2,9 @@
 
 #show-all-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 25px;
+    gap: 30px;
 }
 
 .show-all-product {
@@ -12,7 +13,14 @@
     grid-gap: 5px;
     text-align: center;
     justify-items: center;
+    text-decoration: none;
+    color: inherit;
 }
+
+.show-all-product:visited {
+    color: inherit;
+}
+
 .show-all-image {
     height: 200px;
 }
@@ -44,4 +52,8 @@
 
 
 @media only screen and (min-width: 768px) {}
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+    #show-all-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
