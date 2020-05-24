@@ -26,7 +26,7 @@ try {
 
 <div class="index-content-wrapper">
 	<section id="hero">
-		<h2>Köp ölen hos Tankrummet</h2>
+		<h2>Köp ölen hos Öltanken</h2>
 	</section>
 
 	<div id="latest-wrapper">
