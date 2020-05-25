@@ -9,7 +9,7 @@
     <header>
         <h3>Öltanken</h3>
         <img id="header-logo" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
-        <img src="img/business.svg" alt="Shopping Cart">
+        <img src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">
         <label class="nav-toggle" for="nav-toggle" onclick="openNav()">
             <span></span>
             <span></span>
