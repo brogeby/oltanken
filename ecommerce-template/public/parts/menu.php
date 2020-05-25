@@ -1,5 +1,4 @@
-<?php echo
-    '<div id="myNav" class="overlay">
+ <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
         <a href="index.php">Home</a>
@@ -9,12 +8,11 @@
     </div>
     <header>
         <h3>Öltanken</h3>
-        <img id="header-logo" src="img/bwob-logo.png" alt="Öltanken">
+        <img id="header-logo" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
         <img src="img/business.svg" alt="Shopping Cart">
         <label class="nav-toggle" for="nav-toggle" onclick="openNav()">
             <span></span>
             <span></span>
             <span></span>
         </label>
-    </header>';
-?>
+    </header>
