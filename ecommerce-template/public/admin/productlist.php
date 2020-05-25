@@ -3,52 +3,134 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-try {
-    $query = "SELECT * FROM products;";
-    $stmt = $dbconnect->query($query);
-    $products = $stmt->fetchall();
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+if (isset($_POST['deleteBtn'])) {
+
+    if(empty($title)){
+        try {
+            $query = "
+            DELETE FROM products
+            WHERE id = :id;
+            ";
+    
+            $stmt = $dbconnect->prepare($query);
+            $stmt->bindValue(':id', $_POST['id']);
+            $stmt->execute();
+        }   catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
 }
+
+    $img_url = '';
+    $title = '';
+    $brewery = '';
+    $type = '';
+    $price = '';
+    $description = '';
+    $error  = '';
+    $msg    = '';
+    if (isset($_POST['send'])) {
+        $img_url = trim($_POST['img_url']);
+        $title = trim($_POST['title']);
+        $brewery = trim($_POST['brewery']);
+        $type = trim($_POST['type']);
+        $price = trim($_POST['price']);
+        $description = trim($_POST['description']);
+    
+        if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
+        if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
+        if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
+        if (empty($type)) {$error .= "<div>type is neccessary</div>";}
+        if (empty($price)) {$error .= "<div>price is neccessary</div>";}
+        if (empty($description)) {$error .= "<div>description is neccessary</div>";}
+        if ($error) {$msg = "<div class='errors'>{$error}</div>";}
+    
+        if (empty($error)) {
+            try {
+                $query = "
+                INSERT INTO products (img_url, title, brewery, type, price, description)
+                VALUES (:img_url, :title, :brewery, :type, :price, :description);
+                ";
+    
+                $stmt = $dbconnect->prepare($query);
+                $stmt->bindValue(':img_url', $img_url);
+                $stmt->bindValue(':title', $title);
+                $stmt->bindValue(':brewery', $brewery);
+                $stmt->bindValue(':type', $type);
+                $stmt->bindValue(':price', $price);
+                $stmt->bindValue(':description', $description);
+                $result = $stmt->execute();
+            } catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
+            }
+            if ($result) {
+            $msg = '<div class="success">Your product has been successfully published</div>';
+            } 
+        }
+    }
+        
+    try {
+        $query = "SELECT * FROM products;";
+        $stmt = $dbconnect->query($query);
+        $products = $stmt->fetchall();
+    }   catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
+        
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <title>Öltanken</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" description="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/productlist.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist.css'>
 </head>
 <body>
-<?php include 'parts/menu.php';?>
-
-<div id="show-all-wrapper">
-	<section id="show-all-list"> 
-        <?php foreach ($products as $key => $content) { ?>
-            <div class="show-all-product">
-                <img class="show-all-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
-                <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
-                <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
-                <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
-                <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
-                <div class="show-all-buttons-wrapper">
-                    <form class="show-all-more show-all-buttons" action="product.php" method="GET">
-                        <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="show-all-buttons" type="submit" name="showAll" value="Läs mer">
-                    </form>
-                    <form class="show-all-buy" action="#" method="GET">
-                        <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="show-all-buttons" type="submit" name="showAll" value="Lägg i varukorg">
-                    </form>
-                </div>
+<?php include '../parts/menu.php';?>
+<section class="new-product-wrapper">
+    <h1>Add a new product</h1>
+    <br>
+    <form action="" method="POST">
+        <div class="newProduct">
+            <input type="text" name="img_url" placeholder="Img_url.." >
+            <input type="text" name="title" placeholder="Title.." >
+            <input type="text" name="brewery" placeholder="Brewery..">
+            <input type="text" name="type" placeholder="Type..">
+            <input type="text" name="price" placeholder="Price..">
+            <br>
+            <textarea type="text" name="description" placeholder="Description.." rows="10" style="resize:none"></textarea>
+            <br>
+            <button name="send">Publish</button>
+            <?=$msg?>
+        </div>
+    </form>
+</section>
+<section id="show-all-list"> 
+    <?php foreach ($products as $key => $content) { ?>
+        <div class="show-all-product">
+            <img class="show-all-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+            <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
+            <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
+            <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
+            <div class="updateDelete">
+                <form action="" method="POST">
+                    <input type="hidden" name="id" value="<?=$content['id']?>">
+                    <input type="submit" name="deleteBtn" value="Delete post">
+                </form>
+                <form action="update.php?" method="GET">
+                    <input type="hidden" name="id" value="<?=$content['id']?>">
+                    <input type="submit" value="Update post">
+                </form>
             </div>
-        <?php } ?>
-	</section>
-</div>
+        </div>
+    <?php } ?>
+</section>
 
-<?php include 'parts/footer.php';?>
+<?php include '../parts/footer.php';?>
 <script src='js/main.js'></script>
 </body>
 </html>
