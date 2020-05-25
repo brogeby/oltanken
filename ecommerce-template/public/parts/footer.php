@@ -1,5 +1,4 @@
-<?php echo
-    '<footer>
+<?php
+    <footer>
         <div>Made by Axel, Olof, Christoffer</div>
-    </footer>'
-?>
+    </footer>

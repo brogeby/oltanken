@@ -5,11 +5,13 @@ error_reporting(-1);
 // Start session
 session_start();
 
-define('ROOT_PATH', '..' . __DIR__ . '/'); // path to 'root'
+define('APP_URL', 'http://localhost/tankrummet/ecommerce-template/');
+define('IMG_PATH', APP_URL . 'public/img/');
+define('PARTS_PATH', APP_URL . 'public/parts/');
+define('STYLES_PATH', APP_URL . 'public/styles/');
+define('JS_PATH', APP_URL . 'public/js/');
+define('ROOT_PATH', __DIR__ . '/../'); // path to 'root'
 define('SRC_PATH',  __DIR__ . '/'); // path to 'src/'
-define('IMG_PATH', '../public/img/'); // path to public images
-define('PARTS_PATH','../public/parts/'); // path to parts
-define('STYLES_PATH','../public/styles/'); // path to styling
 
 // Include functions and classes
 
