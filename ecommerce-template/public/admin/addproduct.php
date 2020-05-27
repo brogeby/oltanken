@@ -16,7 +16,7 @@ $type = '';
 $price = '';
 $description = '';
 $error = '';
-$msg = 'hejhej';
+$msg = '';
 if (isset($_POST['addProductBtn'])) {
     $img_url = trim($_POST['img_url']);
     $title = trim($_POST['title']);
@@ -25,11 +25,11 @@ if (isset($_POST['addProductBtn'])) {
     $price = trim($_POST['price']);
     $description = trim($_POST['description']);
 
-    if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
     if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
     if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
     if (empty($type)) {$error .= "<div>type is neccessary</div>";}
     if (empty($price)) {$error .= "<div>price is neccessary</div>";}
+    if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
     if (empty($description)) {$error .= "<div>description is neccessary</div>";}
     if ($error) {$msg = "<div class='errors'>{$error}</div>";}
 
