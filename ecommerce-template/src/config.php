@@ -14,4 +14,3 @@ define('ROOT_PATH', __DIR__ . '/../'); // path to 'root'
 define('SRC_PATH',  __DIR__ . '/'); // path to 'src/'
 
 // Include functions and classes
-

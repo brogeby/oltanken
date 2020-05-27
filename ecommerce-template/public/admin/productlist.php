@@ -21,61 +21,61 @@ if (isset($_POST['deleteBtn'])) {
     }
 }
 
-    $img_url = '';
-    $title = '';
-    $brewery = '';
-    $type = '';
-    $price = '';
-    $description = '';
-    $error  = '';
-    $msg    = '';
-    if (isset($_POST['send'])) {
-        $img_url = trim($_POST['img_url']);
-        $title = trim($_POST['title']);
-        $brewery = trim($_POST['brewery']);
-        $type = trim($_POST['type']);
-        $price = trim($_POST['price']);
-        $description = trim($_POST['description']);
+    // $img_url = '';
+    // $title = '';
+    // $brewery = '';
+    // $type = '';
+    // $price = '';
+    // $description = '';
+    // $error  = '';
+    // $msg    = '';
+    // if (isset($_POST['send'])) {
+    //     $img_url = trim($_POST['img_url']);
+    //     $title = trim($_POST['title']);
+    //     $brewery = trim($_POST['brewery']);
+    //     $type = trim($_POST['type']);
+    //     $price = trim($_POST['price']);
+    //     $description = trim($_POST['description']);
     
-        if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
-        if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
-        if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
-        if (empty($type)) {$error .= "<div>type is neccessary</div>";}
-        if (empty($price)) {$error .= "<div>price is neccessary</div>";}
-        if (empty($description)) {$error .= "<div>description is neccessary</div>";}
-        if ($error) {$msg = "<div class='errors'>{$error}</div>";}
+    //     if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
+    //     if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
+    //     if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
+    //     if (empty($type)) {$error .= "<div>type is neccessary</div>";}
+    //     if (empty($price)) {$error .= "<div>price is neccessary</div>";}
+    //     if (empty($description)) {$error .= "<div>description is neccessary</div>";}
+    //     if ($error) {$msg = "<div class='errors'>{$error}</div>";}
     
-        if (empty($error)) {
-            try {
-                $query = "
-                INSERT INTO products (img_url, title, brewery, type, price, description)
-                VALUES (:img_url, :title, :brewery, :type, :price, :description);
-                ";
+    //     if (empty($error)) {
+    //         try {
+    //             $query = "
+    //             INSERT INTO products (img_url, title, brewery, type, price, description)
+    //             VALUES (:img_url, :title, :brewery, :type, :price, :description);
+    //             ";
     
-                $stmt = $dbconnect->prepare($query);
-                $stmt->bindValue(':img_url', $img_url);
-                $stmt->bindValue(':title', $title);
-                $stmt->bindValue(':brewery', $brewery);
-                $stmt->bindValue(':type', $type);
-                $stmt->bindValue(':price', $price);
-                $stmt->bindValue(':description', $description);
-                $result = $stmt->execute();
-            } catch (\PDOException $e) {
-                throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
-            }
-            if ($result) {
-            $msg = '<div class="success">Your product has been successfully published</div>';
-            } 
-        }
-    }
+    //             $stmt = $dbconnect->prepare($query);
+    //             $stmt->bindValue(':img_url', $img_url);
+    //             $stmt->bindValue(':title', $title);
+    //             $stmt->bindValue(':brewery', $brewery);
+    //             $stmt->bindValue(':type', $type);
+    //             $stmt->bindValue(':price', $price);
+    //             $stmt->bindValue(':description', $description);
+    //             $result = $stmt->execute();
+    //         } catch (\PDOException $e) {
+    //             throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
+    //         }
+    //         if ($result) {
+    //         $msg = '<div class="success">Your product has been successfully published</div>';
+    //         } 
+    //     }
+    // }
         
-    try {
-        $query = "SELECT * FROM products;";
-        $stmt = $dbconnect->query($query);
-        $products = $stmt->fetchall();
-    }   catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int) $e->getCode());
-        }
+    // try {
+    //     $query = "SELECT * FROM products;";
+    //     $stmt = $dbconnect->query($query);
+    //     $products = $stmt->fetchall();
+    // }   catch (\PDOException $e) {
+    //         throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    //     }
         
 ?>
 <!DOCTYPE html>
@@ -92,16 +92,18 @@ if (isset($_POST['deleteBtn'])) {
 <?php include '../parts/menu.php';?>
 <section class="new-product-wrapper">
     <h1>Add a new product</h1>
-    <form id="add-form" action="" method="POST">
-        <input type="text" name="title" placeholder="Titel.." >
-        <input type="text" name="brewery" placeholder="Bryggeri..">
-        <input type="text" name="type" placeholder="Öltyp..">
-        <input type="text" name="price" placeholder="Pris..">
-        <input type="text" name="img_url" placeholder="Bildens filnamn.." >
-        <textarea type="text" name="description" placeholder="Beskrivning.." rows="10"></textarea>
-        <button name="send">Publish</button>
-        <?=$msg?>
+    <form action="addproduct.php" method="POST">
+        <div id="add-form">
+            <input type="text" name="title" placeholder="Titel.." >
+            <input type="text" name="brewery" placeholder="Bryggeri..">
+            <input type="text" name="type" placeholder="Öltyp..">
+            <input type="text" name="price" placeholder="Pris..">
+            <input type="text" name="img_url" placeholder="Bildens filnamn.." >
+            <textarea type="text" name="description" placeholder="Beskrivning.." rows="10"></textarea>
+            <button name="addProduct">Publish</button>
+        </div>
     </form>
+    <div><?=$msg?></div>
 </section>
 <section id="admin-list"> 
     <?php foreach ($products as $key => $content) { ?>
