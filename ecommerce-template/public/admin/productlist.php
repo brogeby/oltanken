@@ -3,79 +3,31 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-if (isset($_POST['deleteBtn'])) {
+// if (isset($_POST['deleteBtn'])) {
 
-    if(empty($title)){
-        try {
-            $query = "
-            DELETE FROM products
-            WHERE id = :id;
-            ";
+//     if(empty($title)){
+//         try {
+//             $query = "
+//             DELETE FROM products
+//             WHERE id = :id;
+//             ";
     
-            $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':id', $_POST['id']);
-            $stmt->execute();
-        }   catch (\PDOException $e) {
-                throw new \PDOException($e->getMessage(), (int) $e->getCode());
-        }
-    }
-}
-
-    // $img_url = '';
-    // $title = '';
-    // $brewery = '';
-    // $type = '';
-    // $price = '';
-    // $description = '';
-    // $error  = '';
-    // $msg    = '';
-    // if (isset($_POST['send'])) {
-    //     $img_url = trim($_POST['img_url']);
-    //     $title = trim($_POST['title']);
-    //     $brewery = trim($_POST['brewery']);
-    //     $type = trim($_POST['type']);
-    //     $price = trim($_POST['price']);
-    //     $description = trim($_POST['description']);
-    
-    //     if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
-    //     if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
-    //     if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
-    //     if (empty($type)) {$error .= "<div>type is neccessary</div>";}
-    //     if (empty($price)) {$error .= "<div>price is neccessary</div>";}
-    //     if (empty($description)) {$error .= "<div>description is neccessary</div>";}
-    //     if ($error) {$msg = "<div class='errors'>{$error}</div>";}
-    
-    //     if (empty($error)) {
-    //         try {
-    //             $query = "
-    //             INSERT INTO products (img_url, title, brewery, type, price, description)
-    //             VALUES (:img_url, :title, :brewery, :type, :price, :description);
-    //             ";
-    
-    //             $stmt = $dbconnect->prepare($query);
-    //             $stmt->bindValue(':img_url', $img_url);
-    //             $stmt->bindValue(':title', $title);
-    //             $stmt->bindValue(':brewery', $brewery);
-    //             $stmt->bindValue(':type', $type);
-    //             $stmt->bindValue(':price', $price);
-    //             $stmt->bindValue(':description', $description);
-    //             $result = $stmt->execute();
-    //         } catch (\PDOException $e) {
-    //             throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
-    //         }
-    //         if ($result) {
-    //         $msg = '<div class="success">Your product has been successfully published</div>';
-    //         } 
-    //     }
-    // }
+//             $stmt = $dbconnect->prepare($query);
+//             $stmt->bindValue(':id', $_POST['id']);
+//             $stmt->execute();
+//         }   catch (\PDOException $e) {
+//                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
+//         }
+//     }
+// }
         
-    // try {
-    //     $query = "SELECT * FROM products;";
-    //     $stmt = $dbconnect->query($query);
-    //     $products = $stmt->fetchall();
-    // }   catch (\PDOException $e) {
-    //         throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    //     }
+    try {
+        $query = "SELECT * FROM products;";
+        $stmt = $dbconnect->query($query);
+        $products = $stmt->fetchall();
+    }   catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
         
 ?>
 <!DOCTYPE html>
@@ -92,7 +44,7 @@ if (isset($_POST['deleteBtn'])) {
 <?php include '../parts/menu.php';?>
 <section class="new-product-wrapper">
     <h1>Add a new product</h1>
-    <form action="addproduct.php" method="POST">
+    <form action="#" method="POST">
         <div id="add-form">
             <input type="text" name="title" placeholder="Titel.." >
             <input type="text" name="brewery" placeholder="Bryggeri..">
@@ -100,13 +52,16 @@ if (isset($_POST['deleteBtn'])) {
             <input type="text" name="price" placeholder="Pris..">
             <input type="text" name="img_url" placeholder="Bildens filnamn.." >
             <textarea type="text" name="description" placeholder="Beskrivning.." rows="10"></textarea>
-            <button name="addProduct">Publish</button>
+            <button name="addProductBtn" id="addProductBtn">Publish</button>
         </div>
     </form>
-    <div><?=$msg?></div>
+    <div id="form-message"><?=$msg?></div>
 </section>
+
+
+
 <section id="admin-list"> 
-    <?php foreach ($products as $key => $content) { ?>
+    <!-- <?php foreach ($products as $key => $content) { ?>
         <div class="admin-product">
             <img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
             <h2 class="admin-title"><?=htmlentities($content['title'])?></h2>
@@ -125,10 +80,11 @@ if (isset($_POST['deleteBtn'])) {
                 </form>
             </div>
         </div>
-    <?php } ?>
+    <?php } ?> -->
 </section>
 
 <?php include '../parts/footer.php';?>
-<script src='js/main.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='admin.js'></script>
 </body>
 </html>

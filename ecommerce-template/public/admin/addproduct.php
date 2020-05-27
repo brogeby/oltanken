@@ -3,12 +3,12 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
-// exit;
+//  echo "<pre>";
+//  print_r($_POST);
+//  echo "</pre>";
+//  exit;
 
-// Add new pun
+// Add new product
 $img_url = '';
 $title = '';
 $brewery = '';
@@ -17,7 +17,7 @@ $price = '';
 $description = '';
 $error = '';
 $msg = 'hejhej';
-if (isset($_POST['send'])) {
+if (isset($_POST['addProductBtn'])) {
     $img_url = trim($_POST['img_url']);
     $title = trim($_POST['title']);
     $brewery = trim($_POST['brewery']);
@@ -65,9 +65,9 @@ try {
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
 
-// output with JSON
-// $data = [
-//   'msg' => $msg,
-//   'products' => $products,
-// ];
-// echo json_encode($data);
+//  output with JSON
+ $data = [
+    'msg' => $msg,
+    'products' => $products,
+  ];
+  echo json_encode($data);
