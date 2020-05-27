@@ -86,36 +86,32 @@ if (isset($_POST['deleteBtn'])) {
 	<meta name="viewport" description="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist-admin.css'>
 </head>
 <body>
 <?php include '../parts/menu.php';?>
 <section class="new-product-wrapper">
     <h1>Add a new product</h1>
-    <br>
-    <form action="" method="POST">
-        <div class="newProduct">
-            <input type="text" name="img_url" placeholder="Img_url.." >
-            <input type="text" name="title" placeholder="Title.." >
-            <input type="text" name="brewery" placeholder="Brewery..">
-            <input type="text" name="type" placeholder="Type..">
-            <input type="text" name="price" placeholder="Price..">
-            <br>
-            <textarea type="text" name="description" placeholder="Description.." rows="10" style="resize:none"></textarea>
-            <br>
-            <button name="send">Publish</button>
-            <?=$msg?>
-        </div>
+    <form id="add-form" action="" method="POST">
+        <input type="text" name="title" placeholder="Titel.." >
+        <input type="text" name="brewery" placeholder="Bryggeri..">
+        <input type="text" name="type" placeholder="Öltyp..">
+        <input type="text" name="price" placeholder="Pris..">
+        <input type="text" name="img_url" placeholder="Bildens filnamn.." >
+        <textarea type="text" name="description" placeholder="Beskrivning.." rows="10"></textarea>
+        <button name="send">Publish</button>
+        <?=$msg?>
     </form>
 </section>
-<section id="show-all-list"> 
+<section id="admin-list"> 
     <?php foreach ($products as $key => $content) { ?>
-        <div class="show-all-product">
-            <img class="show-all-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
-            <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
-            <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
-            <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
-            <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
+        <div class="admin-product">
+            <img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+            <h2 class="admin-title"><?=htmlentities($content['title'])?></h2>
+            <h3 class="admin-brewery"><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="admin-type"><?=htmlentities($content['type'])?></h3>
+            <p class="admin-price"><?=htmlentities($content['price'])?> sek</p>
+            <p class="admin-desc"><?=htmlentities($content['description'])?></p>
             <div class="updateDelete">
                 <form action="" method="POST">
                     <input type="hidden" name="id" value="<?=$content['id']?>">

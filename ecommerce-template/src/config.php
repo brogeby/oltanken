@@ -5,7 +5,7 @@ error_reporting(-1);
 // Start session
 session_start();
 
-define('APP_URL', 'http://localhost/tankrummet/ecommerce-template/');
+define('APP_URL', 'http://localhost/oltanken/ecommerce-template/');
 define('IMG_PATH', APP_URL . 'public/img/');
 define('PARTS_PATH', APP_URL . 'public/parts/');
 define('STYLES_PATH', APP_URL . 'public/styles/');

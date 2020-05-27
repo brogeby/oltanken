@@ -1,0 +1,56 @@
+.new-product-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+#add-form {
+    padding: 10%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+#add-form textarea {
+    grid-column: span 5;
+    resize: vertical;
+}
+
+#admin-list {
+}
+
+.admin-product {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 10%;
+}
+
+.admin-product:visited {
+    color: inherit;
+}
+
+.admin-image {
+    height: 100px;
+}
+.admin-title {}
+.admin-brewery {}
+.admin-type {}
+.admin-price {}
+.admin-desc {grid-column: span 5;}
+
+.admin-buttons-wrapper {
+}
+.admin-buttons {
+
+}
+
+.admin-more {}
+.admin-buy {}
+
+
+
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1200px) {
+    #admin-list {
+    }
+}
