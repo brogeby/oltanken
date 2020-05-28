@@ -3,23 +3,7 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-// if (isset($_POST['deleteBtn'])) {
 
-//     if(empty($title)){
-//         try {
-//             $query = "
-//             DELETE FROM products
-//             WHERE id = :id;
-//             ";
-    
-//             $stmt = $dbconnect->prepare($query);
-//             $stmt->bindValue(':id', $_POST['id']);
-//             $stmt->execute();
-//         }   catch (\PDOException $e) {
-//                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
-//         }
-//     }
-// }
 $msg = '';
     try {
         $query = "SELECT * FROM products;";
@@ -42,23 +26,29 @@ $msg = '';
 </head>
 <body>
 <?php include '../parts/menu.php';?>
-<section class="new-product-wrapper">
-    <h1>Add a new product</h1>
-    <form action="#" method="POST">
-        <div id="add-form">
-            <input type="text" name="title" id="add-title" placeholder="Titel.." >
-            <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
-            <input type="text" name="type" id="add-type" placeholder="Öltyp..">
-            <input type="text" name="price" id="add-price" placeholder="Pris..">
-            <input type="text" name="img_url" id="add-img_url" placeholder="Bildens filnamn.." >
-            <textarea type="text" name="description" id="add-description" placeholder="Beskrivning.." rows="10"></textarea>
-            <button name="addProductBtn" id="addProductBtn">Publish</button>
-        </div>
-    </form>
-    <div id="form-message"><?=$msg?></div>
-</section>
 
+<button id="create-product">Lägg till produkt</button>
 
+<div id="create-product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <section class="new-product-wrapper">
+            <h1>Add a new product</h1>
+            <form action="#" method="POST">
+                <div id="add-form">
+                    <input type="text" name="title" id="add-title" placeholder="Titel.." >
+                    <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
+                    <input type="text" name="type" id="add-type" placeholder="Öltyp..">
+                    <input type="text" name="price" id="add-price" placeholder="Pris..">
+                    <input type="text" name="img_url" id="add-img_url" placeholder="Bildens filnamn.." >
+                    <textarea type="text" name="description" id="add-description" placeholder="Beskrivning.." rows="10"></textarea>
+                    <button name="addProductBtn" id="addProductBtn">Publish</button>
+                </div>
+            </form>
+            <div id="form-message"><?=$msg?></div>
+        </section>  
+    </div>
+</div>
 
 <section id="admin-list"> 
     <?php foreach ($products as $key => $content) { ?>
@@ -70,13 +60,13 @@ $msg = '';
             <p class="admin-price"><?=htmlentities($content['price'])?> sek</p>
             <p class="admin-desc"><?=htmlentities($content['description'])?></p>
             <div class="updateDelete">
-                <form action="" method="POST">
-                    <input type="hidden" name="id" value="<?=$content['id']?>">
-                    <input type="submit" name="deleteBtn" value="Delete post">
+                <form action="#" method="POST">
+                    <input type="hidden" name="deleteId" value="<?=$content['id']?>">
+                    <input type="submit" name="deleteBtn" class="delete-btn" value="Delete product">
                 </form>
                 <form action="update.php?" method="GET">
-                    <input type="hidden" name="id" value="<?=$content['id']?>">
-                    <input type="submit" value="Update post">
+                    <input type="hidden" name="updateId" value="<?=$content['id']?>">
+                    <input type="submit" name="updateBtn" class="update-btn" value="Update product">
                 </form>
             </div>
         </div>

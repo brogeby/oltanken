@@ -62,5 +62,42 @@ $(document).ready(function() {
 			},
 		});
   }
+
+  	$('.delete-btn').on('click', deleteProductEvent);
+	function deleteProductEvent(e) {
+		e.preventDefault();
+		
+		let productId = $(this).parent().find('input[name="deleteId"]');
+		console.log(productId.val());
+		$.ajax({
+			method: 'POST',
+			url: 'deleteproduct.php',
+			data: {
+				deleteBtn: true, 
+				productId: productId.val() 
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				$('#form-message').html(data['message']);
+			}
+		});
+	}
   
 });	
+
+
+let modal = document.getElementById("create-product-modal");
+let btn = document.getElementById("create-product");
+let span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
