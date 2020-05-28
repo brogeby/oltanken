@@ -1,0 +1,16 @@
+body {
+    background-color: red;
+}
+
+.form-wrapper-as {
+    display: flex;
+    justify-content: space-between;
+}
+
+#content1 {
+    display: inline-block;
+}
+
+#content2 {
+    display: inline-block;
+}
