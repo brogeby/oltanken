@@ -23,10 +23,12 @@ $msg = '';
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist-admin.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <?php include '../parts/menu.php';?>
 
+<h2>Products</h2>
 <button id="create-product">Lägg till produkt</button>
 
 <div id="create-product-modal" class="modal">
@@ -50,43 +52,48 @@ $msg = '';
     </div>
 </div>
 
-<section id="admin-list"> 
-    <table>
+<table class="wrapper-table">
+    <thead>
         <tr>
+            <th>ID</th>
+            <th>Titel</th>
+            <th>Bryggeri</th>
+            <th>Typ</th>
+            <th>Pris</th>
+            <th>Beskrivning</th>
             <th>Img_url</th>
-            <th>Title</th>
-            <th>Brewery</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Id</th>
-            <th>description</th>
-            <th></th>
-            <th></th>
+    </thead>
+    <tbody>
+    <?php foreach ($products as $content) { ?>
+        <tr>
+            <td><?=htmlentities($content["id"]); ?></td>
+            <td><?=htmlentities($content["title"]); ?></td>
+            <td><?=htmlentities($content["brewery"]); ?></td>
+            <td><?=htmlentities($content["type"]); ?></td>
+            <td><?=htmlentities($content["price"]); ?></td>
+            <td><?=htmlentities($content["description"]); ?></td>
+            <td><?=htmlentities($content["img_url"]); ?></td>
+            <td>
+                <form action="updateproduct.php" method="GET">
+                    <input type="hidden" name="updateId" value="<?=$content['id']?>">
+                    <input type="submit" name="updateBtn" class="update-btn" value="Update">
+                </form>              
+            </td>
+            <td>
+                <form action="#" method="POST">
+                    <input type="hidden" name="deleteId" value="<?=$content['id']?>">
+                    <input type="submit" name="deleteBtn" class="delete-btn" value="Delete">
+                </form>
+            </td>
         </tr>
-        <?php foreach ($products as $key => $content) { ?>
-            <tr class="admin-product">
-                <td><img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>"></td>
-                <td class="admin-title"><?=htmlentities($content['title'])?></td>
-                <td class="admin-brewery"><?=htmlentities($content['brewery'])?></td>
-                <td class="admin-type"><?=htmlentities($content['type'])?></td>
-                <td class="admin-price"><?=htmlentities($content['price'])?> sek</td>
-                <td class="admin-id"><?=htmlentities($content['id'])?></td>
-                <td class="admin-desc"><?=htmlentities($content['description'])?></td>
-                <td class="updateDelete">
-                    <form action="#" method="POST">
-                        <input type="hidden" name="deleteId" value="<?=$content['id']?>">
-                        <input type="submit" name="deleteBtn" class="delete-btn" value="Delete product">
-                    </form>
-                    <form action="updateproduct.php" method="GET">
-                        <input type="hidden" name="updateId" value="<?=$content['id']?>">
-                        <input type="submit" name="updateBtn" class="update-btn" value="Update product">
-                    </form>
-                </td>
-            </tr>
-            <hr>
         <?php } ?>
-    </table>
-</section>
+    </tbody>
+</table>
+<button class="add-btn"><a href="create-content.php">Lägg till användare</a></button>
+    
+
+
+
 
 <?php include '../parts/footer.php';?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
