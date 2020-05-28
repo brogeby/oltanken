@@ -4,6 +4,24 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
+if (isset($_POST['deleteBtn'])) {
+    if(empty($rubrik)){
+        try {
+            $query = "
+            DELETE FROM posts
+            WHERE id = :id;
+            ";
+
+            $stmt = $dbconnect->prepare($query);
+            $stmt->bindValue(':id', $_POST['postsId']);
+            $stmt->execute();
+        }   catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+            }
+    }
+}
+
+    
 $rubrik = '';
 $content = '';
 $author = '';
@@ -56,16 +74,31 @@ try {
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     } 
 ?>
+        
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Öltanken</title>
+	<meta name="viewport" description="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist-admin.css'>
+</head>
+<body>
+<?php include '../parts/menu.php';?>
 
 <div class="wrapper">
     <div class="updatePost">
         <h1>Update</h1>
         <form action="#" method="POST">
-            <input type="text" name="rubrik" value="<?=htmlentities($posts['title'])?>">
-            <input type="text" name="author" value="<?=htmlentities($posts['author'])?>">
-            <br>
-            <textarea type="text" name="content" rows="20"><?=htmlentities($posts['content'])?></textarea>
-            <br>
+            <img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+            <h2 class="admin-title"><?=htmlentities($content['title'])?></h2>
+            <h3 class="admin-brewery"><?=htmlentities($content['brewery'])?></h3>
+            <h3 class="admin-type"><?=htmlentities($content['type'])?></h3>
+            <p class="admin-price"><?=htmlentities($content['price'])?> sek</p>
+            <p class="admin-desc"><?=htmlentities($content['description'])?></p>
             <button class="btn1" name="send">Update</button>
             <a class="button" href="admin.php">Return to previous page</a>    
         </form>
@@ -73,3 +106,9 @@ try {
     <?=$msg?>
 
 </div>
+
+<?php include '../parts/footer.php';?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='../js/main.js'></script>
+</body>
+</html>

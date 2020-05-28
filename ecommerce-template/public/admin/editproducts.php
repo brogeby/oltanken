@@ -51,26 +51,41 @@ $msg = '';
 </div>
 
 <section id="admin-list"> 
-    <?php foreach ($products as $key => $content) { ?>
-        <div class="admin-product">
-            <img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
-            <h2 class="admin-title"><?=htmlentities($content['title'])?></h2>
-            <h3 class="admin-brewery"><?=htmlentities($content['brewery'])?></h3>
-            <h3 class="admin-type"><?=htmlentities($content['type'])?></h3>
-            <p class="admin-price"><?=htmlentities($content['price'])?> sek</p>
-            <p class="admin-desc"><?=htmlentities($content['description'])?></p>
-            <div class="updateDelete">
-                <form action="#" method="POST">
-                    <input type="hidden" name="deleteId" value="<?=$content['id']?>">
-                    <input type="submit" name="deleteBtn" class="delete-btn" value="Delete product">
-                </form>
-                <form action="update.php?" method="GET">
-                    <input type="hidden" name="updateId" value="<?=$content['id']?>">
-                    <input type="submit" name="updateBtn" class="update-btn" value="Update product">
-                </form>
-            </div>
-        </div>
-    <?php } ?>
+    <table>
+        <tr>
+            <th>Img_url</th>
+            <th>Title</th>
+            <th>Brewery</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Id</th>
+            <th>description</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <?php foreach ($products as $key => $content) { ?>
+            <tr class="admin-product">
+                <td><img class="admin-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>"></td>
+                <td class="admin-title"><?=htmlentities($content['title'])?></td>
+                <td class="admin-brewery"><?=htmlentities($content['brewery'])?></td>
+                <td class="admin-type"><?=htmlentities($content['type'])?></td>
+                <td class="admin-price"><?=htmlentities($content['price'])?> sek</td>
+                <td class="admin-id"><?=htmlentities($content['id'])?></td>
+                <td class="admin-desc"><?=htmlentities($content['description'])?></td>
+                <td class="updateDelete">
+                    <form action="#" method="POST">
+                        <input type="hidden" name="deleteId" value="<?=$content['id']?>">
+                        <input type="submit" name="deleteBtn" class="delete-btn" value="Delete product">
+                    </form>
+                    <form action="updateproduct.php" method="GET">
+                        <input type="hidden" name="updateId" value="<?=$content['id']?>">
+                        <input type="submit" name="updateBtn" class="update-btn" value="Update product">
+                    </form>
+                </td>
+            </tr>
+            <hr>
+        <?php } ?>
+    </table>
 </section>
 
 <?php include '../parts/footer.php';?>
