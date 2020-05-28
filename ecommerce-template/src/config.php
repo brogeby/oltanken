@@ -13,5 +13,8 @@ define('JS_PATH', APP_URL . 'public/js/');
 define('ROOT_PATH', __DIR__ . '/../'); // path to 'root'
 define('SRC_PATH',  __DIR__ . '/'); // path to 'src/'
 
+
 // Include functions and classes
 
+
+?>
