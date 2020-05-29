@@ -3,6 +3,20 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php');
 error_reporting(-1);
 
+if(isset($_GET['id'])){
+  try {
+    $id = $_GET['id'];
+    $query = "SELECT * FROM users
+                WHERE id = :id";
+    $stmt = $dbconnect->prepare($query);
+    $stmt->bindvalue(':id', $id);;
+    $stmt->execute();
+    $user = $stmt->fetch();
+  } catch (\PDOException $e) {
+      throw new \PDOException($e->getMessage(), (int) $e->getCode());
+  }
+}
+
     $first_name  = '';
     $last_name   = '';
     $email       = '';
@@ -14,7 +28,7 @@ error_reporting(-1);
     $error       = '';
     $msg         = '';
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['updateBtn'])) {
           $first_name = trim($_POST['first_name']);
           $last_name  = trim($_POST['last_name']);
           $email      = trim($_POST['email']);
@@ -24,7 +38,7 @@ error_reporting(-1);
           $city       = trim($_POST['city']);
           $country    = trim($_POST['country']);
 
-          if (empty($first_name)) {$error   .= "<div>First är obligatoriskt</div>";}
+          if (empty($first_name)) {$error   .= "<div>First name är obligatoriskt</div>";}
           if (empty($last_name)) {$error    .= "<div>Last name är obligatorsikt</div>";}
           if (empty($email)) {$error        .= "<div>Email är obligatorsikt</div>";}
           if (empty($phone)) {$error        .= "<div>Phone number är obligatorsikt</div>";}
@@ -37,8 +51,16 @@ error_reporting(-1);
           if(empty($error)){
             try{
               $query = "
-                    INSERT INTO users (first_name, last_name, email, phone, street, postal_code, city, country)
-                    VALUES (:first_name, :last_name, :email, :phone, :street, :postal_code, :city, :country);  
+                    UPDATE users 
+                    SET first_name = :first_name,
+                        last_name = :last_name,
+                        email = :email,
+                        phone = :phone,
+                        street = :street,
+                        postal_code = :postal_code,
+                        city = :city,
+                        country = :country
+                    WHERE id = :id;
               ";
 
           $stmt = $dbconnect->prepare($query);
@@ -50,12 +72,13 @@ error_reporting(-1);
           $stmt->bindValue(':postal_code', $postal_code);
           $stmt->bindValue(':city', $city);
           $stmt->bindValue(':country', $country);
+          $stmt->bindvalue(':id', $_GET['id']);
           $result = $stmt->execute();
         } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
         if ($result) {
-          $msg = '<div>User has been successfully added</div>';
+          $msg = '<div>User has been successfully updated</div>';
           } 
       }
     }
@@ -73,15 +96,15 @@ error_reporting(-1);
 <body>
   <div class="form-style">
     <form id="add-user"method="POST">
-      <input type="text" name="first_name" id="first_name" placeholder="First name">
-      <input type="text" name="last_name" id="last_name" placeholder="Last name">
-      <input type="email" name="email" id="email" placeholder="Email address">
-      <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder='Phone number "012-345-6789"'>
-      <input type="text" name="street" id="street" placeholder="Street">
-      <input type="number" name="postal_code" id="postal_code" placeholder="Postal code">
-      <input type="text" name="city" id="city" placeholder="City">
-      <input type="text" name="country" id="country" placeholder="Country">
-    	<input type="submit" name="submit" value="Submit">
+      <input type="text" name="first_name" id="first_name" placeholder="First name" value="<?php echo $user['first_name']; ?>">
+      <input type="text" name="last_name" id="last_name" placeholder="Last name" value="<?php echo $user['last_name']; ?>">
+      <input type="email" name="email" id="email" placeholder="Email address" value="<?php echo $user['email']; ?>">
+      <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder='Phone number "012-345-6789"' value="<?php echo $user['phone']; ?>">
+      <input type="text" name="street" id="street" placeholder="Street" value="<?php echo $user['street']; ?>">
+      <input type="number" name="postal_code" id="postal_code" placeholder="Postal code" value="<?php echo $user['postal_code']; ?>">
+      <input type="text" name="city" id="city" placeholder="City" value="<?php echo $user['city']; ?>">
+      <input type="text" name="country" id="country" placeholder="Country" value="<?php echo $user['country']; ?>">
+    	<input type="submit" name="updateBtn" value="Submit">
     </form>
   </div>
     <?=$msg?>
