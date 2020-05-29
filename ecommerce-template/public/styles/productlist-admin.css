@@ -120,7 +120,7 @@ h2 {
 }
 
 .wrapper-table td, .wrapper-table th {
-  padding: 1% 0.5% 1% 0.5%;
+  padding: 10px 5px;
 }
 
 /* Background-color of the odd rows */

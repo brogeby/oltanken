@@ -37,12 +37,12 @@ $(document).ready(function() {
 	function addProductEvent(e) {
 		e.preventDefault();
 		
-		let title = $('input[name="title"]');
-		let brewery = $('input[name="brewery"]');
-		let type = $('input[name="type"]');
-		let price = $('input[name="price"]');
-		let description = $('textarea[name="description"]');
-		let img_url = $('input[name="img_url"]');
+		// let title = $('input[name="title"]');
+		// let brewery = $('input[name="brewery"]');
+		// let type = $('input[name="type"]');
+		// let price = $('input[name="price"]');
+		// let description = $('textarea[name="description"]');
+		// let img_url = $('input[name="img_url"]');
 		$.ajax({
 			method: 'POST',
 			url: 'addproduct.php',
@@ -74,14 +74,56 @@ $(document).ready(function() {
 			url: 'deleteproduct.php',
 			data: {
 				deleteBtn: true, 
-				productId: productId.val() 
+				id: productId.val() 
 			},
 			dataType: 'json',
 			success: function(data) {
 				console.log(data);
 				$('#form-message').html(data['message']);
+				appendProductList();
 			}
 		});
+	}
+
+	
+	window.load = appendProductList('');
+
+	function appendProductList(data) {
+		let html = '';
+		for (product of data['products']) {
+			console.log(product);
+
+			html +=
+			'<tbody>' +
+				'<tr>' +
+					'<td>' + content['id'] + '</td>' +
+					'<td>' + content['title'] + '</td>' +
+					'<td>' + content['brewery'] + '</td>' +
+					'<td>' + content['type'] + '</td>' +
+					'<td>' + content['price'] + '</td>' +
+					'<td>' + content['description'] + '</td>' +
+					'<td>' + content['img_url'] + '</td>' +
+					'<td>' +
+						'<form action="updateproduct.php" method="GET">' +
+							'<input type="hidden" name="updateId" value="' + $content['id'] + '">' +
+							'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
+						'</form>' +              
+					'</td>' +
+					'<td>' +
+						'<form action="#" method="POST">' +
+							'<input type="hidden" name="deleteId" value="' + $content['id'] + '">' +
+							'<input type="submit" name="deleteBtn" class="delete-btn" value="Delete">' +
+						'</form>' +
+					'</td>' +
+				'</tr>' +
+			'</tbody>';
+		}
+
+		// Append newly generetad product list
+		$('.tbody').html(html);
+
+		// Add eventlisteners
+		$('.delete-product-btn').on('click', deleteproductEvent);
 	}
   
 });	

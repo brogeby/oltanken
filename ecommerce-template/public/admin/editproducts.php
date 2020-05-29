@@ -63,8 +63,8 @@ $msg = '';
             <th>Beskrivning</th>
             <th>Img_url</th>
     </thead>
-    <tbody>
-    <?php foreach ($products as $content) { ?>
+    <tbody class="tbody">
+    <!-- <?php foreach ($products as $content) { ?>
         <tr>
             <td><?=htmlentities($content["id"]); ?></td>
             <td><?=htmlentities($content["title"]); ?></td>
@@ -86,11 +86,9 @@ $msg = '';
                 </form>
             </td>
         </tr>
-        <?php } ?>
+        <?php } ?> -->
     </tbody>
 </table>
-<button class="add-btn"><a href="create-content.php">Lägg till användare</a></button>
-    
 
 
 

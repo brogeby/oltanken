@@ -39,4 +39,3 @@ try {
     'products' => $products,
   ];
   echo json_encode($data);
-
