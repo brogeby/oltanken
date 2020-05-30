@@ -36,7 +36,7 @@ $msg = '';
         <span class="close">&times;</span>
         <section class="new-product-wrapper">
             <h1>Add a new product</h1>
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="add-product-form">
                 <div id="add-form">
                     <input type="text" name="title" id="add-title" placeholder="Titel.." >
                     <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
@@ -63,7 +63,7 @@ $msg = '';
             <th>Img_url</th>
     </thead>
     <tbody id="product-list" class="tbody">
-    <!-- <?php foreach ($products as $content) { ?>
+    <?php foreach ($products as $content) { ?>
         <tr>
             <td><?=htmlentities($content["id"]); ?></td>
             <td><?=htmlentities($content["title"]); ?></td>
@@ -85,7 +85,7 @@ $msg = '';
                 </form>
             </td>
         </tr>
-        <?php } ?> -->
+        <?php } ?>
     </tbody>
 </table>
 

@@ -29,11 +29,10 @@ function hiddenMenu() {
     x.style.display = "none";
   }
 }
-
 // Add product function with AJAX
 $(document).ready(function() {
 		
-	$('#addProductBtn').on('click', function(e){
+	$('#addProductBtn').on('click', function(e) {
 		e.preventDefault();
 
 		let title = $('input[name="title"]');
@@ -58,135 +57,69 @@ $(document).ready(function() {
 			success: function(data) {
 				// console.log(data);
 				$('#form-message').html(data['msg']);
+				appendProductList(data);
+				
+			},
+		});
+		$("#add-product-form")[0].reset();
+	});
 
-				let html = '';
-				for (let product of data) {
-					console.log(product);
-					console.log(html);
-
-					html +=
-						'<tr>' +
-							'<td>' + product['id'] + '</td>' +
-							'<td>' + product['title'] + '</td>' +
-							'<td>' + product['brewery'] + '</td>' +
-							'<td>' + product['type'] + '</td>' +
-							'<td>' + product['price'] + '</td>' +
-							'<td>' + product['description'] + '</td>' +
-							'<td>' + product['img_url'] + '</td>' +
-							'<td>' +
-								'<form action="updateproduct.php" method="GET">' +
-									'<input type="hidden" name="updateId" value="' + product['id'] + '">' +
-									'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
-								'</form>' +              
-							'</td>' +
-							'<td>' +
-								'<form action="#" method="POST">' +
-									'<input type="hidden" name="deleteId" value="' + product['id'] + '">' +
-									'<input type="submit" name="deleteBtn" class="delete-btn" value="Delete">' +
-								'</form>' +
-							'</td>' +
-						'</tr>';
-				}
-				$('#product-list').html(html);
+	$('.delete-btn').on('click', function(e) {
+		e.preventDefault();
+		
+		let id = $(this).parent().find('input[name="productId"]');
+		console.log(id.val());
+		$.ajax({
+			method: 'POST',
+			url: 'deleteproduct.php',
+			data: {
+				deleteBtn: true, 
+				productId: id.val() 
+			},
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				$('#form-message').html(data['msg']);
+				appendProductList(data);
 			},
 		});
 	});
+
+	function appendProductList(data) {
+		let html = '';
+		for (content of data) {
+			// console.log(content);
+			// console.log(html);
+
+			html +=
+				'<tr>' +
+					'<td>' + content['id'] + '</td>' +
+					'<td>' + content['title'] + '</td>' +
+					'<td>' + content['brewery'] + '</td>' +
+					'<td>' + content['type'] + '</td>' +
+					'<td>' + content['price'] + '</td>' +
+					'<td>' + content['description'] + '</td>' +
+					'<td>' + content['img_url'] + '</td>' +
+					'<td>' +
+						'<form action="updateproduct.php" method="GET">' +
+							'<input type="hidden" name="updateId" value="' + content['id'] + '">' +
+							'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
+						'</form>' +              
+					'</td>' +
+					'<td>' +
+						'<form action="#" method="POST">' +
+							'<input type="hidden" name="productId" value="' + content['id'] + '">' +
+							'<input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">' +
+						'</form>' +
+					'</td>' +
+				'</tr>';
+		}
+		$('#product-list').html(html);
+
+		// $('.delete-btn').on('click', deletePunEvent);
+	}
 });	
 
-// 	$('#addProductBtn').on('click', addProductEvent);
-// 	function addProductEvent(e) {
-// 		e.preventDefault();
-		
-// 		// let title = $('input[name="title"]');
-// 		// let brewery = $('input[name="brewery"]');
-// 		// let type = $('input[name="type"]');
-// 		// let price = $('input[name="price"]');
-// 		// let description = $('textarea[name="description"]');
-// 		// let img_url = $('input[name="img_url"]');
-// 		$.ajax({
-// 			method: 'POST',
-// 			url: 'addproduct.php',
-// 			data: { // Skickas till addproduct.php i form av POST parametrar
-// 				addProductBtn: true, 
-// 				title: title.val(), 
-// 				brewery: brewery.val(), 
-// 				type: type.val(), 
-// 				price: price.val(), 
-// 				description: description.val(), 
-// 				img_url: img_url.val() 
-// 			}, 
-// 			dataType: 'json',
-// 			success: function(data) {
-// 				//console.log(data);
-// 				$('#form-message').html(data['msg']);
-// 				appendProductList(data);
-// 			},
-// 		});
-//   }
-
-  	// $('.delete-btn').on('click', deleteProductEvent);
-	// function deleteProductEvent(e) {
-	// 	e.preventDefault();
-		
-	// 	let productId = $(this).parent().find('input[name="deleteId"]');
-	// 	console.log(productId.val());
-	// 	$.ajax({
-	// 		method: 'POST',
-	// 		url: 'deleteproduct.php',
-	// 		data: {
-	// 			deleteBtn: true, 
-	// 			id: productId.val() 
-	// 		},
-	// 		dataType: 'json',
-	// 		success: function(data) {
-	// 			console.log(data);
-	// 			$('#form-message').html(data['message']);
-	// 			appendProductList(data);
-	// 		}
-	// 	});
-	// }
-
-	
-	// window.load = appendProductList(data);
-
-	// function appendProductList(data) {
-		
-	// 	let html = '';
-		
-	// 	for (product of data['products']) {
-	// 			console.log(product);
-
-	// 		html +=
-	// 			'<tr>' +
-	// 				// '<td>' + content['id'] + '</td>' +
-	// 				// '<td>' + content['title'] + '</td>' +
-	// 				// '<td>' + content['brewery'] + '</td>' +
-	// 				// '<td>' + content['type'] + '</td>' +
-	// 				// '<td>' + content['price'] + '</td>' +
-	// 				// '<td>' + content['description'] + '</td>' +
-	// 				// '<td>' + content['img_url'] + '</td>' +
-	// 				'<td>' +
-	// 					'<form action="updateproduct.php" method="GET">' +
-	// 						// '<input type="hidden" name="updateId" value="' + content['id'] + '">' +
-	// 						'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
-	// 					'</form>' +              
-	// 				'</td>' +
-	// 				'<td>' +
-	// 					'<form action="#" method="POST">' +
-	// 						// '<input type="hidden" name="deleteId" value="' + content['id'] + '">' +
-	// 						'<input type="submit" name="deleteBtn" class="delete-btn" value="Delete">' +
-	// 					'</form>' +
-	// 				'</td>' +
-	// 			'</tr>'
-	// 	}
-
-	// 	// Append newly generetad product list
-	// 	$('.tbody').html(html);
-
-	// 	// Add eventlisteners
-	// 	$('.delete-btn').on('click', deleteProductEvent);
-	// }
-  
 
 
 
