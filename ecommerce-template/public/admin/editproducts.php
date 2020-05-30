@@ -51,7 +51,6 @@ $msg = '';
         </section>  
     </div>
 </div>
-
 <table class="wrapper-table">
     <thead>
         <tr>
@@ -63,7 +62,7 @@ $msg = '';
             <th>Beskrivning</th>
             <th>Img_url</th>
     </thead>
-    <tbody class="tbody">
+    <tbody id="product-list" class="tbody">
     <!-- <?php foreach ($products as $content) { ?>
         <tr>
             <td><?=htmlentities($content["id"]); ?></td>

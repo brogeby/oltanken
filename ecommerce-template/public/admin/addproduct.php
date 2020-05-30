@@ -70,4 +70,6 @@ try {
     'msg' => $msg,
     'products' => $products,
   ];
-  echo json_encode($data);
+  echo json_encode($products);
+
+//   print_r($products);
