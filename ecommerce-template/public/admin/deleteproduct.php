@@ -18,7 +18,7 @@ if (isset($_POST['deleteBtn'])) {
             ";
     
             $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':id', $_POST['id']);
+            $stmt->bindValue(':id', $_POST['deleteId']);
             $stmt->execute();
         }   catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
@@ -37,7 +37,7 @@ try {
 
 //  output with JSON
  $data = [
-     'msg' => '',
+    'msg' => '',
     'products' => $products,
   ];
   echo json_encode($data);

@@ -81,8 +81,7 @@ $msg = '';
             <td>
                 <form action="#" method="POST">
                     <input type="hidden" name="deleteId" value="<?=$content['id']?>">
-                    <input type="submit" name="deleteBtn" class="delete-btn" value="Delete">
-                </form>
+                    <input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">                </form>
             </td>
         </tr>
         <?php } ?>

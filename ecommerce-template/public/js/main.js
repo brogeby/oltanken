@@ -64,26 +64,26 @@ $(document).ready(function() {
 		$("#add-product-form")[0].reset();
 	});
 
-	$('.delete-btn').on('click', function(e) {
+	$('.delete-btn').on('click', deleteProductEvent);
+	function deleteProductEvent(e) {
 		e.preventDefault();
-		
-		let id = $(this).parent().find('input[name="productId"]');
+		let id = $(this).parent().find('input[name="deleteId"]');
 		console.log(id.val());
 		$.ajax({
 			method: 'POST',
 			url: 'deleteproduct.php',
 			data: {
 				deleteBtn: true, 
-				productId: id.val() 
+				deleteId: id.val() 
 			},
 			dataType: 'json',
 			success: function(data) {
 				console.log(data);
-				$('#form-message').html(data['msg']);
+				// $('#form-message').html(data['msg']);
 				appendProductList(data);
 			},
 		});
-	});
+	};
 
 	function appendProductList(data) {
 		let html = '';
@@ -108,7 +108,7 @@ $(document).ready(function() {
 					'</td>' +
 					'<td>' +
 						'<form action="#" method="POST">' +
-							'<input type="hidden" name="productId" value="' + content['id'] + '">' +
+							'<input type="hidden" name="deleteId" value="' + content['id'] + '">' +
 							'<input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">' +
 						'</form>' +
 					'</td>' +
@@ -116,7 +116,7 @@ $(document).ready(function() {
 		}
 		$('#product-list').html(html);
 
-		// $('.delete-btn').on('click', deletePunEvent);
+		$('.delete-btn').on('click', deleteProductEvent);
 	}
 });	
 
