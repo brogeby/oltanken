@@ -80,7 +80,7 @@ $(document).ready(function() {
 			success: function(data) {
 				console.log(data);
 				// $('#form-message').html(data['msg']);
-				appendProductList(data);
+				appendProductList(data.products);
 			},
 		});
 	};
