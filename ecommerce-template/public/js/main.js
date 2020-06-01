@@ -10,16 +10,15 @@ function closeNav() {
 }
 
 
-// Om vi i framtiden vill ha Shop-by-style eller liknande i menyn
-// let menu = document.getElementsByClassName("hidden-menu-links");
-// menu.style.display = "none";
-// function hiddenMenu() {
-//   if (menu.style.display === "none") {
-//     menu.style.display = "block";
-//   } else {
-//     menu.style.display = "none";
-//   }
-// };
+let menu = document.getElementsByClassName("hidden-menu-links");
+menu.style.display = "none";
+function hiddenMenu() {
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+};
 
 function hiddenMenu() {
   var x = document.getElementById("hidden-menu");

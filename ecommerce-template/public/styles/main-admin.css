@@ -1,0 +1,12 @@
+#admin-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 15% 10%;
+    gap: 50px;
+}
+
+#admin-panel a {
+    width: 100%;
+    text-decoration: none;
+    font-size: 30px;
+}
