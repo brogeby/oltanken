@@ -34,10 +34,10 @@ $msg = '';
 <div id="create-product-modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <section class="new-product-wrapper">
+        <section class="handle-product-wrapper">
             <h1>Add a new product</h1>
-            <form action="#" method="POST" id="add-product-form">
-                <div id="add-form">
+            <form action="#" method="POST" id="add-product-form" class="handle-product-form">
+                <div class="handle-product-container">
                     <input type="text" name="title" id="add-title" placeholder="Titel.." >
                     <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
                     <input type="text" name="type" id="add-type" placeholder="Öltyp..">
@@ -51,6 +51,7 @@ $msg = '';
         </section>  
     </div>
 </div>
+
 <table class="wrapper-table">
     <thead>
         <tr>

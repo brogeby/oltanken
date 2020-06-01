@@ -121,8 +121,6 @@ $(document).ready(function() {
 });	
 
 
-
-
 let modal = document.getElementById("create-product-modal");
 let btn = document.getElementById("create-product");
 let span = document.getElementsByClassName("close")[0];
