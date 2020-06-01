@@ -18,16 +18,6 @@ if(isset($_GET['updateId'])){
     }
   }
 
-  try {
-    $query = "
-        SELECT * FROM products
-        WHERE id = :id;
-    ";
-
-        
-    }   catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }
 
 $img_url = '';
 $title = '';
@@ -37,7 +27,7 @@ $price = '';
 $description = '';
 $error = '';
 $msg = '';
-if (isset($_POST['send'])) {
+if (isset($_POST['updateProductBtn'])) {
     $img_url = trim($_POST['img_url']);
     $title = trim($_POST['title']);
     $brewery = trim($_POST['brewery']);
@@ -56,8 +46,14 @@ if (isset($_POST['send'])) {
     if (empty($error)) {
         try {
             $query = "
-            UPDATE posts
-            SET title = :title, brewery = :brewery, type = :type, price = :price, img_url = :img_url, description = :description
+            UPDATE products
+            SET 
+                title = :title, 
+                brewery = :brewery, 
+                type = :type, 
+                price = :price, 
+                img_url = :img_url, 
+                description = :description
             WHERE id = :id
             ";
 
@@ -68,13 +64,26 @@ if (isset($_POST['send'])) {
             $stmt->bindValue(':type', $type);
             $stmt->bindValue(':price', $price);
             $stmt->bindValue(':description', $description);
-            $stmt->bindValue(':id', $_GET['id']);
+            $stmt->bindValue(':id', $_GET['updateId']);
             $result = $stmt->execute();
         }   catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
             }
         if ($result) {
         $msg = '<div class="success">Your post has been updated successfully</div>';
+        if(isset($_GET['updateId'])){
+            try {
+              $id = $_GET['updateId'];
+              $query = "SELECT * FROM products
+                        WHERE id = :id";
+              $stmt = $dbconnect->prepare($query);
+              $stmt->bindValue(':id', $_GET['updateId']);
+              $stmt->execute();
+              $product = $stmt->fetch();
+            } catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+            }
+          }
         } 
     }
 }
@@ -97,7 +106,8 @@ if (isset($_POST['send'])) {
 <?php include '../parts/menu.php';?>
 
 <section class="handle-product-wrapper">
-    <h1>Add a new product</h1>
+    <h1>Uppdatera produkt</h1>
+    <a href="editproducts.php">Tillbaka till föregående sida</a>
     <form action="#" method="POST" id="update-product-form" class="handle-product-form">
         <div class="handle-product-container">
             <input type="text" name="title" id="add-title" value="<?=htmlentities($product["title"]); ?>" >
@@ -106,7 +116,7 @@ if (isset($_POST['send'])) {
             <input type="text" name="price" id="add-price" value="<?=htmlentities($product["price"]); ?>">
             <input type="text" name="img_url" id="add-img_url" value="<?=htmlentities($product["img_url"]); ?>" >
             <textarea type="text" name="description" id="add-description" rows="10"><?=htmlentities($product["description"]); ?></textarea>
-            <button name="addProductBtn" id="addProductBtn">Publish</button>
+            <input type="submit" name="updateProductBtn" id="updateProductBtn" value="Uppdatera">
         </div>
     </form>
     <div id="form-message"><?=$msg?></div>
