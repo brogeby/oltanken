@@ -19,7 +19,7 @@ try {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/index.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/product.css'>
 </head>
 <body>
 <?php include 'parts/menu.php';?>
@@ -31,29 +31,31 @@ try {
 
 	<div id="latest-wrapper">
 		<h2>Nyinkommet</h2>
-		<section id="latest-list"> 
+		<section class="product-list"> 
 			<?php foreach ($products as $key => $content) { ?>
-				<div class="latest-product">
-					<img class="latest-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
-					<h2 class="latest-title"><?=htmlentities($content['title'])?></h2>
-					<h3 class="latest-brewery"><?=htmlentities($content['brewery'])?></h3>
-					<h3 class="latest-type"><?=htmlentities($content['type'])?></h3>
-					<p class="latest-price"><?=htmlentities($content['price'])?> sek</p>
-					<div class="latest-buttons-wrapper">
-						<form class="latest-more latest-buttons" action="product.php" method="GET">
+				<div class="product">
+					<img src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+					<h2><?=htmlentities($content['title'])?></h2>
+					<h3><?=htmlentities($content['brewery'])?></h3>
+					<h3><?=htmlentities($content['type'])?></h3>
+					<p><?=htmlentities($content['price'])?> sek</p>
+					<div class="read-buy-buttons">
+						<form class="latest-buttons" action="product.php" method="GET">
 							<input type="hidden" name="productsId" value="<?=$content['id']?>">
-							<input class="latest-buttons" type="submit" name="showAll" value="Läs mer">
+							<input class="read-buy-button" type="submit" name="showAll" value="Läs mer">
 						</form>
 						<form class="latest-buy" action="#" method="GET">
 							<input type="hidden" name="productsId" value="<?=$content['id']?>">
-							<input class="latest-buttons" type="submit" name="showAll" value="Lägg i varukorg">
+							<input class="read-buy-button" type="submit" name="showAll" value="Lägg i varukorg">
 						</form>
 					</div>
 				</div>
 			<?php } ?>
+			<a href="productlist.php" class="general-button">Visa alla produkter</a>
 		</section>
 	</div>
 </div>
+
 
 <?php include 'parts/footer.php';?>
 <script src='js/main.js'></script>
