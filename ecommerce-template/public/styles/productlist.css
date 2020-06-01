@@ -1,5 +1,3 @@
-#show-all-wrapper {}
-
 #show-all-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -24,11 +22,6 @@
 .show-all-image {
     height: 200px;
 }
-.show-all-title {}
-.show-all-brewery {}
-.show-all-type {}
-.show-all-price {}
-.show-all-desc {}
 
 .show-all-buttons-wrapper {
     display: grid;
@@ -45,11 +38,6 @@
     width: 100%; 
     border-radius: 15px;
 }
-
-.show-all-more {}
-.show-all-buy {}
-
-
 
 @media only screen and (min-width: 768px) {}
 @media only screen and (min-width: 1200px) {
