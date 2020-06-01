@@ -9,6 +9,7 @@ error_reporting(-1);
 // exit;
 
 // Delete products
+$msg = '';
 if (isset($_POST['deleteBtn'])) {
         try {
             $query = "
@@ -17,7 +18,7 @@ if (isset($_POST['deleteBtn'])) {
             ";
     
             $stmt = $dbconnect->prepare($query);
-            $stmt->bindValue(':id', $_POST['id']);
+            $stmt->bindValue(':id', $_POST['deleteId']);
             $stmt->execute();
         }   catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
@@ -32,11 +33,13 @@ try {
 }   catch (\PDOException $e) {
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
+    
 
 //  output with JSON
  $data = [
-    'message' => '',
+    'msg' => '',
     'products' => $products,
   ];
   echo json_encode($data);
 
+//   print_r($products);

@@ -36,7 +36,7 @@ $msg = '';
         <span class="close">&times;</span>
         <section class="new-product-wrapper">
             <h1>Add a new product</h1>
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="add-product-form">
                 <div id="add-form">
                     <input type="text" name="title" id="add-title" placeholder="Titel.." >
                     <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
@@ -51,7 +51,6 @@ $msg = '';
         </section>  
     </div>
 </div>
-
 <table class="wrapper-table">
     <thead>
         <tr>
@@ -63,7 +62,7 @@ $msg = '';
             <th>Beskrivning</th>
             <th>Img_url</th>
     </thead>
-    <tbody>
+    <tbody id="product-list" class="tbody">
     <?php foreach ($products as $content) { ?>
         <tr>
             <td><?=htmlentities($content["id"]); ?></td>
@@ -82,15 +81,13 @@ $msg = '';
             <td>
                 <form action="#" method="POST">
                     <input type="hidden" name="deleteId" value="<?=$content['id']?>">
-                    <input type="submit" name="deleteBtn" class="delete-btn" value="Delete">
+                    <input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">                
                 </form>
             </td>
         </tr>
         <?php } ?>
     </tbody>
 </table>
-<button class="add-btn"><a href="create-content.php">Lägg till användare</a></button>
-    
 
 
 

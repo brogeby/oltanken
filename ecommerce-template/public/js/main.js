@@ -29,22 +29,20 @@ function hiddenMenu() {
     x.style.display = "none";
   }
 }
-
 // Add product function with AJAX
 $(document).ready(function() {
-
-	$('#addProductBtn').on('click', addProductEvent);
-	function addProductEvent(e) {
-		e.preventDefault();
 		
+	$('#addProductBtn').on('click', function(e) {
+		e.preventDefault();
+
 		let title = $('input[name="title"]');
 		let brewery = $('input[name="brewery"]');
 		let type = $('input[name="type"]');
 		let price = $('input[name="price"]');
 		let description = $('textarea[name="description"]');
 		let img_url = $('input[name="img_url"]');
-		$.ajax({
-			method: 'POST',
+		$.ajax ({
+			type: 'POST',
 			url: 'addproduct.php',
 			data: { // Skickas till addproduct.php i form av POST parametrar
 				addProductBtn: true, 
@@ -57,34 +55,72 @@ $(document).ready(function() {
 			}, 
 			dataType: 'json',
 			success: function(data) {
-				//console.log(data);
+				// console.log(data);
 				$('#form-message').html(data['msg']);
+				appendProductList(data);
+				
 			},
 		});
-  }
+		$("#add-product-form")[0].reset();
+	});
 
-  	$('.delete-btn').on('click', deleteProductEvent);
+	$('.delete-btn').on('click', deleteProductEvent);
 	function deleteProductEvent(e) {
 		e.preventDefault();
-		
-		let productId = $(this).parent().find('input[name="deleteId"]');
-		console.log(productId.val());
+		let id = $(this).parent().find('input[name="deleteId"]');
+		console.log(id.val());
 		$.ajax({
 			method: 'POST',
 			url: 'deleteproduct.php',
 			data: {
 				deleteBtn: true, 
-				productId: productId.val() 
+				deleteId: id.val() 
 			},
 			dataType: 'json',
 			success: function(data) {
 				console.log(data);
-				$('#form-message').html(data['message']);
-			}
+				// $('#form-message').html(data['msg']);
+				appendProductList(data.products);
+			},
 		});
+	};
+
+	function appendProductList(data) {
+		let html = '';
+		for (content of data) {
+			// console.log(content);
+			// console.log(html);
+
+			html +=
+				'<tr>' +
+					'<td>' + content['id'] + '</td>' +
+					'<td>' + content['title'] + '</td>' +
+					'<td>' + content['brewery'] + '</td>' +
+					'<td>' + content['type'] + '</td>' +
+					'<td>' + content['price'] + '</td>' +
+					'<td>' + content['description'] + '</td>' +
+					'<td>' + content['img_url'] + '</td>' +
+					'<td>' +
+						'<form action="updateproduct.php" method="GET">' +
+							'<input type="hidden" name="updateId" value="' + content['id'] + '">' +
+							'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
+						'</form>' +              
+					'</td>' +
+					'<td>' +
+						'<form action="#" method="POST">' +
+							'<input type="hidden" name="deleteId" value="' + content['id'] + '">' +
+							'<input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">' +
+						'</form>' +
+					'</td>' +
+				'</tr>';
+		}
+		$('#product-list').html(html);
+
+		$('.delete-btn').on('click', deleteProductEvent);
 	}
-  
 });	
+
+
 
 
 let modal = document.getElementById("create-product-modal");
