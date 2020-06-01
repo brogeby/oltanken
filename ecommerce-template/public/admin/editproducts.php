@@ -51,6 +51,7 @@ $msg = '';
         </section>  
     </div>
 </div>
+
 <table class="wrapper-table">
     <thead>
         <tr>
