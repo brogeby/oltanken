@@ -135,3 +135,8 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// Go back to previous page
+function goBack() {
+	window.history.back();
+  }

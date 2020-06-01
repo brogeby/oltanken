@@ -35,3 +35,140 @@
         padding: 0 15px;
     }
 }
+
+#show-all-wrapper {
+    margin-top: 50px;
+}
+
+#show-all-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 25px;
+    gap: 30px;
+}
+
+.show-all-product {
+    grid-column: span 1;
+    display: grid;
+    grid-gap: 5px;
+    text-align: center;
+    justify-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.show-all-product:visited {
+    color: inherit;
+}
+
+.show-all-image {
+    height: 200px;
+}
+
+.show-all-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 50%;
+}
+.show-all-buttons {
+    background-color: #e89836;
+    border: none;
+    color: #fff;
+    min-height: 25px;
+    text-align: center;
+    width: 100%; 
+    border-radius: 15px;
+}
+
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1200px) {
+    #show-all-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+#index-content-wrapper {
+    display: grid;
+    justify-items: center;
+}
+
+#hero {
+    width: 100vw;
+    height: 200px;
+    background-image: url("../img/woodbg.jpg");
+    color: #fff;
+    display: grid;
+    text-align: center;
+    align-content: center;
+}
+
+#latest-wrapper h2 {
+    text-align: center;
+    margin-top: 25px;
+}
+
+#latest-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 25px;
+    gap: 30px;
+}
+
+#latest-list .general-button {
+    grid-column: span 2;
+}
+
+.latest-product {
+    grid-column: span 1;
+    display: grid;
+    grid-gap: 5px;
+    text-align: center;
+    justify-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.latest-product:visited {
+    color: inherit;
+}
+
+.latest-image {
+    height: 200px;
+}
+.latest-title {}
+.latest-brewery {}
+.latest-type {}
+.latest-price {}
+.latest-desc {}
+
+.latest-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 50%;
+}
+.latest-buttons {
+    background-color: #e89836;
+    border: none;
+    color: #fff;
+    min-height: 25px;
+    text-align: center;
+    width: 100%; 
+    border-radius: 15px;
+}
+
+.latest-more {}
+.latest-buy {}
+
+
+
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1200px) {
+    #latest-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #latest-list .general-button {
+        grid-column: span 4;
+    }
+}

@@ -19,7 +19,7 @@ try {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/index.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/product.css'>
 </head>
 <body>
 <?php include 'parts/menu.php';?>
@@ -51,9 +51,11 @@ try {
 					</div>
 				</div>
 			<?php } ?>
+			<a href="productlist.php" class="general-button">Visa alla produkter</a>
 		</section>
 	</div>
 </div>
+
 
 <?php include 'parts/footer.php';?>
 <script src='js/main.js'></script>

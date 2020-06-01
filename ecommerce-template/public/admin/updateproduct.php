@@ -100,14 +100,14 @@ if (isset($_POST['updateProductBtn'])) {
 	<meta name="viewport" description="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist-admin.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/product-admin.css'>
 </head>
 <body>
 <?php include '../parts/menu.php';?>
+<p onclick="goBack()" class="general-button top-left-button">Go Back</p>
+<h1 class="page-title">Uppdatera produkt</h1>
 
 <section class="handle-product-wrapper">
-    <h1>Uppdatera produkt</h1>
-    <a href="editproducts.php">Tillbaka till föregående sida</a>
     <form action="#" method="POST" id="update-product-form" class="handle-product-form">
         <div class="handle-product-container">
             <input type="text" name="title" id="add-title" value="<?=htmlentities($product["title"]); ?>" >

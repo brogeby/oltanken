@@ -19,11 +19,12 @@ try {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/productlist.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/product.css'>
 </head>
 <body>
 <?php include 'parts/menu.php';?>
-
+<button onclick="goBack()" id="product-back" class="general-button top-left-button">Gå tillbaka</button>
+<h1 class="page-title">Alla produkter</h1>
 <div id="show-all-wrapper">
 	<section id="show-all-list"> 
         <?php foreach ($products as $key => $content) { ?>

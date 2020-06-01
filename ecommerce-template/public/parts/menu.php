@@ -1,7 +1,7 @@
  <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
-    <a href="index.php">Home</a>
+    <a href="<?= APP_URL . 'public/index.php' ?>">Home</a>
     <a href="productlist.php">Products</a>
     <a href="#">Log in</a>
     </div>

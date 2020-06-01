@@ -22,15 +22,15 @@ $msg = '';
 	<meta name="viewport" description="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../styles/productlist-admin.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/product-admin.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <?php include '../parts/menu.php';?>
+<p onclick="goBack()" class="general-button top-left-button">Go Back</p>
 
-<h2>Products</h2>
-<button id="create-product">Lägg till produkt</button>
-
+<h1 class="page-title">Hantera produkter</h1>
+<button id="create-product" class="general-button">Lägg till produkt</button>
 <div id="create-product-modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -76,7 +76,7 @@ $msg = '';
             <td>
                 <form action="updateproduct.php" method="GET">
                     <input type="hidden" name="updateId" value="<?=$content['id']?>">
-                    <input type="submit" name="updateBtn" class="update-btn" value="Update">
+                    <input type="submit" name="updateBtn" class="update-btn general-button" value="Update">
                 </form>              
             </td>
             <td>
