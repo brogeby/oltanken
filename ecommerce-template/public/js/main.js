@@ -10,24 +10,24 @@ function closeNav() {
 }
 
 
-let menu = document.getElementsByClassName("hidden-menu-links");
-menu.style.display = "none";
-function hiddenMenu() {
-  if (menu.style.display === "none") {
-    menu.style.display = "block";
-  } else {
-    menu.style.display = "none";
-  }
-};
+// let menu = document.getElementsByClassName("hidden-menu-links");
+// menu.style.display = "none";
+// function hiddenMenu() {
+//   if (menu.style.display === "none") {
+//     menu.style.display = "block";
+//   } else {
+//     menu.style.display = "none";
+//   }
+// };
 
-function hiddenMenu() {
-  var x = document.getElementById("hidden-menu");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+// function hiddenMenu() {
+//   var x = document.getElementById("hidden-menu");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+// }
 // Add product function with AJAX
 $(document).ready(function() {
 		
@@ -102,7 +102,7 @@ $(document).ready(function() {
 					'<td>' +
 						'<form action="updateproduct.php" method="GET">' +
 							'<input type="hidden" name="updateId" value="' + content['id'] + '">' +
-							'<input type="submit" name="updateBtn" class="update-btn" value="Update">' +
+							'<input type="submit" name="updateBtn" class="update-btn general-button" value="Update">' +
 						'</form>' +              
 					'</td>' +
 					'<td>' +
