@@ -37,7 +37,7 @@ try {
         <p class="individual-desc"><?=htmlentities($content['description'])?>
         <form class="individual-buy" action="#" method="GET">
             <input type="hidden" name="productsId" value="<?=$content['id']?>">
-            <input class="individual-button" type="submit" name="showAll" value="Lägg i varukorg">
+            <input class="read-buy-button" type="submit" name="showAll" value="Lägg i varukorg">
         </form>
     </div>
 <?php } ?>

@@ -1,53 +1,11 @@
-.individual-product {
-    display: grid;
-    grid-template-columns: 1fr;
-    text-align: center;
-    justify-items: center;
-    margin: 25px 10%;
-    gap: 10px;
-}
-
-.individual-image {
-    height: 250px;
-}
-
-.individual-desc {
-    text-align: left;
-}
-
-.individual-buy {
-    width: 80%;
-}
-
-.individual-button {
-    background-color: #e89836;
-    border: none;
-    color: #fff;
-    min-height: 35px;
-    text-align: center;
-    width: 100%; 
-    border-radius: 15px;
-}
-
-@media only screen and (min-width: 768px) {
-    .individual-button {
-        width: auto;
-        padding: 0 15px;
-    }
-}
-
-#show-all-wrapper {
-    margin-top: 50px;
-}
-
-#show-all-list {
+.product-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 25px;
+    margin-top: 75px;
     gap: 30px;
 }
 
-.show-all-product {
+.product {
     grid-column: span 1;
     display: grid;
     grid-gap: 5px;
@@ -57,21 +15,16 @@
     color: inherit;
 }
 
-.show-all-product:visited {
-    color: inherit;
-}
+.product img {height: 200px;}
 
-.show-all-image {
-    height: 200px;
-}
-
-.show-all-buttons-wrapper {
+.read-buy-buttons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     width: 50%;
 }
-.show-all-buttons {
+
+.read-buy-button {
     background-color: #e89836;
     border: none;
     color: #fff;
@@ -79,13 +32,6 @@
     text-align: center;
     width: 100%; 
     border-radius: 15px;
-}
-
-@media only screen and (min-width: 768px) {}
-@media only screen and (min-width: 1200px) {
-    #show-all-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
 }
 
 #index-content-wrapper {
@@ -108,67 +54,30 @@
     margin-top: 25px;
 }
 
-#latest-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 25px;
-    gap: 30px;
-}
+#latest-wrapper .general-button {grid-column: span 2;}
 
-#latest-list .general-button {
-    grid-column: span 2;
-}
-
-.latest-product {
-    grid-column: span 1;
+/* Styling for product.php */
+.individual-product {
     display: grid;
-    grid-gap: 5px;
+    grid-template-columns: 1fr;
     text-align: center;
     justify-items: center;
-    text-decoration: none;
-    color: inherit;
+    margin: 25px 10%;
+    gap: 10px;
 }
 
-.latest-product:visited {
-    color: inherit;
+.individual-image {height: 250px;}
+.individual-desc {text-align: left;}
+.individual-buy {width: 200px;}
+
+@media only screen and (min-width: 768px) {
+    .individual-button {
+        width: auto;
+        padding: 0 15px;
+    }
 }
 
-.latest-image {
-    height: 200px;
-}
-.latest-title {}
-.latest-brewery {}
-.latest-type {}
-.latest-price {}
-.latest-desc {}
-
-.latest-buttons-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    width: 50%;
-}
-.latest-buttons {
-    background-color: #e89836;
-    border: none;
-    color: #fff;
-    min-height: 25px;
-    text-align: center;
-    width: 100%; 
-    border-radius: 15px;
-}
-
-.latest-more {}
-.latest-buy {}
-
-
-
-@media only screen and (min-width: 768px) {}
 @media only screen and (min-width: 1200px) {
-    #latest-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    #latest-list .general-button {
-        grid-column: span 4;
-    }
+    .product-list {grid-template-columns: repeat(4, 1fr);}
+    #latest-wrapper .general-button {grid-column: span 4;}
 }

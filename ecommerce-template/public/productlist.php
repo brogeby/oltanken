@@ -26,22 +26,22 @@ try {
 <button onclick="goBack()" id="product-back" class="general-button top-left-button">Gå tillbaka</button>
 <h1 class="page-title">Alla produkter</h1>
 <div id="show-all-wrapper">
-	<section id="show-all-list"> 
+	<section class="product-list"> 
         <?php foreach ($products as $key => $content) { ?>
-            <div class="show-all-product">
-                <img class="show-all-image" src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
-                <h2 class="show-all-title"><?=htmlentities($content['title'])?></h2>
-                <h3 class="show-all-brewery"><?=htmlentities($content['brewery'])?></h3>
-                <h3 class="show-all-type"><?=htmlentities($content['type'])?></h3>
-                <p class="show-all-price"><?=htmlentities($content['price'])?> sek</p>
-                <div class="show-all-buttons-wrapper">
-                    <form class="show-all-more show-all-buttons" action="product.php" method="GET">
+            <div class="product">
+                <img src="<?=htmlentities(IMG_PATH . $content['img_url'])?>" alt="<?=htmlentities($content['title'])?>">
+                <h2><?=htmlentities($content['title'])?></h2>
+                <h3><?=htmlentities($content['brewery'])?></h3>
+                <h3><?=htmlentities($content['type'])?></h3>
+                <p><?=htmlentities($content['price'])?> sek</p>
+                <div class="read-buy-buttons">
+                    <form class="show-all-buttons" action="product.php" method="GET">
                         <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="show-all-buttons" type="submit" name="showAll" value="Läs mer">
+                        <input class="read-buy-button" type="submit" name="showAll" value="Läs mer">
                     </form>
                     <form class="show-all-buy" action="#" method="GET">
                         <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="show-all-buttons" type="submit" name="showAll" value="Lägg i varukorg">
+                        <input class="read-buy-button" type="submit" name="showAll" value="Lägg i varukorg">
                     </form>
                 </div>
             </div>
