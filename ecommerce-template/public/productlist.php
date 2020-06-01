@@ -3,13 +3,8 @@ include('../src/config.php');
 require SRC_PATH . ('/dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-try {
-    $query = "SELECT * FROM products;";
-    $stmt = $dbconnect->query($query);
-    $products = $stmt->fetchall();
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-}
+$products = fetchAllProducts();
+
 ?>
 <!DOCTYPE html>
 <html>

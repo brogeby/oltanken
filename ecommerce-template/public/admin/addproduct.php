@@ -57,13 +57,7 @@ if (isset($_POST['addProductBtn'])) {
     }
 }
     
-try {
-    $query = "SELECT * FROM products;";
-    $stmt = $dbconnect->query($query);
-    $products = $stmt->fetchall();
-}   catch (\PDOException $e) {
-        throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }
+$products = fetchAllProducts();
 
 //  output with JSON
  $data = [
