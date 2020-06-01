@@ -2,8 +2,12 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
     <a href="<?= APP_URL . 'public/index.php' ?>">Home</a>
-    <a href="productlist.php">Products</a>
-    <a href="#">Log in</a>
+    <a href="<?= APP_URL . 'public/productlist.php' ?>">Products</a>
+    <span onclick="hiddenMenu()">Logga in</span>
+        <div id="hidden-menu" style="display: none;">
+            <a href="<?= APP_URL . 'public/index.php' ?>">Gäst</a>
+            <a href="<?= APP_URL . 'public/admin/index.php' ?>">Admin</a>
+        </div>
     </div>
 </div>
 <header>
