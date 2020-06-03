@@ -3,7 +3,7 @@
     <div class="overlay-content">
     <a href="index.php">Home</a>
     <a href="productlist.php">Products</a>
-    <a href="home-login-reg.php">Log in</a>
+    <a href="users-public/home-login-reg.php">Log in</a>
     </div>
 </div>
 <header>

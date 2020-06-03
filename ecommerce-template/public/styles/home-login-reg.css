@@ -1,16 +1,25 @@
-body {
-    background-color: red;
-}
+/* Mobile first */
 
-.form-wrapper-as {
-    display: flex;
-    justify-content: space-between;
-}
+@media only screen and (min-width: 768px) {
 
-#content1 {
-    display: inline-block;
 }
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+    #content1 {
+        display: inline-block;
+        float: left;
+        margin-left: 20px;
+    }
 
-#content2 {
-    display: inline-block;
+    fieldset {
+        padding: 10px 10px;
+    }
+    
+    #content2 {
+        display: inline-block;
+        float: right;
+        border-left: 1px black solid;
+        padding-left: 45%;
+        margin-right: 20px;
+    }
 }
