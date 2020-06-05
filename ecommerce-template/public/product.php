@@ -19,7 +19,6 @@ $products = fetchSpecificProduct();
 <body>
 <?php include 'parts/menu.php';?>
 <button onclick="goBack()" id="product-back" class="general-button top-left-button">Gå tillbaka</button>
-
 <?php foreach ($products as $key => $content) { ?>
     <div class="individual-product">
         <img class="individual-image" src="<?=IMG_PATH . $content['img_url']?>" alt="<?=htmlentities($content['title'])?>">
@@ -35,7 +34,6 @@ $products = fetchSpecificProduct();
         </form>
     </div>
 <?php } ?>
-
 <?php include 'parts/footer.php';?>
 </body>
 </html>

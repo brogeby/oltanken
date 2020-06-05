@@ -34,11 +34,6 @@
     border-radius: 15px;
 }
 
-#index-content-wrapper {
-    display: grid;
-    justify-items: center;
-}
-
 #hero {
     width: 100vw;
     height: 200px;

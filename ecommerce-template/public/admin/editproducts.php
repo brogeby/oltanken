@@ -20,26 +20,26 @@ $products = fetchAllProducts();
 </head>
 <body>
 <?php include '../parts/menu.php';?>
+<div class="content wrapper">
 <p onclick="goBack()" class="general-button top-left-button">Go Back</p>
 
 <h1 class="page-title">Hantera produkter</h1>
 
-<section class="handle-product-wrapper">
-            
-            <form action="#" method="POST" id="add-product-form" class="handle-product-form">
-                <div class="handle-product-container">
-                <h1>Skapa en ny produkt</h1>
-                    <input type="text" name="title" id="add-title" placeholder="Titel.." >
-                    <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
-                    <input type="text" name="type" id="add-type" placeholder="Öltyp..">
-                    <input type="text" name="price" id="add-price" placeholder="Pris..">
-                    <input type="text" name="img_url" id="add-img_url" placeholder="Bildens filnamn.." >
-                    <textarea type="text" name="description" id="add-description" placeholder="Beskrivning.." rows="10"></textarea>
-                    <button name="addProductBtn" id="addProductBtn">Publish</button>
-                </div>
-            </form>
-            <div id="form-message"><?=$msg?></div>
-        </section>  
+<section class="handle-product-wrapper">     
+    <form action="#" method="POST" id="add-product-form" class="handle-product-form">
+        <div class="handle-product-container">
+        <h1>Skapa en ny produkt</h1>
+            <input type="text" name="title" id="add-title" placeholder="Titel.." >
+            <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
+            <input type="text" name="type" id="add-type" placeholder="Öltyp..">
+            <input type="text" name="price" id="add-price" placeholder="Pris..">
+            <input type="text" name="img_url" id="add-img_url" placeholder="Bildens filnamn.." >
+            <textarea type="text" name="description" id="add-description" placeholder="Beskrivning.." rows="10"></textarea>
+            <button name="addProductBtn" id="addProductBtn">Publish</button>
+        </div>
+    </form>
+    <div id="form-message"><?=$msg?></div>
+</section>  
 
 <table class="wrapper-table">
     <thead>
