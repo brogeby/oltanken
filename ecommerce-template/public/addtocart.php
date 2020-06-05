@@ -48,6 +48,6 @@
     // echo "<pre>";
     // exit;
 
-    // header('Location: productlist.php');
-    // exit;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
 ?>
