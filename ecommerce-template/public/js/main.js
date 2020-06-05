@@ -119,7 +119,8 @@ $(document).ready(function() {
 	}
 	if(window.location.href.indexOf("public/admin") > -1) {
 		$("#show-cart").css("display", "none");
-		$(".nav-toggle").css("grid-column","4");	 }
+		$(".nav-toggle").css("grid-column","4");	 
+	}
 });	
 
 
