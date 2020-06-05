@@ -7,7 +7,7 @@
         <a href="<?= APP_URL . 'public/admin/index.php' ?>">Admin</a>
     </div>
 </div>
-<header>
+<header class="header">
     <h3>Öltanken</h3>
     <img id="header-logo" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
     <img id="show-cart" src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">

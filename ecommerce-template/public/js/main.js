@@ -1,6 +1,3 @@
-
-
-
 /* Overlay menu */
 /* Open when someone clicks on the span element */
 function openNav() {
@@ -120,6 +117,9 @@ $(document).ready(function() {
 
 		$('.delete-btn').on('click', deleteProductEvent);
 	}
+	if(window.location.href.indexOf("public/admin") > -1) {
+		$("#show-cart").css("display", "none");
+		$(".nav-toggle").css("grid-column","4");	 }
 });	
 
 
