@@ -117,11 +117,15 @@ $(document).ready(function() {
 
 		$('.delete-btn').on('click', deleteProductEvent);
 	}
+	if(window.location.href.indexOf("public/admin") > -1) {
+		$("#show-cart").css("display", "none");
+		$(".nav-toggle").css("grid-column","4");	 
+	}
 });	
 
 
-let modal = document.getElementById("create-product-modal");
-let btn = document.getElementById("create-product");
+let modal = document.getElementById("cart-modal");
+let btn = document.getElementById("show-cart");
 let span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
   modal.style.display = "block";
