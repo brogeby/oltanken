@@ -48,6 +48,6 @@
     // echo "<pre>";
     // exit;
 
-    header('Location: products.php');
-    exit;
+    // header('Location: productlist.php');
+    // exit;
 ?>

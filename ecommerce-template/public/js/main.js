@@ -1,3 +1,6 @@
+
+
+
 /* Overlay menu */
 /* Open when someone clicks on the span element */
 function openNav() {
@@ -120,8 +123,8 @@ $(document).ready(function() {
 });	
 
 
-let modal = document.getElementById("create-product-modal");
-let btn = document.getElementById("create-product");
+let modal = document.getElementById("cart-modal");
+let btn = document.getElementById("show-cart");
 let span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
   modal.style.display = "block";

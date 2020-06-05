@@ -23,14 +23,12 @@ $products = fetchAllProducts();
 <p onclick="goBack()" class="general-button top-left-button">Go Back</p>
 
 <h1 class="page-title">Hantera produkter</h1>
-<button id="create-product" class="general-button">Lägg till produkt</button>
-<div id="create-product-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <section class="handle-product-wrapper">
-            <h1>Add a new product</h1>
+
+<section class="handle-product-wrapper">
+            
             <form action="#" method="POST" id="add-product-form" class="handle-product-form">
                 <div class="handle-product-container">
+                <h1>Skapa en ny produkt</h1>
                     <input type="text" name="title" id="add-title" placeholder="Titel.." >
                     <input type="text" name="brewery" id="add-brewery" placeholder="Bryggeri..">
                     <input type="text" name="type" id="add-type" placeholder="Öltyp..">
@@ -42,8 +40,6 @@ $products = fetchAllProducts();
             </form>
             <div id="form-message"><?=$msg?></div>
         </section>  
-    </div>
-</div>
 
 <table class="wrapper-table">
     <thead>

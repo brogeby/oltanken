@@ -34,9 +34,10 @@ $products = fetchAllProducts();
                         <input type="hidden" name="productsId" value="<?=$content['id']?>">
                         <input class="read-buy-button" type="submit" name="showAll" value="Läs mer">
                     </form>
-                    <form class="show-all-buy" action="#" method="GET">
-                        <input type="hidden" name="productsId" value="<?=$content['id']?>">
-                        <input class="read-buy-button" type="submit" name="showAll" value="Lägg i varukorg">
+                    <form action="addtocart.php" method="POST">
+                        <input type="hidden" name="productId" value="<?=$content['id']?>">
+                        <input type="number" name="quantity" class="add-to-cart-qty" value="1" min="0" max="100">
+                        <input type="submit" name="addToCart" class="general-button add-to-cart-btn" value="Lägg till i kassan">
                     </form>
                 </div>
             </div>
@@ -45,6 +46,5 @@ $products = fetchAllProducts();
 </div>
 
 <?php include 'parts/footer.php';?>
-<script src='js/main.js'></script>
 </body>
 </html>

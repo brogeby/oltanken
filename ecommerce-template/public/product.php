@@ -37,6 +37,5 @@ $products = fetchSpecificProduct();
 <?php } ?>
 
 <?php include 'parts/footer.php';?>
-<script src='js/main.js'></script>
 </body>
 </html>
