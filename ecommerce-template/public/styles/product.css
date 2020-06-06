@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 75px;
-    gap: 30px;
 }
 
 .product {
@@ -13,30 +12,50 @@
     justify-items: center;
     text-decoration: none;
     color: inherit;
+    margin-bottom: 70px;
 }
 
 .product img {height: 200px;}
 
-.read-buy-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    width: 50%;
-}
-
-.read-buy-button {
-    background-color: #e89836;
-    border: none;
-    color: #fff;
-    min-height: 25px;
+.quantity-button, .read-button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    color: #000;
     text-align: center;
-    width: 100%; 
-    border-radius: 15px;
+    transition: all 0.2s;
+    background-color: #fff;
+}
+.quantity-button {
+    border: 0.1em solid #000;
+    width: 60px;
 }
 
-#index-content-wrapper {
-    display: grid;
-    justify-items: center;
+.read-button { 
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.read-button:hover {
+    color: #bbbbbb;
+}
+
+/* Removing the arrows on input quantity arrows */
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; 
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 
 #hero {

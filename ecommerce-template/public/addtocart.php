@@ -3,10 +3,6 @@
     require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
     error_reporting(-1);
 
-    // echo"<pre>";
-    // print_r($_POST);
-    // echo"<pre>";
-
     if(!empty($_POST['quantity'])) {
         $productId = (int) $_POST['productId'];
         $quantity = (int) $_POST['quantity'];
@@ -26,9 +22,6 @@
         
         if ($product) {
             $product = array_merge($product, ['quantity' => $quantity]);
-            // echo"<pre>";
-            // print_r($product);
-            // echo"<pre>";
             $productItem = [$productId => $product];
         }
 
@@ -42,11 +35,6 @@
             }
         } 
     }
-
-    // echo "<pre>";
-    // print_r($_SERVER);
-    // echo "<pre>";
-    // exit;
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
