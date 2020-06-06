@@ -215,8 +215,29 @@ footer {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 40%;
   }
+
+  .cart-details {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(4, 1fr);
+    margin-bottom: 20px;
+  }
+
+.cart-details-img {
+  grid-row: span 4;
+  margin-right: 20px;
+}
+
+.cart-details-img img {
+  height: 50px;
+}
+
+.cart-details hr {
+  grid-column: span 2;
+  margin-top: 20px;
+}
   
   /* The Close Button */
   .close {
