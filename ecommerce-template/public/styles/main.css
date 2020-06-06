@@ -194,7 +194,7 @@ footer {
       justify-self: center;
   }
 
- /* Styles for the modals */
+ /* Styles for the modals (CART) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -215,7 +215,7 @@ footer {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
   }
   
   /* The Close Button */

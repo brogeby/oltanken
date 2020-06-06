@@ -1,8 +1,6 @@
  <?php
  $productItemCount = count($_SESSION['items']);
-
  $productTotalSum = 0; count($_SESSION['items']);
-
  foreach ($_SESSION['items'] as $productId => $productItem) {
       $productTotalSum += $productItem['price'] * $productItem['quantity'];
  }
