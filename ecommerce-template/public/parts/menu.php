@@ -24,10 +24,11 @@
                 <?php foreach ($_SESSION['items'] as $productId => $productItem) { ?>
                     <div class="cart-details">
                         <div class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></div>
-                        <div class=""><?=$productItem['title']?></div>
-                        <div class=""><?=$productItem['brewery']?></div>
-                        <div class=""><?=$productItem['price']?>kr</div>
-                        <div class="">Antal:<?=$productItem['quantity']?></div>
+                        <div class="cart-title"><?=$productItem['title']?></div>
+                        <div class="cart-brewery"><?=$productItem['brewery']?></div>
+                        <div class="cart-price"><?=$productItem['price']?>kr</div>
+                        <div class="cart-quantity">I varukorgen: <?=$productItem['quantity']?></div>
+                        <hr>
                     </div>
                 <?php } ?>
                 <span class="count">Total: <?=$productTotalSum?>kr</span>
