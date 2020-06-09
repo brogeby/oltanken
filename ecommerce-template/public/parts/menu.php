@@ -21,14 +21,15 @@ if(!isset($_SESSION['items'])) {
 </div>
 <header class="header">
     <h3>Öltanken</h3>
-    <img id="header-logo" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
-    <img id="show-cart" src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">
+    <img id="header-logo" class="header-img" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
+    <img id="show-cart" class="header-img" src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">
         <div id="cart-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
+                <h4>Varukorg</h4>
                 <?php foreach ($_SESSION['items'] as $productId => $productItem) { ?>
                     <div class="cart-details">
-                        <div class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></div>
+                        <div class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>"></div>
                         <div class="cart-title"><?=$productItem['title']?></div>
                         <div class="cart-brewery"><?=$productItem['brewery']?></div>
                         <div class="cart-price"><?=$productItem['price']?>kr</div>
@@ -37,7 +38,8 @@ if(!isset($_SESSION['items'])) {
                     </div>
                 <?php } ?>
                 <span class="count">Total: <?=$productTotalSum?>kr</span>
-                <a href="checkout.php" class="general-button">Gå till kassan</a>
+                <br>
+                <a href="checkout.php" class="general-button go-to-checkout">Gå till kassan</a>
             </div>
         </div>
     <label class="nav-toggle" for="nav-toggle" onclick="openNav()">

@@ -100,7 +100,13 @@ header h3 {
     padding: 15px;
 }
 
-header img {
+header h4 {
+  text-align: center;
+  font-size: 21px;
+  color: #e89836;
+  padding-bottom: 20px;
+}
+.header-img {
     height: 50px;
     justify-self: center;
 }
@@ -212,7 +218,7 @@ footer {
   /* Modal Content */
   .modal-content {
     background-color: #fefefe;
-    margin: auto;
+    margin: auto auto 100px;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
@@ -231,7 +237,7 @@ footer {
 }
 
 .cart-details-img img {
-  height: 50px;
+  height: 100px;
 }
 
 .cart-details hr {
@@ -254,3 +260,11 @@ footer {
     cursor: pointer;
   }
   
+.count {
+  font-size: 20px;
+}
+
+.go-to-checkout {
+  text-align: center;
+  margin-top: 15px;
+}
