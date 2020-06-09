@@ -1,4 +1,9 @@
  <?php
+ //unset($_SESSION['items']);
+if(!isset($_SESSION['items'])) {
+    $_SESSION['items'] = [];
+}
+
  $productItemCount = count($_SESSION['items']);
  $productTotalSum = 0; count($_SESSION['items']);
  foreach ($_SESSION['items'] as $productId => $productItem) {
