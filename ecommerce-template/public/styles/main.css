@@ -234,6 +234,7 @@ footer {
 .cart-details-img {
   grid-row: span 4;
   margin-right: 20px;
+  text-align: center;
 }
 
 .cart-details-img img {
