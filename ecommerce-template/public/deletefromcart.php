@@ -12,11 +12,6 @@
     ) {
         unset($_SESSION['items'][$_POST['productId']]);
     }
-
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
-
-
-
-
 ?>
