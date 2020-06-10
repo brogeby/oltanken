@@ -3,6 +3,7 @@
     require SRC_PATH . ('dbconnect.php');
     error_reporting(-1);
 
+
     $msg = "";
     if (isset($_GET['mustLogin'])) {
         $msg = '<div class="error_msg">Obs! Sidan är inloggningsskyddad. Var snäll och logga in.</div>';
@@ -16,7 +17,6 @@
     if (isset($_POST['doLogin'])) {
         $email    = $_POST['email'];
         $password = $_POST['password'];
-
 
         try {
             $query = "
@@ -58,9 +58,9 @@
             $msg = '<div class="error_msg">Fel inloggningsuppgifter. Var snäll och försök igen.</div>';
         }
     }
-    echo("<pre>");
-    print_r($_POST);
-    echo("</pre>");
+    // echo("<pre>");
+    // print_r($_POST);
+    // echo("</pre>");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +80,7 @@
                 <h1>Logga in</h1>
                     <!-- Visa errormeddelanden -->
                         <?=$msg?>
-            <form method="POST" action="mina-sidor.php?id=<?=$user['id']?>">
+            <form method="POST" action="#">
                 <fieldset>
                     <p>
                         <label for="input1">E-post:</label> <br>

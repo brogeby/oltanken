@@ -89,9 +89,9 @@ if (isset($_POST['submitUserBtn'])) {
         }
 	}
 } 
-echo("<pre>");
-print_r($message);
-echo("</pre>");
+// echo("<pre>");
+// print_r($message);
+// echo("</pre>");
    try {
         $query = "
             SELECT * FROM users
@@ -123,7 +123,7 @@ echo("</pre>");
 
     <h1>Uppdatera inlägg</h1>
     <?=$message?>
-    <form action="" method="POST">
+    <form action="#" method="POST">
         <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=$user['first_name']?>">
         <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=$user['last_name']?>">
         <input type="text" name="emailUser" placeholder="E-mail" value="<?=$user['email']?>">

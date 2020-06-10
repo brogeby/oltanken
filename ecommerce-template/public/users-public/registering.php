@@ -102,7 +102,7 @@ error_reporting(-1);
     <div id="reg-form-wrapper">
         <article class="border">
                 <h1>Registrera dig här</h1>
-                <a href="home-login-reg.php">< Tillbaka</a>
+                
                     <!-- Visa errormeddelanden -->
                         <?=$msg?>
             <form method="POST" action="#">
@@ -162,6 +162,7 @@ error_reporting(-1);
                 </fieldset>
             </form>
         </article>
+        <a href="home-login-reg.php">< Tillbaka</a>
     </div>
 </body>
 </html>

@@ -7,13 +7,24 @@
 if (isset($_POST['deleteBtn'])) {
 	$delete = trim($_POST['deleteBtn']);
 	
-	try {
-	$stmt = $dbconnect->prepare("DELETE FROM users WHERE id = :id");
-	$stmt->bindValue(':id', $_POST['postId']);
-	$stmt->execute();
-	} catch (\PDOException $e) {
-	throw new \PDOException($e->getMessage(), (int) $e->getCode());
-	}
+    try {
+        $stmt = $dbconnect->prepare("DELETE FROM users WHERE id = :id");
+        $stmt->bindValue(':id', $_POST['postId']);
+        $stmt->execute();
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    }
+    header('Location: home-login-reg.php');
+    exit;
+}
+
+try {
+    $stmt = $dbconnect->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->bindValue(':email', $_SESSION['email']);
+    $stmt->execute();
+    $user = $stmt->fetch();
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
 }
 
 // fetchAll logged in user 
@@ -28,9 +39,12 @@ if (isset($_POST['deleteBtn'])) {
 	} catch (\PDOExecption $e){
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-    echo("<pre>");
-    print_r($_POST);
-    echo("</pre>");
+    // echo("<pre>");
+    // print_r($_SESSION);
+    // echo("</pre>");
+    // echo("<pre>");
+    // print_r($user);
+    // echo("</pre>");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,26 +61,24 @@ if (isset($_POST['deleteBtn'])) {
 
 	<h1>Mina sidor</h1>
 <ul>
-    <?php foreach ($users as $user) { ?>
-            <li><?=$user['first_name']?></li>
-            <li><?=$user['last_name'] ?></li>
-            <li><b><?=$user['email']?></b></li>
-            <li><?=$user['phone']?></li>
-            <li><?=$user['street'] ?></li>
-            <li><?=$user['postal_code']?></li>
-            <li><?=$user['city']?></li>
-            <li><?=$user['country'] ?></li>
-            <li><?=$user['register_date']?></li>
+    <li><?=$user['first_name']?></li>
+    <li><?=$user['last_name'] ?></li>
+    <li><b><?=$user['email']?></b></li>
+    <li><?=$user['phone']?></li>
+    <li><?=$user['street'] ?></li>
+    <li><?=$user['postal_code']?></li>
+    <li><?=$user['city']?></li>
+    <li><?=$user['country'] ?></li>
+    <li><?=$user['register_date']?></li>
 
-            <form action="#" method="POST">
-                <input type="" name="postId" value="<?=$user['id']?>">
-                <input type="submit" name="deleteBtn" value="Radera">
-            </form>
-            <form action="update-profile.php?id=<?=$user['id']?>" method="POST">
-                <input type="submit" name="updateBtn" value="Uppdatera">
-            </form>
-        </div>
-    <?php } ?>
+        <form action="#" method="POST">
+            <input type="hidden" name="postId" value="<?=$user['id']?>">
+            <input type="submit" name="deleteBtn" value="Radera">
+        </form>
+        <form action="update-profile.php?id=<?=$user['id']?>" method="POST">
+            <input type="submit" name="updateBtn" value="Uppdatera">
+        </form>
+    </div>
 </ul>
 <a href="home-login-reg.php">< Tillbaka</a>
 </body>
