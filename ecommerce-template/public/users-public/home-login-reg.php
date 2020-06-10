@@ -48,15 +48,15 @@
 
 
         // If user exists AND password is correct, will be considered true. Meaning you are logged in
-        // if ($user && $password === $user['password']) {
-        //     $_SESSION['username'] = $user['username'];
-        //     header('Location: mina-sidor.php');
-        //     exit;
-        // } else {
-        //    // If user doesnt Exist, will be considered false
-        //     // OR if user exists but password is wrong. will also be considered false
-        //     $msg = '<div class="error_msg">Fel inloggningsuppgifter. Var snäll och försök igen.</div>';
-        // }
+        if ($user && $password === $user['password']) {
+            $_SESSION['email'] = $user['email'];
+            header('Location: mina-sidor.php');
+            exit;
+        } else {
+           // If user doesnt Exist, will be considered false
+            // OR if user exists but password is wrong. will also be considered false
+            $msg = '<div class="error_msg">Fel inloggningsuppgifter. Var snäll och försök igen.</div>';
+        }
     }
     echo("<pre>");
     print_r($_POST);

@@ -8,11 +8,6 @@ if (isset($_POST['deleteBtn'])) {
 	$delete = trim($_POST['deleteBtn']);
 	
 	try {
-	$query = "
-	  DELETE FROM users
-	  WHERE id = :id;
-	";
-
 	$stmt = $dbconnect->prepare("DELETE FROM users WHERE id = :id");
 	$stmt->bindValue(':id', $_POST['postId']);
 	$stmt->execute();
@@ -21,8 +16,14 @@ if (isset($_POST['deleteBtn'])) {
 	}
 }
 
+// fetchAll logged in user 
 	try {
-		$stmt = $dbconnect->query("SELECT * FROM users");
+    $query = "
+        SELECT * FROM users 
+        WHERE id = :id
+    ";
+
+		$stmt = $dbconnect->prepare($query);
 		$users = $stmt->fetchAll();
 	} catch (\PDOExecption $e){
 	throw new \PDOException($e->getMessage(), (int)$e->getCode());
@@ -36,21 +37,17 @@ if (isset($_POST['deleteBtn'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/home-login-reg.css'>
+
     <title>Öltanken - Mina sidor</title>
 </head>
 <body>
 
 	<h1>Mina sidor</h1>
-
-	<!-- Knapp skapa inlägg -->
-	<form action="add-posts.php" method="POST">
-		<a href="index.php">Startsida</a>
-		<input type="submit" name="addPostBtn" value="+ Skapa inlägg">
-	</form>
-	
 <ul>
     <?php foreach ($users as $user) { ?>
-        <!-- <div class="borderPost"> -->
             <li><?=$user['first_name']?></li>
             <li><?=$user['last_name'] ?></li>
             <li><b><?=$user['email']?></b></li>
@@ -71,5 +68,6 @@ if (isset($_POST['deleteBtn'])) {
         </div>
     <?php } ?>
 </ul>
+<a href="home-login-reg.php">< Tillbaka</a>
 </body>
 </html>

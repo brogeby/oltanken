@@ -30,28 +30,28 @@ if (isset($_POST['submitUserBtn'])) {
 	$country     = trim($_POST['countryUser']);
 
         if (empty($first_name)) {
-            $error .= "<li class='error_msg'>Author är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Förnamn är obligatoriskt</li>";
         }
         if (empty($last_name)) {
-            $error .= "<li class='error_msg'>Titel är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Efternamn är obligatoriskt</li>";
         }
         if (empty($email)) {
-            $error .= "<li class='error_msg'>Text är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>E-mail är obligatoriskt</li>";
         }
         if (empty($phone)) {
-            $error .= "<li class='error_msg'>Author är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Telefonnummer är obligatoriskt</li>";
         }
         if (empty($street)) {
-            $error .= "<li class='error_msg'>Titel är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Adress är obligatoriskt</li>";
         }
         if (empty($postal_code)) {
-            $error .= "<li class='error_msg'>Text är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Postnummer är obligatoriskt</li>";
         }
         if (empty($city)) {
-            $error .= "<li class='error_msg'>Author är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Stad är obligatoriskt</li>";
         }
         if (empty($country)) {
-            $error .= "<li class='error_msg'>Titel är obligatoriskt</li>";
+            $error .= "<li class='error_msg'>Land är obligatoriskt</li>";
         }
 
         if ($error) {
@@ -62,7 +62,7 @@ if (isset($_POST['submitUserBtn'])) {
     	try {
 	    $query = "
 	    	UPDATE users
-			SET first_name = :first_name, last_name = :last_name, email = :email, phone = :phone, street = :street, postal_code = :postal_code, city = :city, country = :country,
+			SET first_name = :first_name, last_name = :last_name, email = :email, phone = :phone, street = :street, postal_code = :postal_code, city = :city, country = :country
 	    	WHERE id = :id;
 	    ";
 
@@ -89,7 +89,9 @@ if (isset($_POST['submitUserBtn'])) {
         }
 	}
 } 
-
+echo("<pre>");
+print_r($message);
+echo("</pre>");
    try {
         $query = "
             SELECT * FROM users
@@ -110,22 +112,26 @@ if (isset($_POST['submitUserBtn'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" email="width=device-width, initial-scale=1.0">
-    <title>Öltanken - Uppdatera mina uppgifter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../styles/home-login-reg.css'>
+
+    <title>Öltanken - Uppdatera mina sidor</title>
 </head>
 <body>
 
     <h1>Uppdatera inlägg</h1>
     <?=$message?>
     <form action="" method="POST">
-        <input type="text" name="first_nameUser" placeholder="Author" value="<?=$user['first_name']?>">
-        <input type="text" name="last_nameUser" placeholder="last_name" value="<?=$user['last_name']?>">
+        <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=$user['first_name']?>">
+        <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=$user['last_name']?>">
         <input type="text" name="emailUser" placeholder="E-mail" value="<?=$user['email']?>">
-        <input type="text" name="phoneUser" placeholder="phone" value="<?=$user['phone']?>">
-        <input type="text" name="streetUser" placeholder="street" value="<?=$user['street']?>">
+        <input type="text" name="phoneUser" placeholder="Telefonnmmer" value="<?=$user['phone']?>">
+        <input type="text" name="streetUser" placeholder="Adress" value="<?=$user['street']?>">
         <input type="text" name="postal_codeUser" placeholder="Postnummer" value="<?=$user['postal_code']?>">
-        <input type="text" name="cityUser" placeholder="city" value="<?=$user['city']?>">
-        <input type="text" name="countryUser" placeholder="country" value="<?=$user['country']?>">
+        <input type="text" name="cityUser" placeholder="Stad" value="<?=$user['city']?>">
+        <input type="text" name="countryUser" placeholder="Land" value="<?=$user['country']?>">
         <input type="submit" name="submitUserBtn" value="Uppdatera">
     </form>
     <a href="mina-sidor.php">< Tillbaka</a>
