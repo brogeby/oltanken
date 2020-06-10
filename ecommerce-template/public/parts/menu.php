@@ -34,8 +34,15 @@ if(!isset($_SESSION['items'])) {
                         <div class="cart-brewery"><?=$productItem['brewery']?></div>
                         <div class="cart-price"><?=$productItem['price']?>kr</div>
                         <div class="cart-quantity">I varukorgen: <?=$productItem['quantity']?></div>
-                        <hr>
+                        <form action="deletefromcart.php" method="POST">
+                            <input type="hidden" name="productId" value="<?=$productId?>" >
+                            <button type="submit" class="general-button">
+                                <span>Ta bort</span>
+                            </button>
+                        </form>
+                        
                     </div>
+                    <hr>
                 <?php } ?>
                 <span class="count">Total: <?=$productTotalSum?>kr</span>
                 <br>
