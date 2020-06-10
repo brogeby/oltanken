@@ -1,0 +1,54 @@
+/* Mobile first */
+
+.error_msg {
+  background:#FBE3E4;
+  padding:10px;
+  margin-bottom:20px; 
+  color: #971F11;  
+  width:80%;
+}
+
+.success_msg {
+  background: lightgreen;
+  padding: 10px;
+  margin-bottom: 20px;   
+  width: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+    #content1 {
+        display: inline-block;
+        float: left;
+        margin-left: 20px;
+    }
+
+    fieldset {
+        padding: 10px 10px;
+    }
+    
+    #content2 {
+        display: inline-block;
+        float: right;
+        border-left: 1px black solid;
+        padding-left: 45%;
+        margin-right: 20px;
+    }
+    .error_msg {
+        background:#FBE3E4;
+        padding:10px;
+        margin-bottom:20px; 
+        color: #971F11;  
+        width:80%;
+      }
+      
+      .success_msg {
+        background: lightgreen;
+        padding: 10px;
+        margin-bottom: 20px;   
+        width: 80%;
+      }
+}
