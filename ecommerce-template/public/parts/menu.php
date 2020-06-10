@@ -1,4 +1,4 @@
-<?php
+ <?php
  //unset($_SESSION['items']);
 if(!isset($_SESSION['items'])) {
     $_SESSION['items'] = [];
