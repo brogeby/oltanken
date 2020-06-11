@@ -1,9 +1,13 @@
  <?php
- $productItemCount = count($_SESSION['items']);
- $productTotalSum = 0; count($_SESSION['items']);
- foreach ($_SESSION['items'] as $productId => $productItem) {
-      $productTotalSum += $productItem['price'] * $productItem['quantity'];
- }
+    if(!isset($_SESSION['items'])) {
+        $_SESSION['items'] = [];
+    }
+
+    $productItemCount = count($_SESSION['items']);
+    $productTotalSum = 0; count($_SESSION['items']);
+    foreach ($_SESSION['items'] as $productId => $productItem) {
+        $productTotalSum += $productItem['price'] * $productItem['quantity'];
+    }
  ?>
  <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
