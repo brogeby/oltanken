@@ -197,32 +197,161 @@ background-color:#34CACA;
   text-decoration: none;
   cursor: pointer;
 } */
-* {
-	box-sizing: border-box;
-	font-family: Arial, sans-serif;
-	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-html {
-	height: 100%;
-}
-body {
-	position: relative;
-	min-height: 100%;
-	color: #555555;
-	background-color: #FFFFFF;
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+.wrapper {
 	margin: 0;
-	padding-bottom: 100px; /* Same height as footer */
-}
-h1, h2, h3, h4, h5 {
-	color: #394352;
-}
-.content-wrapper {
-	width: 1050px;
-	margin: 0 auto;
+    display: grid;
+    font-family: "Arimo";
+	animation: slideUp 2000ms ease;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-areas:
+	". content content content content sidebar sidebar .";
+	column-gap: 10px;
+
 }
 
+/* @keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+
+    }
+} */
+
+.container {
+	grid-area: content;
+	display: grid;
+	background-color: coral;
+	padding: 5%;
+	margin: 50px 0;
+	border-radius: 4px;
+	box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+	max-height: 600px;
+}
+
+h1 {
+    align-self: center;
+}
+
+form {
+    width: 100%;
+
+}
+input {
+	width: 100%;
+	min-height: 25px;
+	border: 0;
+	font-size: 1rem;
+	letter-spacing: .15rem;
+	font-family: "Arimo";
+	margin-top: 5px;
+	color: #000;
+	border-radius: 4px;
+}
+
+label {
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 2px;
+	color: #000;
+    }
+
+h1 {
+	font-size: 24px;
+	line-height: 10px;
+	color: #000;
+	letter-spacing: 1px;
+}
+
+h1:nth-of-type(2) {
+	margin-top: 10%;
+}
+
+
+.name {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.lastname, .firstname {
+	width: 45%;
+}
+
+.address-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info {
+	width: 30%;
+}
+
+.cc-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-info {
+	width: 45%;
+}
+
+.btns {
+	display: flex;
+	flex-direction: column;
+    align-items: flex-end;
+}
+
+.btns button {
+	margin: 3px 0;
+	height: 30px;
+	width: 40%;
+	color: #cfc9e1;
+	background-color: #4a3b76;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: .3rem;
+	letter-spacing: 2px;
+}
+.btns button:hover {
+	animation-name: btn-hov;
+	animation-duration: 550ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes btn-hov {
+    100% {
+        background-color: #cfc9e1;
+        color: #4a3b76;
+        transform: scale(1.05)
+    }
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+.content-wrapper {
+	display: grid;
+	margin: 50px auto;
+	padding: 10px;
+	overflow: hidden;
+	overflow-y: scroll;
+	min-height: 600px;
+	max-height: 600px;
+	min-width: 350px;
+	max-width: 350px;
+	grid-area: sidebar;
+	box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+}
 
 .cart h1 {
 	display: block;
@@ -233,26 +362,21 @@ h1, h2, h3, h4, h5 {
 	text-align: center;
 	width: 100%;
 }
-.cart table {
-	width: 100%;
-}
 .cart table thead td {
-	padding: 30px 0;
+	padding: 10px 0;
 	border-bottom: 1px solid #EEEEEE;
 }
 .cart table thead td:last-child {
 	text-align: right;
 }
 .cart table tbody td {
-	padding: 20px 0;
+	padding: 5px;
 	border-bottom: 1px solid #EEEEEE;
 }
 .cart table tbody td:last-child {
 	text-align: right;
 }
-.cart table .img {
-	width: 80px;
-}
+
 .cart table .remove {
 	color: #777777;
 	font-size: 12px;
@@ -277,45 +401,27 @@ h1, h2, h3, h4, h5 {
 }
 .cart .subtotal {
 	text-align: right;
-	padding: 40px 0;
+	padding: 40px 10px;
 }
 .cart .subtotal .text {
-	padding-right: 40px;
+	padding-right: 10px;
 	font-size: 18px;
 }
 .cart .subtotal .price {
 	font-size: 18px;
 	color: #999999;
 }
-.cart .buttons {
-	text-align: right;
-	padding-bottom: 40px;
+
+.remove {
+	color: #777777;
+	font-size: 12px;
+	padding-top: 3px;
 }
-.cart .buttons .place-order-btn{
-	margin-left: 5px;
-	padding: 12px 20px;
-	border: 0;
-	background: green;
-	color: #FFFFFF;
-	font-size: 14px;
-	font-weight: bold;
-	cursor: pointer;
-	border-radius: 5px;
+
+.remove:hover {
+	text-decoration: underline;
 }
-.cart .buttons  .update-order-btn{
-	margin-left: 5px;
-	padding: 12px 20px;
-	border: 0;
-	background: #4e5c70;
-	color: #FFFFFF;
-	font-size: 14px;
-	font-weight: bold;
-	cursor: pointer;
-	border-radius: 5px;
-}
-.cart .buttons input[type="submit"]:hover {
-	background: #434f61;
-}
+
 .placeorder h1 {
 	display: block;
 	font-weight: normal;

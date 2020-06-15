@@ -1,13 +1,14 @@
  <?php
-    if(!isset($_SESSION['items'])) {
-        $_SESSION['items'] = [];
-    }
+ //unset($_SESSION['items']);
+if(!isset($_SESSION['items'])) {
+    $_SESSION['items'] = [];
+}
 
-    $productItemCount = count($_SESSION['items']);
-    $productTotalSum = 0; count($_SESSION['items']);
-    foreach ($_SESSION['items'] as $productId => $productItem) {
-        $productTotalSum += $productItem['price'] * $productItem['quantity'];
-    }
+ $productItemCount = count($_SESSION['items']);
+ $productTotalSum = 0; count($_SESSION['items']);
+ foreach ($_SESSION['items'] as $productId => $productItem) {
+      $productTotalSum += $productItem['price'] * $productItem['quantity'];
+ }
  ?>
  <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -20,23 +21,34 @@
 </div>
 <header class="header">
     <h3>Öltanken</h3>
-    <img id="header-logo" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
-    <img id="show-cart" src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">
+    <img id="header-logo" class="header-img" src="<?= IMG_PATH . 'bwob-logo.png'?>" alt="Öltanken">
+    <img id="show-cart" class="header-img" src="<?= IMG_PATH . 'business.svg'?>" alt="Shopping Cart">
         <div id="cart-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
+                <h4>Varukorg</h4>
                 <?php foreach ($_SESSION['items'] as $productId => $productItem) { ?>
                     <div class="cart-details">
-                        <div class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></div>
+                        <div class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>"></div>
                         <div class="cart-title"><?=$productItem['title']?></div>
                         <div class="cart-brewery"><?=$productItem['brewery']?></div>
                         <div class="cart-price"><?=$productItem['price']?>kr</div>
                         <div class="cart-quantity">I varukorgen: <?=$productItem['quantity']?></div>
-                        <hr>
+                        <form action="deletefromcart.php" method="POST">
+                            <input type="hidden" name="productId" value="<?=$productId?>" >
+                            <button type="submit" class="general-button">
+                                <span>Ta bort</span>
+                            </button>
+                        </form>
+                        
                     </div>
+                    <hr>
                 <?php } ?>
                 <span class="count">Total: <?=$productTotalSum?>kr</span>
-                <a href="checkout.php" class="general-button">Gå till kassan</a>
+                <br>
+                <form action="checkout.php" method="POST">
+					<input type="submit" name="" value="Checkout">
+				</form>
             </div>
         </div>
     <label class="nav-toggle" for="nav-toggle" onclick="openNav()">

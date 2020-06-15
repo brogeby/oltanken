@@ -1,10 +1,11 @@
 <?php
 
-$host 	  = 'localhost';
-$database = 'e_handel_uppgift';
-$user     = 'root';
-$password = '';
-$charset  = 'utf8mb4';
+$host		   = 'localhost';
+$database 	   = 'e_handel_uppgift';
+$user     	   = 'root';
+$password	   = '';
+$passwordmysql = 'mysql';
+$charset  	   = 'utf8mb4';
 
 $dns 	  = "mysql:host={$host};dbname={$database};charset={$charset}";
 
