@@ -3,6 +3,7 @@
 $host		   = 'localhost';
 $database 	   = 'e_handel_uppgift';
 $user     	   = 'root';
+$password	   = '';
 $passwordmysql = 'mysql';
 $charset  	   = 'utf8mb4';
 
