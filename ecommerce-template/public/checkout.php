@@ -29,24 +29,26 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
  <?php include 'parts/menu.php';?> 
  <div class="wrapper">
     <div class="container">
-        <form action="index.php" method="post">
+        <form action="tack-sida.php" method="POST">
             <h1>
                 <i class="fas fa-shipping-fast"></i>
                 Shipping Details
             </h1>
             <div class="name">
                 <div class="firstname">
-                    <label for="f-name">First</label>
+                    <label for="f-name">Firstname</label>
                     <input type="text" name="f-name">
                 </div>
                 <div class="lastname">
-                    <label for="l-name">Last</label>
+                    <label for="l-name">Lastname</label>
                     <input type="text" name="l-name">
                 </div>
             </div>
             <div class="email">
-                <label for="name">Email</label>
-                <input type="email" name="address">
+                <div class="email-child">
+                    <label for="name">Email</label>
+                    <input type="email" name="address">
+                </div>
             </div>
             <div class="address-info">
                 <div class="info">
@@ -63,8 +65,15 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
                 </div>
             </div>
             <div class="btns">
-                <button><a href="index.php"></a> Back to cart</button>
-                <button>Purchase</button>
+                <button>Slutför köp</button>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox">
+                    <label for="">
+                        Jag har läst och godkänner villkoren.
+                    </label>
+                </div>
             </div>
         </form>
     </div>
