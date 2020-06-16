@@ -135,5 +135,6 @@ if (isset($_POST['submitUserBtn'])) {
         <input type="submit" name="submitUserBtn" value="Uppdatera">
     </form>
     <a href="mina-sidor.php">< Tillbaka</a>
+<?php include '../parts/footer.php';?>
 </body>
 </html>

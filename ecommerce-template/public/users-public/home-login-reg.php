@@ -75,34 +75,38 @@
 </head>
 <body>
     
-    <div id="content1"> 
+<div class="wrapper">
+    <div class="content1"> 
         <article class="border">
                 <h1>Logga in</h1>
                     <!-- Visa errormeddelanden -->
                         <?=$msg?>
             <form method="POST" action="#">
                 <fieldset>
-                    <p>
+                    <div>
                         <label for="input1">E-post:</label> <br>
                         <input type="text" class="text" name="email">
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <label for="input2">Lösenord:</label> <br>
                         <input type="password" class="text" name="password">
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <input type="submit" name="doLogin" value="Login">
-                    </p>
+                    </div>
                 </fieldset>
             </form>
     </div>
-    <div id="content2">
+    <div class="content2">
+        <article class="border">
         <h2>Registera dig här</h2>
         <form action="registering.php" method="POST">
             <input type="submit" value="Registera">
         </form>
     </div>
+</div>
+<?php include '../parts/footer.php';?>
 </body>
 </html>

@@ -81,5 +81,6 @@ try {
     </div>
 </ul>
 <a href="home-login-reg.php">< Tillbaka</a>
+<?php include '../parts/footer.php';?>
 </body>
 </html>

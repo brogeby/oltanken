@@ -96,73 +96,85 @@ error_reporting(-1);
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/home-login-reg.css'>
 
-    <title>Registering</title>
+    <title>Öltanken - Registering</title>
 </head>
 <body>
-    <div id="reg-form-wrapper">
+    <div class="reg-form-wrapper">
         <article class="border">
                 <h1>Registrera dig här</h1>
                 
                     <!-- Visa errormeddelanden -->
                         <?=$msg?>
+            
             <form method="POST" action="#">
                 <fieldset>
-                    <p>
+                <div class="name">
+                   <div class="firstname-form">
                         <label for="input1">Förnamn:</label> <br>
-                        <input type="text" class="text" name="first_name" value="<?=htmlentities($first_name)?>">
-                    </p>
+                        <input type="text" class="text" name="first_name" placeholder="John" value="<?=htmlentities($first_name)?>">
+                    </div>
 
-                    <p>
+                   <div class="lastname-form">
                         <label for="input1">Efternamn:</label> <br>
-                        <input type="text" class="text" name="last_name" value="<?=htmlentities($last_name)?>">
-                    </p>
+                        <input type="text" class="text" name="last_name" placeholder="Doe" value="<?=htmlentities($last_name)?>">
+                    </div>
+                </div>
 
-                    <p>
+                <div class="email">
+                   <div class="email-form">
                         <label for="input1">E-post:</label> <br>
-                        <input type="text" class="text" name="email" value="<?=htmlentities($email)?>">
-                    </p>
+                        <input type="text" class="text" name="email" placeholder="John.doe@hotmail.com" value="<?=htmlentities($email)?>">
+                    </div>
+                </div>
 
-                    <p>
+                <div class="email-pass-conf">
+                   <div class="password-form">
                         <label for="input2">Lösenord:</label> <br>
                         <input type="password" class="text" name="password">
-                    </p>
+                    </div>
 
-                    <p>
+                   <div class="confirmPassword-form">
                         <label for="input2">Bekräfta lösenord:</label> <br>
                         <input type="password" class="text" name="confirmPassword">
-                    </p>
+                    </div>
+                </div>
 
-                    <p>
+                <div class="phone-street-postal">
+                   <div class="phone-form">
                         <label for="input1">Telefon:</label> <br>
-                        <input type="text" class="text" name="phone" value="<?=htmlentities($phone)?>">
-                    </p>
+                        <input type="text" class="text" name="phone" placeholder="070-78-392-10" value="<?=htmlentities($phone)?>">
+                    </div>
 
-                    <p>
+                   <div class="street-form">
                         <label for="input1">Adress:</label> <br>
-                        <input type="text" class="text" name="street" value="<?=htmlentities($street)?>">
-                    </p>
+                        <input type="text" class="text" name="street" placeholder="Åsögatan 117" value="<?=htmlentities($street)?>">
+                    </div>
 
-                    <p>
+                   <div class="postal-code-form">
                         <label for="input1">Postnummer:</label> <br>
-                        <input type="text" class="text" name="postal_code" value="<?=htmlentities($postal_code)?>">
-                    </p>
+                        <input type="text" class="text" name="postal_code" placeholder="116 32" value="<?=htmlentities($postal_code)?>">
+                    </div>
+                </div>
 
-                    <p>
+                <div class="city-country">
+                   <div class="city-form">
                         <label for="input1">Stad:</label> <br>
-                        <input type="text" class="text" name="city" value="<?=htmlentities($city)?>">
-                    </p>
-
-                    <p>
+                        <input type="text" class="text" name="city" placeholder="Stockholm" value="<?=htmlentities($city)?>">
+                    </div>
+                
+                   <div class="country-form">
                         <label for="input1">Land:</label> <br>
-                        <input type="text" class="text" name="country" value="<?=htmlentities($country)?>">
-                    </p>
-                    <p>
+                        <input type="text" class="text" name="country" placeholder="Sverige" value="<?=htmlentities($country)?>">
+                    </div>
+                </div>
+                    <div class="submit-btn">
                         <input type="submit" name="register" value="Registrera">
-                    </p>
+                    </div>
                 </fieldset>
             </form>
         </article>
         <a href="home-login-reg.php">< Tillbaka</a>
     </div>
+<?php include '../parts/footer.php';?>
 </body>
 </html>
