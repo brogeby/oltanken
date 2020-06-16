@@ -1,5 +1,5 @@
 <?php
-    include('../src/config.php');
+    include('../../src/config.php');
   
     if(!empty($_POST['productId'])
         && !empty($_POST['quantity'])
