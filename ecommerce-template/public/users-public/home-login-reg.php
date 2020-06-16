@@ -74,7 +74,7 @@
     <title>Öltanken - Logga in - Registera dig</title>
 </head>
 <body>
-    
+<?php include '../parts/menu.php';?>
 <div class="wrapper">
     <div class="content1"> 
         <article class="border">

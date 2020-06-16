@@ -99,6 +99,7 @@ error_reporting(-1);
     <title>Öltanken - Registering</title>
 </head>
 <body>
+<?php include '../parts/menu.php';?>
     <div class="reg-form-wrapper">
         <article class="border">
                 <h1>Registrera dig här</h1>
@@ -106,7 +107,7 @@ error_reporting(-1);
                     <!-- Visa errormeddelanden -->
                         <?=$msg?>
             
-            <form method="POST" action="#">
+            <form method="POST" action="#" class="form-reg">
                 <fieldset>
                 <div class="name">
                    <div class="firstname-form">

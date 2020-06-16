@@ -58,7 +58,7 @@ try {
     <title>Öltanken - Mina sidor</title>
 </head>
 <body>
-
+<?php include '../parts/menu.php';?>
 	<h1>Mina sidor</h1>
 <ul>
     <li><?=$user['first_name']?></li>
