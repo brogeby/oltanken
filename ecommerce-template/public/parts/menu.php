@@ -47,7 +47,7 @@ if(!isset($_SESSION['items'])) {
                 <span class="count">Total: <?=$productTotalSum?>kr</span>
                 <br>
                 <form action="checkout/checkout.php" method="POST">
-					<input type="submit" name="" value="Checkout">
+					<input type="submit" class="general-button go-to-checkout" name="" value="Gå till kassan">
 				</form>
             </div>
         </div>
