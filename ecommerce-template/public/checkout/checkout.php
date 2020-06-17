@@ -45,10 +45,18 @@ $msg = '';
                     <input type="text" name="lastName">
                 </div>
             </div>
-            <div class="email">
+            <div class="email-pass-phone">
                 <div class="email-child">
                     <label for="name">Email</label>
                     <input type="email" name="email">
+                </div>
+                <div class="pass-child">
+                    <label for="password">Lösenord</label>
+                    <input type="password" name="password">
+                </div>
+                <div class="phone-child">
+                    <label for="password">Phone</label>
+                    <input type="text" name="phone">
                 </div>
             </div>
             <div class="address-info">
@@ -69,18 +77,11 @@ $msg = '';
                     <input type="text" name="country">
                 </div>
             </div>
-            <div class="info-2">
-                    <label for="password">Phone</label>
-                    <input type="text" name="phone">
-                </div>
-                <div class="info-2">
-                    <label for="password">Lösenord</label>
-                    <input type="password" name="password">
-                </div>
             <label class="checkbox">
                 <input type="checkbox" />
                 <span>Jag godkänner villkoren</span>
             </label>
+            <div id="form-message"><?=$msg?></div>
             <input type="hidden" name="totalPrice" value="<?=$productTotalSum?>">
             <div class="btns">
                 <button type="submit" name="createOrderBtn">Slutför köp</button>

@@ -1,19 +1,19 @@
 <?php
 include('../../src/config.php');
-require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
+require SRC_PATH . ('dbconnect.php');
 error_reporting(-1);
 	// echo "<pre";
 	// print_r($_POST);
 	// echo "<pre";
 	// exit;
-	$firstName  = '';
-    $lastName   = '';
+	$firstName   = '';
+    $lastName    = '';
     $email       = '';
     $phone       = '';
     $street      = '';
-    $postalCode = '';
+    $postalCode  = '';
     $city        = '';
-    $country     = '';
+	$country     = '';
     $error       = '';
     $msg         = '';
 	if (isset($_POST['createOrderBtn'])) {
@@ -28,6 +28,17 @@ error_reporting(-1);
 		$postalCode 	= trim($_POST['postalCode']);
 		$totalPrice 	= trim($_POST['totalPrice']);
 
+		if (empty($firstName)) {$error    .= "<div>First är obligatoriskt</div>";}
+		if (empty($lastName)) {$error     .= "<div>Last name är obligatorsikt</div>";}
+		if (empty($email)) {$error        .= "<div>Email är obligatorsikt</div>";}
+		if (empty($phone)) {$error        .= "<div>Phone number är obligatorsikt</div>";}
+		if (empty($street)) {$error       .= "<div>Street är obligatorsikt</div>";}
+		if (empty($postalCode)) {$error   .= "<div>Postal code är obligatorsikt</div>";}
+		if (empty($city)) {$error         .= "<div>City är obligatorsikt</div>";}
+		if (empty($country)) {$error      .= "<div>Country är obligatorsikt</div>";}
+		if ($error) {$msg                  = "<div>{$error}</div>";}
+
+	if(empty($error)){
 	// Check if user already exist
 	try {
         $query = "
@@ -36,7 +47,7 @@ error_reporting(-1);
         ";
         
         $stmt = $dbconnect->prepare($query);
-        $stmt->bindvalue(':email', $email);//$_GET['email']
+        $stmt->bindvalue(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch();
     } catch (\PDOException $e) {
@@ -69,6 +80,7 @@ error_reporting(-1);
 	        throw new \PDOException($e->getMessage(), (int) $e->getCode());
 	    }
 	}
+
 	// Create order in oders-tabel
 	try {
 		$query = "
@@ -79,7 +91,7 @@ error_reporting(-1);
 		$stmt = $dbconnect->prepare($query);
 		$stmt->bindvalue(':userId', $userId);
 		$stmt->bindvalue(':totalPrice', $totalPrice);
-		$stmt->bindvalue(':fullName', "{$firstName} {$lastName}");//$_GET['email']);
+		$stmt->bindvalue(':fullName', "{$firstName} {$lastName}");
 		$stmt->bindvalue(':street', $street);
 		$stmt->bindvalue(':postalCode', $postalCode);
 		$stmt->bindvalue(':city', $city);
@@ -112,6 +124,7 @@ error_reporting(-1);
 	unset($_SESSION['items']);
 	header('Location: tack-sida.php');
 	exit;
+	}
 }
 	header('Location: checkout.php');
 ?>
