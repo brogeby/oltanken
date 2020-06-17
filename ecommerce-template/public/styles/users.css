@@ -376,9 +376,7 @@ button:focus {
 	padding: 10px 0;
 	border-bottom: 1px solid #EEEEEE;
 }
-.cart table thead td:last-child {
-	text-align: right;
-}
+
 .cart table tbody td {
 	padding: 5px;
 	border-bottom: 1px solid #EEEEEE;
@@ -411,7 +409,7 @@ button:focus {
 }
 .cart .subtotal {
 	text-align: right;
-	padding: 40px 10px;
+	padding: 40px 14px;
 }
 .cart .subtotal .text {
 	padding-right: 10px;
