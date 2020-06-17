@@ -33,7 +33,7 @@ $msg = '';
         <form action="createorder.php" method="POST">
             <h1>
                 <i class="fas fa-shipping-fast"></i>
-                Shipping Details
+                Fraktinformation
             </h1>
             <div class="name">
                 <div class="firstname">
@@ -47,7 +47,7 @@ $msg = '';
             </div>
             <div class="email-pass-phone">
                 <div class="email-child">
-                    <label for="name">Email</label>
+                    <label for="name">E-mail</label>
                     <input type="email" name="email">
                 </div>
                 <div class="pass-child">
@@ -55,7 +55,7 @@ $msg = '';
                     <input type="password" name="password">
                 </div>
                 <div class="phone-child">
-                    <label for="password">Phone</label>
+                    <label for="password">Telefon</label>
                     <input type="text" name="phone">
                 </div>
             </div>
@@ -90,32 +90,32 @@ $msg = '';
     </div>
 
     <div class="cart content-wrapper">
-        <h1>Shopping Cart</h1>
+        <h1>Varukorg</h1>
             <table>
                 <thead>
                     <tr>
-                        <td colspan="2">Product</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
+                        <td colspan="2">Produkt</td>
+                        <td>Pris</td>
+                        <td>Antal</td>
                     </tr>
                 </thead>
                 <tbody>
                 
                     <?php if (empty($productItem)): ?>
                     <tr>
-                        <td colspan="5" style="text-align:center; color:red;">You have no products added in your Shopping Cart</td>
+                        <td colspan="5" style="text-align:center; color:red;">Du har inga produkter i din varukorg för tillfället</td>
                     </tr>
                     <?php else: ?>
                     <?php foreach ($_SESSION['items'] as $productId => $productItem) : ?>
                     <tr>
                         
                         <td class="img">
-                            <img src="<?=IMG_PATH . $productItem['img_url']?>" width="25" height="50" alt="<?=$productItem['title']?>">
+                            <img src="<?=IMG_PATH . $productItem['img_url']?>" width="auto" height="50" alt="<?=$productItem['title']?>">
                         </td>
                         <td>
                             <?=$productItem['title']?>
                             <br>
-                            <a href="checkout.php?page=cart&remove=<?=$productItem['id']?>" class="remove">Remove</a>
+                            <a href="checkout.php?page=cart&remove=<?=$productItem['id']?>" class="remove">Ta bort</a>
                         </td>
                         <td class="price"><?=number_format($productItem['price'],2); ?>kr</td>
                         <td>
@@ -130,7 +130,7 @@ $msg = '';
                 </tbody>
             </table>
             <div class="subtotal">
-                <span class="text">Subtotal:</span>
+                <span class="text">Total summa:</span>
                 <span class="price"><?=$productTotalSum?>kr</span>
             </div>
             
