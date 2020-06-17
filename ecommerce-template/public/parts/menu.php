@@ -15,7 +15,7 @@ if(!isset($_SESSION['items'])) {
     <div class="overlay-content">
         <a href="<?= APP_URL . 'public/index.php' ?>">Home</a>
         <a href="<?= APP_URL . 'public/productlist.php' ?>">Products</a>
-        <a href="<?= APP_URL . 'public/index.php' ?>">Gäst</a>
+        <a href="<?= APP_URL . 'public/users-public/home-login-reg.php' ?>">Mina sidor</a>
         <a href="<?= APP_URL . 'public/admin/index.php' ?>">Admin</a>
     </div>
 </div>

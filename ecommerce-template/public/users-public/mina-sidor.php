@@ -57,29 +57,54 @@ try {
 
     <title>Öltanken - Mina sidor</title>
 </head>
-<body>
+<body class="body-mina-sidor">
+<?php include '../parts/menu.php';?>
+<div class="wrapper-mina-sidor">
+    <div class="container-mina-sidor">
+        <h1 class="rubrik-center">Mina sidor</h1>
+    
+        <label>Förnamn</label>
+        <input value="<?=$user['first_name']?>" readonly>
+        
+        <label>Efternamn</label>
+        <input value="<?=$user['last_name']?>" readonly>
+        
+        <label>E-mail</label>
+        <input value="<?=$user['email']?>" readonly>
+        
+        <label>Telefon</label>
+        <input value="<?=$user['phone']?>" readonly>
+        
+        <label>Gata</label>
+        <input value="<?=$user['street'] ?>" readonly>
+        
+        <label>Postnnummer</label>
+        <input value="<?=$user['postal_code']?>" readonly>
+        
+        <label>Stad</label>
+        <input value="<?=$user['city']?>" readonly>
+        
+        <label>Land</label>
+        <input value="<?=$user['country']?>" readonly>
+        
+        <label>Registrering</label>
+        <input value="<?=$user['register_date']?>" readonly>
 
-	<h1>Mina sidor</h1>
-<ul>
-    <li><?=$user['first_name']?></li>
-    <li><?=$user['last_name'] ?></li>
-    <li><b><?=$user['email']?></b></li>
-    <li><?=$user['phone']?></li>
-    <li><?=$user['street'] ?></li>
-    <li><?=$user['postal_code']?></li>
-    <li><?=$user['city']?></li>
-    <li><?=$user['country'] ?></li>
-    <li><?=$user['register_date']?></li>
-
-        <form action="#" method="POST">
-            <input type="hidden" name="postId" value="<?=$user['id']?>">
-            <input type="submit" name="deleteBtn" value="Radera">
-        </form>
-        <form action="update-profile.php?id=<?=$user['id']?>" method="POST">
-            <input type="submit" name="updateBtn" value="Uppdatera">
-        </form>
+        <div class="mina-sidorBtn">
+                <form action="update-profile.php?id=<?=$user['id']?>" method="POST">
+                    <input type="submit" name="updateBtn" value="Uppdatera" class="updateBtn">
+                </form>
+        </div>       
+        <div class="mina-sidorBtn">
+                <form action="#" method="POST">
+                    <input type="hidden" name="postId" value="<?=$user['id']?>">
+                    <input onclick="return myConfirm();" type="submit" name="deleteBtn" value="Radera" class="deleteBtn" class="btn btn-danger">
+                </form>
+        </div>
     </div>
-</ul>
+</div>
 <a href="home-login-reg.php">< Tillbaka</a>
+<?php include '../parts/footer.php';?>
+<script src="../js/main.js"></script>
 </body>
 </html>
