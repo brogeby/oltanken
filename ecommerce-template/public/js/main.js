@@ -143,3 +143,12 @@ window.onclick = function(event) {
 function goBack() {
 	window.history.back();
   }
+  
+function myConfirm() {
+	var result = confirm("Want to delete?");
+	if (result == true) {
+		return true;
+	} else {
+		return false;
+	}
+}

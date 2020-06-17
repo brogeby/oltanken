@@ -120,20 +120,27 @@ if (isset($_POST['submitUserBtn'])) {
     <title>Öltanken - Uppdatera mina sidor</title>
 </head>
 <body>
+<?php include '../parts/menu.php';?>
+<?=$message?>
+<div class="wrapper-update-profile">
+    <div class="container-update-profile"> 
+        
+        <h1 class="rubrik-center">Uppdatera inlägg</h1>
 
-    <h1>Uppdatera inlägg</h1>
-    <?=$message?>
-    <form action="#" method="POST">
-        <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=$user['first_name']?>">
-        <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=$user['last_name']?>">
-        <input type="text" name="emailUser" placeholder="E-mail" value="<?=$user['email']?>">
-        <input type="text" name="phoneUser" placeholder="Telefonnmmer" value="<?=$user['phone']?>">
-        <input type="text" name="streetUser" placeholder="Adress" value="<?=$user['street']?>">
-        <input type="text" name="postal_codeUser" placeholder="Postnummer" value="<?=$user['postal_code']?>">
-        <input type="text" name="cityUser" placeholder="Stad" value="<?=$user['city']?>">
-        <input type="text" name="countryUser" placeholder="Land" value="<?=$user['country']?>">
-        <input type="submit" name="submitUserBtn" value="Uppdatera">
-    </form>
+        <form action="#" method="POST">
+            <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=$user['first_name']?>">
+            <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=$user['last_name']?>">
+            <input type="text" name="emailUser" placeholder="E-mail" value="<?=$user['email']?>">
+            <input type="text" name="phoneUser" placeholder="Telefonnmmer" value="<?=$user['phone']?>">
+            <input type="text" name="streetUser" placeholder="Adress" value="<?=$user['street']?>">
+            <input type="text" name="postal_codeUser" placeholder="Postnummer" value="<?=$user['postal_code']?>">
+            <input type="text" name="cityUser" placeholder="Stad" value="<?=$user['city']?>">
+            <input type="text" name="countryUser" placeholder="Land" value="<?=$user['country']?>">
+            <input type="submit" name="submitUserBtn" value="Uppdatera" class="updateBtn">
+        </form>
+        
+    </div>
+</div>
     <a href="mina-sidor.php">< Tillbaka</a>
 <?php include '../parts/footer.php';?>
 </body>

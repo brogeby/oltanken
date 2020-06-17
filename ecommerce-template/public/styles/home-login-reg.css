@@ -1,4 +1,9 @@
 /* Mobile first */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .error_msg {
   background:#FBE3E4;
@@ -19,65 +24,112 @@
 
 }
 /* Desktop */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {  
+    .body-home-login-reg {
+      background-color: #eee;
+    }
+
+    .login {
+      background-color: lightgreen;
+      height: 70px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border: 1px solid black;
+    }
+    
+    .login-background {
+      background-color: #fff;
+      padding: 20px 20px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 1px solid black;
+      border-top: none;
+    }
+    
+    .rubrik-login {
+      margin: 20px 0 0 15px;
+    }
+
+    .rubrik-home-reg {
+      text-align: center;
+    }
+
     .wrapper {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
-      grid-template-areas: ". . content1 content1 content2 content2 . .";
+      grid-template-areas: ". content1 content1 . content2 content2 . .";
       justify-content: center;
+      margin-top: 15%;
     }
 
     .content1 {
-        display: grid;
-        grid-area: content1;
-        margin-right: 20px;
-        min-height: 400px;
-        align-content: center;
+      display: grid;
+      grid-area: content1;
+      margin-left: 20px;
+      min-height: 500px;
+      align-content: center;
     }
 
-    fieldset {
-        border-radius: 10px;
-        padding: 20px 20px;
+    .fieldset-reg {
+      border-radius: 10px;
+      padding: 20px 20px;
+      background: #fff;
+      box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.5);
     }
     
     .content2 {
-        display: grid;
-        grid-area: content2;
-        border-left: 1px black solid;
-        padding-left: 45%;
-        margin-right: 20px;
-        min-height: 400px;
-        align-items: center;
+      display: grid;
+      grid-area: content2;
+      border-left: 1px black solid;
+      padding-left: 45%;
+      min-height: 500px;
+      align-items: center;
     }
 
     .error_msg {
-        background:#FBE3E4;
-        padding:10px;
-        margin-bottom:20px; 
-        color: #971F11;  
-        width:80%;
+      background:#FBE3E4;
+      padding:10px;
+      color: #971F11;
+      margin: 15px 0 15px 0;
+      width: 100%;
+      text-align: center;
+      border-radius: 10px;
     }
       
     .success_msg {
       background: lightgreen;
       padding: 10px;
-      margin-bottom: 20px;   
-      width: 80%;
+      margin: 20px 0 0 0;
+      width: 100%;
+      text-align: center;
     }
+
     /* registering forms */
+    .body-reg {
+      background: #eee;
+    }
+
     .reg-form-wrapper {
       display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:". content-reg content-reg .";
+    }
+
+    .container-reg {
+      grid-area: content-reg;
     }
 
     .form-reg {
       display: grid;
       width: 100%;
       padding: 40px 40px;
+      align-content: center;
     }
 
     input {
       width: 100%;
-      min-height: 25px;
+      min-height: 30px;
       border: 0;
       font-size: 1rem;
       letter-spacing: .15rem;
@@ -99,16 +151,9 @@
       color: #000;
       margin-top: 15px;
     }
-
-    .name {
-      justify-content: space-between;
-      display: flex;
-      width: 100%;
-      align-items: center;
-    }    
     
     .lastname-form, .firstname-form {
-      width: 48%;
+      width: 100%;
     }
 
     .email {
@@ -119,6 +164,7 @@
 
     .email-form {
       width: 100%;
+      margin-top: 30px;
     }
 
     .email-pass-conf {
@@ -129,7 +175,11 @@
     }    
     
    .password-form, .confirmPassword-form {
-      width: 48%;
+      width: 100%; 
+    }
+
+    .confirmPassword-form {
+      margin-bottom: 30px;
     }
 
     .phone-street-postal {
@@ -139,8 +189,8 @@
       align-items: center;
     }    
     
-    .phone-form, .street-form, .postal-code-form {
-      width: 32%;
+    .street-form, .postal-code-form {
+      width: 48%;
     }
 
     .city-country {
@@ -161,5 +211,131 @@
 
     .submit-btn a:hover {
       background-color: seagreen;
+    }
+
+    .submit-reg-btn {
+      background: orange;
+    }
+
+    .submit-reg-btn:hover {
+      background: #EEE;
+      transition: 0.3s;
+    }
+
+    /* home-login-reg buttons */
+
+    .loginBtn {
+      background: #33cc77;
+      display: block;
+      width: 100px;
+      padding: 8px 0px;
+      margin: 0;
+      transition: 0.2s;
+      border: none;
+      border-radius: 20px;
+    }
+
+    .loginBtn:hover {
+      background: #28ad63;
+      cursor: pointer;
+    }
+
+    .regBtn {
+      background: #fff;
+      display: block;
+      width: 100%;
+      padding: 8px 0px;
+      transition: 0.2s;
+    }
+
+    .regBtn:hover {
+      background: grey;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* mina sidor css */ 
+    .body-mina-sidor {
+      background-color: #eee;
+      /* overflow-y: hidden; */
+    }
+
+    .wrapper-mina-sidor {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:". content content .";
+    }
+
+    .container-mina-sidor {
+      margin-top: 20px;
+      grid-area: content;
+      background-color: #ffffff;
+      padding: 30px 30px;
+      border-radius: 10px;
+      box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.5);
+      max-height: 800px;
+    }
+
+    /* style mina sidor knappar, rubriker */
+    .rubrik-center {
+      text-align: center;
+    }
+
+    .mina-sidorBtn {
+      width: 20%;
+      margin-left: 20px;
+      float: right;
+    }
+
+    .deleteBtn {
+      background-color: red;
+      color: #ffffff;
+      padding: 5px 5px;
+    }
+
+    .updateBtn {
+      background-color: green;
+      color: #ffffff;
+      padding: 5px 5px;
+    }
+    
+    .deleteBtn:hover {
+      background-color: #eee;
+      color: black;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .updateBtn:hover {
+      background-color: #eee;
+      color: black;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    input[readonly] {
+      padding-left: 10px;
+    }
+    
+    /* update-profile sida style  */
+    .wrapper-update-profile {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:". content content .";
+    }
+
+    .container-update-profile {
+      margin-top: 20px;
+      grid-area: content;
+      background-color: #ffffff;
+      padding: 30px 30px;
+      border-radius: 10px;
+      box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    input[type="text"] {
+      padding-left: 10px;
     }
 }

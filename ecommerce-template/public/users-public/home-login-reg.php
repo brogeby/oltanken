@@ -73,16 +73,19 @@
 
     <title>Öltanken - Logga in - Registera dig</title>
 </head>
-<body>
+<body class="body-home-login-reg">
 <?php include '../parts/menu.php';?>
 <div class="wrapper">
     <div class="content1"> 
         <article class="border">
-                <h1>Logga in</h1>
+            <?=$msg?>
+            <div class="login">
+                <h1 class="rubrik-login">Logga in</h1>
+            </div>
                     <!-- Visa errormeddelanden -->
-                        <?=$msg?>
+                        
             <form method="POST" action="#">
-                <fieldset>
+                <div class="login-background">
                     <div>
                         <label for="input1">E-post:</label> <br>
                         <input type="text" class="text" name="email">
@@ -94,16 +97,16 @@
                     </div>
 
                     <div>
-                        <input type="submit" name="doLogin" value="Login">
+                        <input type="submit" name="doLogin" value="Login" class="loginBtn">
                     </div>
-                </fieldset>
+                </div>
             </form>
     </div>
     <div class="content2">
         <article class="border">
-        <h2>Registera dig här</h2>
+        <h1 class="rubrik-home-reg">Registera dig här</h1>
         <form action="registering.php" method="POST">
-            <input type="submit" value="Registera">
+            <input type="submit" value="Registera" class="regBtn">
         </form>
     </div>
 </div>
