@@ -5,7 +5,6 @@ error_reporting(-1);
 
 $msg = '';
 $products = fetchAllProducts();
-     
 ?>
 <!DOCTYPE html>
 <html>

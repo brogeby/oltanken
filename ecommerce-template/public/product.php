@@ -23,15 +23,16 @@ $products = fetchSpecificProduct();
     <div class="individual-product">
         <img class="individual-image" src="<?=IMG_PATH . $content['img_url']?>" alt="<?=htmlentities($content['title'])?>">
         <p class="title"><?=htmlentities($content['title'])?></p>
-        <p class="brewery"><?=htmlentities($content['brewery'])?></p>
+        <p class="brewery">Bryggeri: <?=htmlentities($content['brewery'])?></p>
         <p class="type">Typ: <?=htmlentities($content['type'])?></p>
         <p class="price"><?=htmlentities($content['price'])?> sek</p>
-        <p class="desc"><?=htmlentities($content['description'])?>
         <form action="addtocart.php" method="POST">
             <input type="hidden" name="productId" value="<?=$content['id']?>">
             <input type="number" name="quantity" class="add-to-cart-qty quantity-button" value="1" min="0" max="100">
             <input type="submit" name="addToCart" class="general-button add-to-cart-btn" value="Lägg till i kassan">
         </form>
+        <p class="desc"><?=htmlentities($content['description'])?>
+
     </div>
 <?php } ?>
 <?php include 'parts/footer.php';?>
