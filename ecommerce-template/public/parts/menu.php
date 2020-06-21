@@ -13,8 +13,8 @@ if(!isset($_SESSION['items'])) {
  <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
-        <a href="<?= APP_URL . 'public/index.php' ?>">Home</a>
-        <a href="<?= APP_URL . 'public/productlist.php' ?>">Products</a>
+        <a href="<?= APP_URL . 'public/index.php' ?>">Hem</a>
+        <a href="<?= APP_URL . 'public/productlist.php' ?>">Produkter</a>
         <a href="<?= APP_URL . 'public/users-public/home-login-reg.php' ?>">Mina sidor</a>
         <a href="<?= APP_URL . 'public/admin/index.php' ?>">Admin</a>
     </div>

@@ -21,7 +21,7 @@ $products = fetchAllProducts();
 <body>
 <?php include '../parts/menu.php';?>
 <div class="content wrapper">
-<p onclick="goBack()" class="general-button top-left-button">Go Back</p>
+<p onclick="goBack()" class="general-button top-left-button">Gå tillbaka</p>
 
 <h1 class="page-title">Hantera produkter</h1>
 
@@ -35,7 +35,8 @@ $products = fetchAllProducts();
             <input type="text" name="price" id="add-price" placeholder="Pris..">
             <input type="text" name="img_url" id="add-img_url" placeholder="Bildens filnamn.." >
             <textarea type="text" name="description" id="add-description" placeholder="Beskrivning.." rows="10"></textarea>
-            <button name="addProductBtn" id="addProductBtn">Publish</button>
+            <button name="addProductBtn" id="addProductBtn" class="general-button">Skapa produkt</button>
+            <span>För att lägga till bild: Skriv in filens namn inklusive filtyp i fältet ovan och ladda upp filen i public/img</span>
         </div>
     </form>
     <div id="form-message"><?=$msg?></div>
@@ -65,13 +66,13 @@ $products = fetchAllProducts();
             <td>
                 <form action="updateproduct.php" method="GET">
                     <input type="hidden" name="updateId" value="<?=$content['id']?>">
-                    <input type="submit" name="updateBtn" class="update-btn general-button" value="Update">
+                    <input type="submit" name="updateBtn" class="update-btn general-button" value="Redigera">
                 </form>              
             </td>
             <td>
                 <form action="#" method="POST">
                     <input type="hidden" name="deleteId" value="<?=$content['id']?>">
-                    <input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Delete">                
+                    <input type="submit" name="deleteBtn" id="delete-btn" class="delete-btn" value="Ta bort">                
                 </form>
             </td>
         </tr>
