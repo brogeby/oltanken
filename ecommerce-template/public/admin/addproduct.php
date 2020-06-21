@@ -25,12 +25,12 @@ if (isset($_POST['addProductBtn'])) {
     $price = trim($_POST['price']);
     $description = trim($_POST['description']);
 
-    if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
-    if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
-    if (empty($type)) {$error .= "<div>type is neccessary</div>";}
-    if (empty($price)) {$error .= "<div>price is neccessary</div>";}
-    if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
-    if (empty($description)) {$error .= "<div>description is neccessary</div>";}
+    if (empty($title)) {$error .= "<div>Titel får ej vara tom</div>";}
+    if (empty($brewery)) {$error .= "<div>Bryggeri får ej vara tom</div>";}
+    if (empty($type)) {$error .= "<div>Typ får ej vara tom</div>";}
+    if (empty($price)) {$error .= "<div>Pris får ej vara tom</div>";}
+    if (empty($img_url)) {$error .= "<div>img_url får ej vara tom</div>";}
+    if (empty($description)) {$error .= "<div>Beskrivning får ej vara tom</div>";}
     if ($error) {$msg = "<div class='errors'>{$error}</div>";}
 
     if (empty($error)) {
@@ -52,7 +52,7 @@ if (isset($_POST['addProductBtn'])) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
         }
         if ($result) {
-        $msg = '<div class="success">Your product has been successfully published</div>';
+        $msg = '<div class="success">Produkten har lagts till!</div>';
         } 
     }
 }
