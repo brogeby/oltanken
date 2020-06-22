@@ -6,7 +6,9 @@ error_reporting(-1);
 session_start();
 
 define('APP_URL', 'http://localhost/oltanken/ecommerce-template/');
+define('PUBLIC_PATH', APP_URL . 'public/');
 define('IMG_PATH', APP_URL . 'public/img/');
+define('CHECKOUT_PATH', APP_URL . 'public/checkout/');
 define('PARTS_PATH', APP_URL . 'public/parts/');
 define('STYLES_PATH', APP_URL . 'public/styles/');
 define('JS_PATH', APP_URL . 'public/js/');
