@@ -5,7 +5,10 @@
   color:#A7A1AE;
   background-color:#1F2739;
 } */
-
+#errorMsg {
+	color: red;
+	l
+}
 h1 {
   font-size:3em; 
   font-weight: 300;
@@ -28,25 +31,25 @@ h2 {
 .yellow { color: #FFF842; }
 
 .wrapper-table th h1 {
-	  font-weight: bold;
-	  font-size: 1em;
-  text-align: left;
-  color: #185875;
+	font-weight: bold;
+	font-size: 1em;
+	text-align: left;
+	color: #185875;
 }
 
 .wrapper-table td {
-	  font-weight: normal;
-	  font-size: 1em;
-	  box-shadow: 0 2px 2px -2px #0E1119;
+	font-weight: normal;
+	font-size: 1em;
+	box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .wrapper-table {
-	  text-align: left;
-	  overflow: hidden;
-	  width: 80%;
-	  margin: 0 auto;
-  display: table;
-  padding: 0 0 8em 0;
+	text-align: left;
+	overflow: hidden;
+	width: 80%;
+	margin: 0 auto;
+	display: table;
+	padding: 0 0 8em 0;
 }
 
 .wrapper-table td, .wrapper-table th {
