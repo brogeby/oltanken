@@ -133,12 +133,10 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 		throw new \PDOException($e->getMessage(), (int) $e->getCode());
 	}
  }
-	unset($_SESSION['items']);
+	// unset($_SESSION['items']);
 	header('Location: tack-sida.php');
 	exit;
 	}
-} else {
-    $msg = "<div>Din varukorg är tom.</div>";
 }
 
 ?>
@@ -204,10 +202,6 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
                     <input type="text" name="country" value="<?=htmlentities($country)?>">
                 </div>
             </div>
-            <label class="checkbox">
-                <input type="checkbox" />
-                <span>Jag godkänner villkoren</span>
-            </label>
             <div id="message-checkout"><?=$msg?></div>
             <input type="hidden" name="totalPrice" value="<?=$productTotalSum?>">
             <div class="btns">
