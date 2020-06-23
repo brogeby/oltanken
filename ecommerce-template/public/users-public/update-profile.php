@@ -141,7 +141,7 @@ if (isset($_POST['submitUserBtn'])) {
         
     </div>
 </div>
-    <a href="mina-sidor.php">< Tillbaka</a>
+    <a href="mina-sidor.php" class="general-button top-left-button">< Tillbaka</a>
 <?php include '../parts/footer.php';?>
 </body>
 </html>

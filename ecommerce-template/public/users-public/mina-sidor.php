@@ -103,7 +103,7 @@ try {
         </div>
     </div>
 </div>
-<a href="home-login-reg.php">< Tillbaka</a>
+<a href="home-login-reg.php" class="general-button top-left-button tack-sidaBtn">< Tillbaka</a>
 <?php include '../parts/footer.php';?>
 <script src="../js/main.js"></script>
 </body>

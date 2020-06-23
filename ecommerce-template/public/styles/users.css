@@ -250,6 +250,17 @@ h1, h2, h3, h4, h5 {
 .cart table tbody td:last-child {
 	text-align: right;
 }
+/* tack sida css */
+.cart, .tack-sida-center table tbody td:last-child {
+	text-align: center;
+}
+.cart, .tack-sida-center table thead td {
+	padding: 30px 0;
+	text-align: center;
+	
+}
+/* fram hit */
+
 .cart table .img {
 	width: 80px;
 }

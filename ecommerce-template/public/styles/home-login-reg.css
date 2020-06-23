@@ -216,6 +216,7 @@ password-form, .confirmPassword-form {
 .loginBtn:hover {
   background: #eee;
   cursor: pointer;
+  color: #000;
 }
 
 .regBtn {
@@ -315,6 +316,17 @@ input[readonly] {
 
 input[type="text"] {
   padding-left: 10px;
+}
+
+    /* tack sida css */
+.rubrik-tack-sida {
+  padding-top: 40px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.tack-sidaBtn {
+  margin: 0px 20px;
 }
 
 @media only screen and (min-width: 768px) {
