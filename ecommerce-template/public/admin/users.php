@@ -59,16 +59,17 @@ $users = $stmt->fetchall();
         <thead>
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email Address</th>
-                <th>Phone number</th>
-                <th>Street</th>
-                <th>Postal code</th>
-                <th>City</th>
-                <th>Country</th>
+                <th>Förstanamn</th>
+                <th>Efternamn</th>
+                <th>E-mail Adress</th>
+                <th>Telefonnummer</th>
+                <th>Gatuadress</th>
+                <th>Postkod</th>
+                <th>Stad</th>
+                <th>Land</th>
                 <th>Register date</th>
-                <th>EDIT</th>
+                <th>Uppdatera</th>
+                <th>Radera</th>
             </tr>
         </thead>
         <tbody>
@@ -84,7 +85,7 @@ $users = $stmt->fetchall();
                 <td><?=htmlentities($user["city"]); ?></td>
                 <td><?=htmlentities($user["country"]); ?></td>
                 <td><?=htmlentities($user["register_date"]); ?> </td>
-                <td><button><a href="edit-user.php?id=<?php echo $user['id'] ?>">edit</a></button></td>
+                <td><button><a href="edit-user.php?id=<?=$user['id'] ?>">edit</a></button></td>
                 <td><form action="#" method="POST">
                     <input type="hidden" name="userID" value="<?=$user['id']?>">
                     <input type="submit" name="deleteBtn" value="Radera">
