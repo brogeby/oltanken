@@ -27,7 +27,7 @@ if (isset($_POST['update']) && isset($_SESSION['items'])) {
 
 
 if (isset($_POST['placeorder']) && isset($_SESSION['items']) && !empty($_SESSION['items'])) {
-    header('Location: tack-sida.php');
+    header('Location: placeorder.php');
     exit;
 }
 
