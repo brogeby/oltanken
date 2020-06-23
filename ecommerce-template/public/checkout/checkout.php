@@ -20,7 +20,7 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 	$country     = '';
 	$error       = '';
     $msg         = '';
-	if (isset($_POST['createOrderBtn'])) {
+	if (isset($_POST['createOrderBtn']) && !empty($_SESSION['items'])) {
 		$firstName 		= trim($_POST['firstName']);
 		$lastName 		= trim($_POST['lastName']);
 		$email 	   		= trim($_POST['email']);
@@ -61,8 +61,13 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
         throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
 
+    if ($user && $password !== $user['password']) { //If users exists but pass wrong password
+        header('Location: checkout.php');
+        exit;
+        $msg = "fel lösen";
+	}
 
-	if ($user) { //If users exists
+	if ($user && $password === $user['password']) { //If users exists and pass right password
 		$userId = $user['id'];
 	} else { // Else create new user, and fetch the newly created id 
 		try {
@@ -132,6 +137,8 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 	header('Location: tack-sida.php');
 	exit;
 	}
+} else {
+    $msg = "<div>Din varukorg är tom.</div>";
 }
 
 ?>
@@ -201,7 +208,7 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
                 <input type="checkbox" />
                 <span>Jag godkänner villkoren</span>
             </label>
-            <div id="errorMsg"><?=$msg?></div>
+            <div id="message-checkout"><?=$msg?></div>
             <input type="hidden" name="totalPrice" value="<?=$productTotalSum?>">
             <div class="btns">
                 <button type="submit" name="createOrderBtn">Slutför köp</button>
