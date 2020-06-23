@@ -2,6 +2,10 @@
   margin-left: 5%;
 }
 
+#addProductBtn {
+  justify-self: left;
+}
+
 .handle-product-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -13,7 +17,7 @@
 }
 
 .handle-product-container {
-  padding: 10%;
+  padding: 5% 10%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 5px;
@@ -23,9 +27,27 @@
   grid-column: span 5;
 }
 
+.handle-product-container input, 
+.handle-product-container textarea {
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #000;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+}
+
 .handle-product-container textarea {
   grid-column: span 5;
   resize: vertical;
+}
+
+.handle-product-container span {
+  grid-column: span 4;
+  text-align: right;
 }
 
 .admin-product {
@@ -102,4 +124,5 @@ h2 {
 .delete-btn:hover {
   color:#000000;
   background-color:rgb(230, 230, 230);
+  cursor: pointer;
 }

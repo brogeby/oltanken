@@ -130,6 +130,10 @@ header h4 {
     justify-self: center;
 }
 
+.nav-toggle:hover {
+  cursor: pointer;
+}
+
 .nav-toggle span {
     position: relative;
     display: block;
@@ -189,6 +193,7 @@ footer {
   .general-button:hover {
     color:#000000;
     background-color:rgb(230, 230, 230);
+    cursor: pointer;
   }
 
   .top-left-button {
@@ -238,7 +243,7 @@ footer {
 }
 
 .cart-details-img img {
-  height: 100%;
+  height: 150px;
 }
 
 .modal-content hr {
