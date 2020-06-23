@@ -3,35 +3,6 @@
     require SRC_PATH . ('dbconnect.php');
     error_reporting(-1);
 
-
-if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['items']) && isset($_SESSION['items'][$_GET['remove']])) {
-    unset($_SESSION['items'][$_GET['remove']]);
-}
-
-if (isset($_POST['update']) && isset($_SESSION['items'])) {
- 
-    foreach ($_POST as $k => $v) {
-        if (strpos($k, 'quantity') !== false && is_numeric($v)) {
-            $id = str_replace('quantity-', '', $k);
-            $quantity = (int)$v;
-
-            if (is_numeric($id) && isset($_SESSION['items'][$id]) && $quantity > 0) {
-                $_SESSION['items'][$id] = $quantity;
-            }
-        }
-    }
-    header('location: checkout.php?page=cart');
-    exit;
-   
-}
-
-
-if (isset($_POST['placeorder']) && isset($_SESSION['items']) && !empty($_SESSION['items'])) {
-    header('Location: placeorder.php');
-    exit;
-}
-
-
 if(!isset($_SESSION['items'])) {
     $_SESSION['items'] = [];
 }
