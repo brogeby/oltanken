@@ -161,9 +161,8 @@ function getUpdateId() {
                 }
             } 
         }
-    }
-    return $product;
-
+    }   
+    return array($product, $msg);
 };
 
 ?>
