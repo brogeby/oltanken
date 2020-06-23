@@ -77,57 +77,94 @@ function deleteProduct() {
     }
 }
 
-// Denna funkar nästan.. uppdateras dock inte med AJAX
-// function addProduct() {
-//     global $dbconnect;
+function getUpdateId() {
+    global $dbconnect;
 
-//     $img_url = '';
-//     $title = '';
-//     $brewery = '';
-//     $type = '';
-//     $price = '';
-//     $description = '';
-//     $error = '';
-//     $msg = '';
-//     if (isset($_POST['addProductBtn'])) {
-//         $img_url = trim($_POST['img_url']);
-//         $title = trim($_POST['title']);
-//         $brewery = trim($_POST['brewery']);
-//         $type = trim($_POST['type']);
-//         $price = trim($_POST['price']);
-//         $description = trim($_POST['description']);
-
-//         if (empty($title)) {$error .= "<div>Title is neccessary</div>";}
-//         if (empty($brewery)) {$error .= "<div>brewery is neccessary</div>";}
-//         if (empty($type)) {$error .= "<div>type is neccessary</div>";}
-//         if (empty($price)) {$error .= "<div>price is neccessary</div>";}
-//         if (empty($img_url)) {$error .= "<div>img_url is neccessary</div>";}
-//         if (empty($description)) {$error .= "<div>description is neccessary</div>";}
-//         if ($error) {$msg = "<div class='errors'>{$error}</div>";}
-
-//         if (empty($error)) {
-//             try {
-//                 $query = "
-//                 INSERT INTO products (img_url, title, brewery, type, price, description)
-//                 VALUES (:img_url, :title, :brewery, :type, :price, :description);
-//                 ";
-
-//                 $stmt = $dbconnect->prepare($query);
-//                 $stmt->bindValue(':img_url', $img_url);
-//                 $stmt->bindValue(':title', $title);
-//                 $stmt->bindValue(':brewery', $brewery);
-//                 $stmt->bindValue(':type', $type);
-//                 $stmt->bindValue(':price', $price);
-//                 $stmt->bindValue(':description', $description);
-//                 $result = $stmt->execute();
-//             } catch (\PDOException $e) {
-//                 throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
-//             }
-//             if ($result) {
-//             $msg = '<div class="success">Your product has been successfully published</div>';
-//             } 
-//         }
-//     }
-// }
+    if(isset($_GET['updateId'])){
+        try {
+          $id = $_GET['updateId'];
+          $query = "SELECT * FROM products
+                    WHERE id = :id";
+          $stmt = $dbconnect->prepare($query);
+          $stmt->bindValue(':id', $_GET['updateId']);
+          $stmt->execute();
+          $product = $stmt->fetch();
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int) $e->getCode());
+        }
+    }
+    
+    
+    
+    $img_url = '';
+    $title = '';
+    $brewery = '';
+    $type = '';
+    $price = '';
+    $description = '';
+    $error = '';
+    $msg = '';
+    if (isset($_POST['updateProductBtn'])) {
+        $img_url = trim($_POST['img_url']);
+        $title = trim($_POST['title']);
+        $brewery = trim($_POST['brewery']);
+        $type = trim($_POST['type']);
+        $price = trim($_POST['price']);
+        $description = trim($_POST['description']);
+    
+        if (empty($title)) {$error .= "<div>Titel får ej vara tom</div>";}
+        if (empty($brewery)) {$error .= "<div>Bryggeri får ej vara tom</div>";}
+        if (empty($type)) {$error .= "<div>Typ får ej vara tom</div>";}
+        if (empty($price)) {$error .= "<div>Pris får ej vara tom</div>";}
+        if (empty($img_url)) {$error .= "<div>img_url får ej vara tom</div>";}
+        if (empty($description)) {$error .= "<div>Beskrivning får ej vara tom</div>";}
+        if ($error) {$msg = "<div class='errors'>{$error}</div>";}
+    
+        if (empty($error)) {
+            try {
+                $query = "
+                UPDATE products
+                SET 
+                    title = :title, 
+                    brewery = :brewery, 
+                    type = :type, 
+                    price = :price, 
+                    img_url = :img_url, 
+                    description = :description
+                WHERE id = :id
+                ";
+    
+                $stmt = $dbconnect->prepare($query);
+                $stmt->bindValue(':img_url', $img_url);
+                $stmt->bindValue(':title', $title);
+                $stmt->bindValue(':brewery', $brewery);
+                $stmt->bindValue(':type', $type);
+                $stmt->bindValue(':price', $price);
+                $stmt->bindValue(':description', $description);
+                $stmt->bindValue(':id', $_GET['updateId']);
+                $result = $stmt->execute();
+            }   catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode()); 
+            }
+            if ($result) {
+            $msg = '<div class="success">Produkten har uppdaterats!</div>';
+                if(isset($_GET['updateId'])){
+                    try {
+                    $id = $_GET['updateId'];
+                    $query = "SELECT * FROM products
+                                WHERE id = :id";
+                    $stmt = $dbconnect->prepare($query);
+                    $stmt->bindValue(':id', $_GET['updateId']);
+                    $stmt->execute();
+                    $product = $stmt->fetch();
+                    } catch (\PDOException $e) {
+                        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                    }
+                }
+            } 
+        }
+    }   
+    return array($product, $msg);
+};
 
 ?>
