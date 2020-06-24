@@ -149,7 +149,7 @@ if (isset($_POST['createOrderBtn']) && empty($_SESSION['items'])) {
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Tankrummet</title>
+    <title>Öltanken</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/main.css'>
