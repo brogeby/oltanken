@@ -34,42 +34,22 @@ $users = $stmt->fetchall();
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/users.css'>
 </head>
 <body>
-    <!-- The Modal for edit form -->
-    <!-- <div id="myModal" class="modal"> -->
-      <!-- Modal content -->
-      <!-- <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="form-style">
-          <form id="add-user"method="POST">
-            <input type="text" name="first_name" id="first_name" placeholder="First name">
-            <input type="text" name="last_name" id="last_name" placeholder="Last name">
-            <input type="email" name="email" id="email" placeholder="Email address">
-            <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder='Phone number "012-345-6789"'>
-            <input type="text" name="street" id="street" placeholder="Street">
-            <input type="number" name="postal_code" id="postal_code" placeholder="Postal code">
-            <input type="text" name="city" id="city" placeholder="City">
-            <input type="text" name="country" id="country" placeholder="Country">
-            <input type="submit" name="updateBtn" value="Update">
-          </form>
-        </div>
-      </div>
-    </div> -->
     <table class="wrapper-table">
-    <h2>Results</h2>
+    <h2>Användare</h2>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Förstanamn</th>
                 <th>Efternamn</th>
-                <th>E-mail Adress</th>
+                <th>E-mail</th>
                 <th>Telefonnummer</th>
                 <th>Gatuadress</th>
                 <th>Postkod</th>
                 <th>Stad</th>
                 <th>Land</th>
-                <th>Register date</th>
-                <th>Uppdatera</th>
-                <th>Radera</th>
+                <th>Registrerad</th>
+                <th>Ändra</th>
+                <th>Ta bort</th>
             </tr>
         </thead>
         <tbody>
@@ -85,10 +65,10 @@ $users = $stmt->fetchall();
                 <td><?=htmlentities($user["city"]); ?></td>
                 <td><?=htmlentities($user["country"]); ?></td>
                 <td><?=htmlentities($user["register_date"]); ?> </td>
-                <td><button><a href="edit-user.php?id=<?=$user['id'] ?>">edit</a></button></td>
+                <td><button><a href="edit-user.php?id=<?=$user['id'] ?>">Ändra</a></button></td>
                 <td><form action="#" method="POST">
                     <input type="hidden" name="userID" value="<?=$user['id']?>">
-                    <input type="submit" name="deleteBtn" value="Radera">
+                    <input type="submit" name="deleteBtn" value="Ta bort">
                 </form>
                 </td>
             </tr>
