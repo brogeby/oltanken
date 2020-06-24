@@ -28,6 +28,7 @@ h2 {
   line-height:1em;
   padding-top: 1em;
   color: #e89836;
+  padding-bottom: 1em;
 }
 
 .blue { color: #185875; }
@@ -134,27 +135,21 @@ h2 {
 .wrapper-table td, .wrapper-table th {
 	padding: 1% 0 1% 0.5%;
 }
-
 /* Background-color of the odd rows */
 .wrapper-table tr:nth-child(odd) {
-	  background-color: #323C50;
-}
-
-/* Background-color of the even rows */
-.wrapper-table tr:nth-child(even) {
-	  background-color: #2C3446;
-}
+	background-color: rgb(255, 255, 255);
+  }
+  
+  /* Background-color of the even rows */
+  .wrapper-table tr:nth-child(even) {
+	background-color: rgb(230, 230, 230);
+  }
 
  .wrapper-table th {
-    background-color: #1F2739;
-    color: #FB667A;
+	color: #000;
+	border-bottom: 1px solid #000;
+	border-right: 1px solid #000;
 } 
-
-
-@media (max-width: 800px) {
-.wrapper-table td:nth-child(4),
-.wrapper-table th:nth-child(4) { display: none; }
-}
 
 /* Create User form */
 .form-style{

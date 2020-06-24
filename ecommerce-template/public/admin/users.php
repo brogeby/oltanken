@@ -34,6 +34,7 @@ $users = $stmt->fetchall();
     <link rel='stylesheet' type='text/css' media='screen' href='../styles/users.css'>
 </head>
 <body>
+<?php include '../parts/menu.php';?>
     <table class="wrapper-table">
     <h2>Användare</h2>
         <thead>
