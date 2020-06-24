@@ -63,8 +63,8 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 
     if ($user && $password !== $user['password']) { //If users exists but pass wrong password
         header('Location: checkout.php');
-        exit;
         $msg = "fel lösen";
+        exit;
 	}
 
 	if ($user && $password === $user['password']) { //If users exists and pass right password
@@ -114,7 +114,7 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 		throw new \PDOException($e->getMessage(), (int) $e->getCode());
 	}
 
-	// Create orderitems
+	// Create order items
 	foreach ($_SESSION['items'] as $productId => $productItem) {
 	try {
 		$query = "
@@ -137,6 +137,10 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
 	header('Location: tack-sida.php');
 	exit;
 	}
+}
+
+if (isset($_POST['createOrderBtn']) && empty($_SESSION['items'])) {
+    $msg = "<span style='color:red; font-size: 22px; margin: 80% 0;'>Din varukorg är tom</span>";
 }
 
 ?>
@@ -202,12 +206,15 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['it
                     <input type="text" name="country" value="<?=htmlentities($country)?>">
                 </div>
             </div>
-            <div id="message-checkout"><?=$msg?></div>
             <input type="hidden" name="totalPrice" value="<?=$productTotalSum?>">
             <div class="btns">
                 <button type="submit" name="createOrderBtn">Slutför köp</button>
             </div>
         </form>
+    </div>
+
+    <div class="checkout-msg">
+            <?=$msg?>
     </div>
 
     <div class="cart content-wrapper">
