@@ -422,7 +422,15 @@ button:focus {
 .cart table tbody td:last-child {
 	text-align: right;
 }
+.tack-sida-center {
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+}
 
+.tack-sida-center table tbody td:last-child {
+    text-align: center;
+}
 .cart table .img {
 	width: 50px;
 }
