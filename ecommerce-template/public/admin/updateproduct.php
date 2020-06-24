@@ -4,8 +4,7 @@ include('../../src/config.php');
 require SRC_PATH . ('dbconnect.php'); // Ger error om filen inte hittas
 error_reporting(-1);
 
-$product = getUpdateId()[0];
-$msg = getUpdateId()[1];
+[$product, $msg] = getUpdateId();
 
 ?>
 <!DOCTYPE html>
