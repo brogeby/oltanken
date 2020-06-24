@@ -128,14 +128,14 @@ if (isset($_POST['submitUserBtn'])) {
         <h1 class="rubrik-center">Uppdatera inlägg</h1>
 
         <form action="#" method="POST">
-            <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=$user['first_name']?>">
-            <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=$user['last_name']?>">
-            <input type="text" name="emailUser" placeholder="E-mail" value="<?=$user['email']?>">
-            <input type="text" name="phoneUser" placeholder="Telefonnmmer" value="<?=$user['phone']?>">
-            <input type="text" name="streetUser" placeholder="Adress" value="<?=$user['street']?>">
-            <input type="text" name="postal_codeUser" placeholder="Postnummer" value="<?=$user['postal_code']?>">
-            <input type="text" name="cityUser" placeholder="Stad" value="<?=$user['city']?>">
-            <input type="text" name="countryUser" placeholder="Land" value="<?=$user['country']?>">
+            <input type="text" name="first_nameUser" placeholder="Förnamn" value="<?=htmlentities($user['first_name'])?>"">
+            <input type="text" name="last_nameUser" placeholder="Efternamn" value="<?=htmlentities($user['last_name'])?>">
+            <input type="text" name="emailUser" placeholder="E-mail" value="<?=htmlentities($user['email'])?>">
+            <input type="text" name="phoneUser" placeholder="Telefonnmmer" value="<?=htmlentities($user['phone'])?>">
+            <input type="text" name="streetUser" placeholder="Adress" value="<?=htmlentities($user['street'])?>">
+            <input type="text" name="postal_codeUser" placeholder="Postnummer" value="<?=htmlentities($user['postal_code'])?>">
+            <input type="text" name="cityUser" placeholder="Stad" value="<?=htmlentities($user['city'])?>">
+            <input type="text" name="countryUser" placeholder="Land" value="<?=htmlentities($user['country'])?>">
             <input type="submit" name="submitUserBtn" value="Uppdatera" class="updateBtn">
         </form>
         

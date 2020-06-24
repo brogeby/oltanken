@@ -3,15 +3,12 @@
     require SRC_PATH . ('dbconnect.php');
     error_reporting(-1);
 
-if(!isset($_SESSION['items'])) {
-    $_SESSION['items'] = [];
+if(empty($_SESSION['items'])) {
+    header('Location: ../index.php');
+    exit;
 }
- $productItemCount = count($_SESSION['items']);
- $productTotalSum = 0; count($_SESSION['items']);
- foreach ($_SESSION['items'] as $productId => $productItem) {
-      $productTotalSum += $productItem['price'] * $productItem['quantity'];
- }
-
+$items = $_SESSION['items'];
+unset($_SESSION['items']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +24,7 @@ if(!isset($_SESSION['items'])) {
     <title>Öltanken - Tack för ditt köp</title>
 <?php include '../parts/menu.php';?>
 
-<div class="cart content-wrapper tack-sida-center">
+<div class="cart tack-sida-center">
     <h1 class="rubrik-tack-sida">Tack för ditt köp</h1>
     <form action="checkout.php?page=cart" method="post">
         <table>
@@ -39,7 +36,7 @@ if(!isset($_SESSION['items'])) {
                     <th>Quantity</th>
                 </tr>
             </thead>
-            <?php foreach ($_SESSION['items'] as $productId => $productItem) { ?>
+            <?php foreach ($items as $productId => $productItem) { ?>
                     <div class="cart-details">
                         <td class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></td>
                         <td class="cart-title"><?=$productItem['title']?></td>
