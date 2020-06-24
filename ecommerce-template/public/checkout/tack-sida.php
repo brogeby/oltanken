@@ -23,34 +23,35 @@ unset($_SESSION['items']);
 
     <title>Öltanken - Tack för ditt köp</title>
 <?php include '../parts/menu.php';?>
-
-<div class="cart tack-sida-center">
-    <h1 class="rubrik-tack-sida">Tack för ditt köp</h1>
-    <form action="checkout.php?page=cart" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="2">Product</th>
-                    <th>Brewery</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <?php foreach ($items as $productId => $productItem) { ?>
-                    <div class="cart-details">
-                        <td class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></td>
-                        <td class="cart-title"><?=$productItem['title']?></td>
-                        <td class="cart-brewery"><?=$productItem['brewery']?></td>
-                        <td class="cart-price"><?=$productItem['price']?>kr</td>
-                        <td class="quantity"><?=$productItem['quantity']?></td>
-                    </div>
-                <?php } ?>
-        </table>
-        <div class="subtotal">
-            <span class="text">Subtotal</span>
-            <span class="price"><?=$productTotalSum?>kr</span>
-        </div>
-    </form>
+<div class="tack-sida-center">
+    <div class="cart">
+        <h1 class="rubrik-tack-sida">Tack för ditt köp</h1>
+        <form action="checkout.php?page=cart" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Produkt</th>
+                        <th>Bryggeri</th>
+                        <th>Pris</th>
+                        <th>Antal</th>
+                    </tr>
+                </thead>
+                <?php foreach ($items as $productId => $productItem) { ?>
+                        <div class="cart-details">
+                            <td class="cart-details-img"><img src="<?=IMG_PATH . $productItem['img_url']?>" style="width:50px;height:auto;"></td>
+                            <td class="cart-title"><?=$productItem['title']?></td>
+                            <td class="cart-brewery"><?=$productItem['brewery']?></td>
+                            <td class="cart-price"><?=$productItem['price']?>kr</td>
+                            <td class="quantity"><?=$productItem['quantity']?></td>
+                        </div>
+                    <?php } ?>
+            </table>
+            <div class="subtotal">
+                <span class="text">Subtotal</span>
+                <span class="price"><?=$productTotalSum?>kr</span>
+            </div>
+        </form>
+    </div>
 </div>
 <a href="../index.php" class="general-button top-left-button tack-sidaBtn">Gå tillbaka till startsidan</a>
 

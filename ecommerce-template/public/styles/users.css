@@ -473,13 +473,13 @@ button:focus {
 	text-align: right;
 }
 /* tack sida css */
-.cart, .tack-sida-center table tbody td:last-child {
+.tack-sida-center {
 	text-align: center;
 	max-width: 80%;
 	margin: 0 auto;
 }
-.cart, .tack-sida-center table thead td {
-	padding: 30px 0;
+
+.tack-sida-center table tbody td:last-child {
 	text-align: center;
 }
 /* fram hit */
