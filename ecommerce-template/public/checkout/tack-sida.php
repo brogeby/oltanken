@@ -48,7 +48,7 @@ unset($_SESSION['items']);
             </table>
             <div class="subtotal">
                 <span class="text">Subtotal</span>
-                <span class="price"><?=$productTotalSum?>kr</span>
+                <span class="price"><?=$productItem['price'] * $productItem['quantity'];?>kr</span>
             </div>
         </form>
     </div>
