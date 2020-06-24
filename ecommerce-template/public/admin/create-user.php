@@ -13,6 +13,7 @@ error_reporting(-1);
     $country     = '';
     $error       = '';
     $msg         = '';
+    $msgSuccess  = '';
 
     if (isset($_POST['submit'])) {
           $first_name        = trim($_POST['first_name']);
@@ -81,6 +82,7 @@ error_reporting(-1);
             } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
             }
+            $msgSuccess = "<span style='color:green; font-size: 22px;'>Användare tillagd</span>";
         }
       }
     }
@@ -111,7 +113,8 @@ error_reporting(-1);
     	<input type="submit" name="submit" value="Submit">
     </form>
   </div>
-  <div id="message"><?=$msg?></div>
+  <div class="errorMsg"><?=$msg?></div>
+  <div class="successMsg"><?=$msgSuccess?></div>
     <button class="back-btn"><a href="users.php">< Tillbaka till alla användare</a></button>
     <?php include '../parts/footer.php';?>
     <script src='../js/main.js'></script>

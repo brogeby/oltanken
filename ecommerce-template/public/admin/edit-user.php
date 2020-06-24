@@ -27,6 +27,7 @@ if(isset($_GET['id'])){
     $country     = '';
     $error       = '';
     $msg         = '';
+    $msgSuccess  = '';
 
     if (isset($_POST['updateBtn'])) {
           $first_name        = trim($_POST['first_name']);
@@ -86,7 +87,7 @@ if(isset($_GET['id'])){
                 throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
         if ($result) {
-          $msg = '<div>User has been successfully updated</div>';
+          $msgSuccess = "<span style='color:green; font-size: 22px;'>Användare har blivit uppdaterad</span>";
           } 
       }
     }
@@ -117,7 +118,8 @@ if(isset($_GET['id'])){
     	<input type="submit" name="updateBtn" value="Submit">
     </form>
   </div>
-    <?=$msg?>
+  <div class="errorMsg"><?=$msg?></div>
+  <div class="successMsg"><?=$msgSuccess?></div>
     <button class="back-btn"><a href="users.php">< Tillbaka till alla användare</a></button>
     <?php include '../parts/footer.php';?>
     <script src='../js/main.js'></script>
